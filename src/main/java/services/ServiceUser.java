@@ -14,16 +14,16 @@ public class ServiceUser implements CRUD<User>{
     public ServiceUser() {
         cnx = DBConnection.getInstance().getCnx();
     }
-/*
+
     @Override
-    public void insertOne(User user) throws SQLException {
+    /*public void insertOne(User user) throws SQLException {
         String req = "INSERT INTO `user`(`name`, `last_name`, `email`) VALUES " +
                 "('"+ user.getName()+"','"+ user.getLastName()+"','+" user.getEmail()+"')";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
         System.out.println("User Added !");
-    }
-*/
+    }*/
+
     public void insertOne(User user) throws SQLException {
         String req = "INSERT INTO `user`(`name`, `last_name`, `email`) VALUES " +
                 "(?,?,?)";
