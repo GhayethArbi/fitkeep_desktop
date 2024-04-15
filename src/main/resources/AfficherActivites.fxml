@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="620.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherActivitesFXML">
+    <children>
+        <TableView fx:id="PhysicalActivitiesTable" editable="true" layoutX="33.0" layoutY="215.0" prefHeight="302.0" prefWidth="850.0">
+            <columns>
+                <TableColumn fx:id="idCol" prefWidth="75.0" style="-fx-alignment: center;" text="ID" />
+                <TableColumn fx:id="nomCol" prefWidth="104.0" style="-fx-alignment: center;" text="Name" />
+                <TableColumn fx:id="typeCol" prefWidth="104.0" text="Type" />
+                <TableColumn fx:id="durCol" prefWidth="75.0" text="Duration" />
+                <TableColumn fx:id="calBrCol" prefWidth="100.0" text="Burned Calories" />
+                <TableColumn fx:id="nbSerCol" prefWidth="90.0" text="Serie Number" />
+                <TableColumn fx:id="nbRepSerCol" prefWidth="120.0" text="Serie Repetiton Number" />
+                <TableColumn fx:id="poSerCol" prefWidth="90.0" text="Serie Weight" />
+                <TableColumn fx:id="editCol" prefWidth="75.0" text="Operations" />
+            </columns>
+        </TableView>
+        <Pane layoutY="70.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Text layoutX="26.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physical Activities details:" wrappingWidth="392.5367126464844">
+            <font>
+                <Font name="Bauhaus 93" size="26.0" />
+            </font>
+        </Text>
+        <HBox alignment="CENTER_LEFT" layoutX="51.0" layoutY="100.0" prefHeight="77.0" prefWidth="278.0">
+            <children>
+                <FontAwesomeIconView fill="#1e88e5" glyphName="USER_PLUS" onMouseClicked="#getAddView" size="40" text="">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </FontAwesomeIconView>
+                <FontAwesomeIconView fill="#00e676" glyphName="REFRESH" onMouseClicked="#refreshTable" size="40">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </FontAwesomeIconView>
+                <FontAwesomeIconView fill="#546e7a" glyphName="PRINT" onMouseClicked="#print" size="40" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="877.0" layoutY="27.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
+            <children>
+                <FontAwesomeIconView glyphName="CLOSE" size="25" />
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

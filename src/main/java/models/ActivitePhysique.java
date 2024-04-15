@@ -7,7 +7,7 @@ public class ActivitePhysique {
     private int id;
     private String nomActivite, typeActivite;
     private int dureeActivite, caloriesBrules, nbSeries, nbRepSeries, poidsParSerie;
-    private String imageActivite;
+    //private String imageActivite;
     private List<Objectif> objectifs;
 
     public ActivitePhysique() {
@@ -23,11 +23,12 @@ public class ActivitePhysique {
         this.nbSeries = nbSeries;
         this.nbRepSeries = nbRepSeries;
         this.poidsParSerie = poidsParSerie;
-        this.imageActivite = imageActivite;
+       /* this.imageActivite = imageActivite;
         this.objectifs =new ArrayList<>();
+        */
     }
 
-    public List<Objectif> getObjectifs() {
+   public List<Objectif> getObjectifs() {
         return objectifs;
     }
 
@@ -99,7 +100,7 @@ public class ActivitePhysique {
         this.poidsParSerie = poidsParSerie;
     }
 
-    public String getImageActivite() {
+   /* public String getImageActivite() {
         return imageActivite;
     }
 
@@ -107,6 +108,8 @@ public class ActivitePhysique {
         this.imageActivite = imageActivite;
     }
 
+
+    */
     @Override
     public String toString() {
         return "ActivitePhysique{" +
@@ -118,7 +121,7 @@ public class ActivitePhysique {
                 ", nbSeries=" + nbSeries +
                 ", nbRepSeries=" + nbRepSeries +
                 ", poidsParSerie=" + poidsParSerie +
-                ", imageActivite='" + imageActivite + '\'' +
+              /* ", imageActivite='" + imageActivite + '\'' +*/
                 '}';
     }
 }
