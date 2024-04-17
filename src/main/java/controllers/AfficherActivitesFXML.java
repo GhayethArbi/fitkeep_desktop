@@ -65,6 +65,9 @@ public class AfficherActivitesFXML implements Initializable {
     @FXML
     TableColumn<ActivitePhysique, String> poSerCol;
 
+    @FXML
+    TableColumn<ActivitePhysique, String> operCol;
+
     ObservableList<ActivitePhysique> ActiviteList = FXCollections.observableArrayList();
     ServiceActivitePhysique sap = new ServiceActivitePhysique();
     /**
@@ -73,9 +76,11 @@ public class AfficherActivitesFXML implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
          loadDate();
     }
 
+    @FXML
     private void close(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
@@ -93,15 +98,35 @@ public class AfficherActivitesFXML implements Initializable {
             System.out.println(PhysicalActivitiesTable);
 
         } catch (SQLException ex) {
-           // Logger.getLogger(TableViewController.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(AfficherActivitesFXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @FXML
     private void getAddView(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterActivite.fxml"));
+            Parent parent = loader.load();
+
+            // Get the controller of AjouterActiviteFXML
+            AjouterActiviteFXML ajouterActiviteController = loader.getController();
+
+            // Pass a reference to AfficherActivitesFXML to AjouterActiviteFXML
+            ajouterActiviteController.setParentFXMLLoader(this);
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterActiviteFXML.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
-
+    public void getRefrashable(){
+        refreshTable();
+    }
     @FXML
     private void print(MouseEvent event) {
     }
@@ -160,21 +185,27 @@ public class AfficherActivitesFXML implements Initializable {
 
 
                          });
-                        /* editIcon.setOnMouseClicked((MouseEvent event) -> {
+                         editIcon.setOnMouseClicked((MouseEvent event) -> {
                              ActivitePhysique activitePhysique =new ActivitePhysique() ;
+
                              activitePhysique = PhysicalActivitiesTable.getSelectionModel().getSelectedItem();
                              FXMLLoader loader = new FXMLLoader ();
-                             loader.setLocation(getClass().getResource("/tableView/addStudent.fxml"));
+                             loader.setLocation(getClass().getResource("/AfficherActivites.FXML"));
                              try {
                                  loader.load();
                              } catch (IOException ex) {
                                  Logger.getLogger(AfficherActivitesFXML.class.getName()).log(Level.SEVERE, null, ex);
                              }
 
-                             AddStudentController addStudentController = loader.getController();
-                             addStudentController.setUpdate(true);
-                             addStudentController.setTextField(ActivitePhysique.getId(), ActivitePhysique.getName(),
-                                     ActivitePhysique.getBirth().toLocalDate(),ActivitePhysique.getAdress(), ActivitePhysique.getEmail());
+                             AjouterActiviteFXML ajouterActiviteFXML = loader.getController();
+                             ajouterActiviteFXML.setTextField(activitePhysique.getId(), activitePhysique.getNomActivite(),
+                                     activitePhysique.getTypeActivite(),activitePhysique.getDureeActivite(), activitePhysique.getCaloriesBrules(),
+                             activitePhysique.getNbSeries(),activitePhysique.getNbRepSeries(),activitePhysique.getPoidsParSerie());
+                             try {
+                                 sap.updateOne(activitePhysique);
+                             } catch (SQLException e) {
+                                 throw new RuntimeException(e);
+                             }
                              Parent parent = loader.getRoot();
                              Stage stage = new Stage();
                              stage.setScene(new Scene(parent));
@@ -184,9 +215,9 @@ public class AfficherActivitesFXML implements Initializable {
 
 
 
-                         });*/
+                         });
 
-                       /*  HBox managebtn = new HBox(editIcon, deleteIcon);
+                        HBox managebtn = new HBox(editIcon, deleteIcon);
                          managebtn.setStyle("-fx-alignment:center");
                          HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
                          HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
@@ -194,7 +225,7 @@ public class AfficherActivitesFXML implements Initializable {
                          setGraphic(managebtn);
 
                          setText(null);
-                         */
+
                      }
                  }
 
@@ -202,7 +233,7 @@ public class AfficherActivitesFXML implements Initializable {
 
              return cell;
          };
-         //editCol.setCellFactory(cellFoctory);
+         operCol.setCellFactory(cellFoctory);
          PhysicalActivitiesTable.setItems(ActiviteList);
 
 

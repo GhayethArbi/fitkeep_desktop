@@ -16,15 +16,15 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
 
     @Override
     public void insertOne(ActivitePhysique ActivitePhysique) throws SQLException {
-        String req = "INSERT INTO `activite_physique`(`nomActivite`, `typeActivite`, `dureeActivite`, `caloriesBrules`, `nbSeries`, `nbRepSeries`, `poidsParSerie`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String req = "INSERT INTO `activite_physique`(`nom_Activite`, `type_Activite`, `duree_Activite`, `calories_Brules`, `nb_Series`, `nb_Rep_Series`, `poids_Par_Serie`) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, ActivitePhysique.getNomActivite());
         ps.setString(2, ActivitePhysique.getTypeActivite());
-        ps.setInt(3, ActivitePhysique.getDureeActivite());
-        ps.setInt(4, ActivitePhysique.getCaloriesBrules());
-        ps.setInt(5, ActivitePhysique.getNbSeries());
-        ps.setInt(6, ActivitePhysique.getNbRepSeries());
-        ps.setInt(7, ActivitePhysique.getPoidsParSerie());
+        ps.setObject(3, ActivitePhysique.getDureeActivite());
+        ps.setObject(4, ActivitePhysique.getCaloriesBrules());
+        ps.setObject(5, ActivitePhysique.getNbSeries());
+        ps.setObject(6, ActivitePhysique.getNbRepSeries());
+        ps.setObject(7, ActivitePhysique.getPoidsParSerie());
         ps.executeUpdate();
         System.out.println("ActivitePhysique Added !");
     }

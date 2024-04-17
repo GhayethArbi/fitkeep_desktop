@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivitePhysique {
-    private int id;
+    private Integer id;
     private String nomActivite, typeActivite;
-    private int dureeActivite, caloriesBrules, nbSeries, nbRepSeries, poidsParSerie;
+    private Integer dureeActivite, caloriesBrules, nbSeries, nbRepSeries, poidsParSerie;
     //private String imageActivite;
     private List<Objectif> objectifs;
 
@@ -14,7 +14,7 @@ public class ActivitePhysique {
         this.objectifs =new ArrayList<>();
     }
 
-    public ActivitePhysique(int id, String nomActivite, String typeActivite, int dureeActivite, int caloriesBrules, int nbSeries, int nbRepSeries, int poidsParSerie, String imageActivite) {
+    public ActivitePhysique(Integer id, String nomActivite, String typeActivite, Integer dureeActivite, Integer caloriesBrules, Integer nbSeries, Integer nbRepSeries, Integer poidsParSerie, String imageActivite) {
         this.id = id;
         this.nomActivite = nomActivite;
         this.typeActivite = typeActivite;
@@ -36,11 +36,11 @@ public class ActivitePhysique {
         this.objectifs = objectifs;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -60,43 +60,43 @@ public class ActivitePhysique {
         this.typeActivite = typeActivite;
     }
 
-    public int getDureeActivite() {
+    public Integer getDureeActivite() {
         return dureeActivite;
     }
 
-    public void setDureeActivite(int dureeActivite) {
+    public void setDureeActivite(Integer dureeActivite) {
         this.dureeActivite = dureeActivite;
     }
 
-    public int getCaloriesBrules() {
+    public Integer getCaloriesBrules() {
         return caloriesBrules;
     }
 
-    public void setCaloriesBrules(int caloriesBrules) {
+    public void setCaloriesBrules(Integer caloriesBrules) {
         this.caloriesBrules = caloriesBrules;
     }
 
-    public int getNbSeries() {
+    public Integer getNbSeries() {
         return nbSeries;
     }
 
-    public void setNbSeries(int nbSeries) {
+    public void setNbSeries(Integer nbSeries) {
         this.nbSeries = nbSeries;
     }
 
-    public int getNbRepSeries() {
+    public Integer getNbRepSeries() {
         return nbRepSeries;
     }
 
-    public void setNbRepSeries(int nbRepSeries) {
+    public void setNbRepSeries(Integer nbRepSeries) {
         this.nbRepSeries = nbRepSeries;
     }
 
-    public int getPoidsParSerie() {
+    public Integer getPoidsParSerie() {
         return poidsParSerie;
     }
 
-    public void setPoidsParSerie(int poidsParSerie) {
+    public void setPoidsParSerie(Integer poidsParSerie) {
         this.poidsParSerie = poidsParSerie;
     }
 
