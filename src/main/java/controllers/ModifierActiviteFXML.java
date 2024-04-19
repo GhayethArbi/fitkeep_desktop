@@ -14,7 +14,7 @@ import services.ServiceActivitePhysique;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AjouterActiviteFXML  implements Initializable {
+public class ModifierActiviteFXML implements Initializable {
     @FXML
     private TextField nameFld;
 
@@ -35,19 +35,11 @@ public class AjouterActiviteFXML  implements Initializable {
 
     @FXML
     private TextField WeightFld;
-
-    Integer activitePhysiqueId ;
-    AfficherActivitesFXML parentFXMLLoader ;
+    Integer activitePhysiqueId;
     ServiceActivitePhysique sap = new ServiceActivitePhysique();
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        typeFLd.setItems(FXCollections.observableArrayList("Musculation","Cardiovasculaire"));
-    }
+    AfficherActivitesFXML parentFXMLLoader ;
 
-    @FXML
-    private void save(MouseEvent event) {
-        // Retrieve values from UI components
+    public void update(MouseEvent mouseEvent) {
         String name = nameFld.getText();
         String selectedType = typeFLd.getSelectionModel().getSelectedItem();
 
@@ -66,6 +58,7 @@ public class AjouterActiviteFXML  implements Initializable {
 
         // Create an instance of ActivitePhysique with the retrieved data
         ActivitePhysique activitePhysique = new ActivitePhysique();
+        activitePhysique.setId(activitePhysiqueId);
         activitePhysique.setNomActivite(name);
         activitePhysique.setTypeActivite(selectedType);
         activitePhysique.setDureeActivite(duration); // Handle null value
@@ -75,14 +68,23 @@ public class AjouterActiviteFXML  implements Initializable {
         activitePhysique.setPoidsParSerie(weight); // Handle null value
         // Insert the new physical activity
         try {
-            sap.insertOne(activitePhysique);
-            System.out.println("ActivitePhysique added successfully!");
+            sap.updateOne(activitePhysique);
+            System.out.println("ActivitePhysique updated successfully!");
         } catch (Exception e) {
             System.out.println(activitePhysique);
             e.getMessage();
         }
     }
-
+    public void setParentFXMLLoader(AfficherActivitesFXML parentFXMLLoader) {
+        this.parentFXMLLoader = parentFXMLLoader;
+    }
+    @FXML
+    private void close(MouseEvent event) {
+        FontAwesomeIconView closeIcon = (FontAwesomeIconView) event.getSource();
+        Stage stage = (Stage) closeIcon.getScene().getWindow();
+        parentFXMLLoader.getRefrashable();
+        stage.close();
+    }
     private Integer parseInteger(String value) {
         if (value.trim().isEmpty()) {
             return null; // Return null if the value is empty
@@ -94,25 +96,22 @@ public class AjouterActiviteFXML  implements Initializable {
             return null; // Return null if parsing fails
         }
     }
-
-
-
-    public void setParentFXMLLoader(AfficherActivitesFXML parentFXMLLoader) {
-        this.parentFXMLLoader = parentFXMLLoader;
+    public void reset(MouseEvent mouseEvent) {
     }
 
-    @FXML
-    private void reset(MouseEvent event) {
-       // TODO
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // TODO
+        typeFLd.setItems(FXCollections.observableArrayList("Musculation","Cardiovasculaire"));
     }
-
-    @FXML
-    private void close(MouseEvent event) {
-    FontAwesomeIconView closeIcon = (FontAwesomeIconView) event.getSource();
-    Stage stage = (Stage) closeIcon.getScene().getWindow();
-    parentFXMLLoader.getRefrashable();
-    stage.close();
+    void setTextField(Integer id,String nomActivite, String TypeActivite, Integer duration,Integer calories, Integer nbSeries, Integer nbRepSeries, Integer poidsPerSerie) {
+        activitePhysiqueId = id;
+        nameFld.setText(nomActivite);
+        typeFLd.setValue(TypeActivite);
+        DurationFLd.setText(duration.toString());
+        CaloriesFld.setText(calories.toString());
+        SerieNumFld.setText(nbSeries.toString());
+        SerieRepNumFLd.setText(nbRepSeries.toString());
+        WeightFld.setText(poidsPerSerie.toString());
     }
-
-
 }

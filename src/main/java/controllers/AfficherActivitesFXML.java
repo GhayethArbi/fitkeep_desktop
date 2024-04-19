@@ -6,14 +6,8 @@ import models.ActivitePhysique;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,6 +61,7 @@ public class AfficherActivitesFXML implements Initializable {
 
     @FXML
     TableColumn<ActivitePhysique, String> operCol;
+    int activitePhysiqueId ;
 
     ObservableList<ActivitePhysique> ActiviteList = FXCollections.observableArrayList();
     ServiceActivitePhysique sap = new ServiceActivitePhysique();
@@ -80,22 +75,18 @@ public class AfficherActivitesFXML implements Initializable {
          loadDate();
     }
 
-    @FXML
-    private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
+
 
     @FXML
     private void refreshTable() {
         try {
             ActiviteList.clear();
             List<ActivitePhysique> physicalActivityList = sap.selectAll();
-            System.out.println(physicalActivityList);
+         //   System.out.println(physicalActivityList);
 
             ActiviteList.addAll(physicalActivityList);
             PhysicalActivitiesTable.setItems(ActiviteList);
-            System.out.println(PhysicalActivitiesTable);
+           // System.out.println(PhysicalActivitiesTable);
 
         } catch (SQLException ex) {
            Logger.getLogger(AfficherActivitesFXML.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,8 +113,8 @@ public class AfficherActivitesFXML implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(AjouterActiviteFXML.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+
     public void getRefrashable(){
         refreshTable();
     }
@@ -132,7 +123,6 @@ public class AfficherActivitesFXML implements Initializable {
     }
      private void loadDate() {
          refreshTable();
-
          idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
          nomCol.setCellValueFactory(new PropertyValueFactory<>("nomActivite"));
          typeCol.setCellValueFactory(new PropertyValueFactory<>("typeActivite"));
@@ -154,10 +144,17 @@ public class AfficherActivitesFXML implements Initializable {
                          setText(null);
 
                      } else {
+                       //  FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.Arr);
 
                          FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
                          FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
+                         FontAwesomeIconView infoIcon = new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE);
 
+                         infoIcon.setStyle(
+                                 " -fx-cursor: hand ;"
+                                         + "-glyph-size:28px;"
+                                         + "-fx-fill:#633fff;"
+                         );
                          deleteIcon.setStyle(
                                  " -fx-cursor: hand ;"
                                          + "-glyph-size:28px;"
@@ -168,6 +165,7 @@ public class AfficherActivitesFXML implements Initializable {
                                          + "-glyph-size:28px;"
                                          + "-fx-fill:#00E676;"
                          );
+
                          deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                              try {
@@ -179,53 +177,90 @@ public class AfficherActivitesFXML implements Initializable {
                              } catch (SQLException ex) {
                                  Logger.getLogger(AfficherActivitesFXML.class.getName()).log(Level.SEVERE, null, ex);
                              }
-
-
-
-
-
                          });
+
                          editIcon.setOnMouseClicked((MouseEvent event) -> {
-                             ActivitePhysique activitePhysique =new ActivitePhysique() ;
+                             ActivitePhysique activitePhysique = PhysicalActivitiesTable.getSelectionModel().getSelectedItem();
+                           //  System.out.println(activitePhysique) ;
+                             if (activitePhysique != null) {
+                                 try {
+                                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierActivite.fxml"));
+                                     Parent parent = loader.load();
 
-                             activitePhysique = PhysicalActivitiesTable.getSelectionModel().getSelectedItem();
-                             FXMLLoader loader = new FXMLLoader ();
-                             loader.setLocation(getClass().getResource("/AfficherActivites.FXML"));
-                             try {
-                                 loader.load();
-                             } catch (IOException ex) {
-                                 Logger.getLogger(AfficherActivitesFXML.class.getName()).log(Level.SEVERE, null, ex);
+                                     // Get the controller of ModifierActiviteFXML
+                                     ModifierActiviteFXML modifierActiviteFXML = loader.getController();
+
+                                     // Pass the selected activity to AjouterActiviteFXML to populate its fields
+                                     modifierActiviteFXML.setTextField(
+                                             activitePhysique.getId(),
+                                             activitePhysique.getNomActivite(),
+                                             activitePhysique.getTypeActivite(),
+                                             activitePhysique.getDureeActivite(),
+                                             activitePhysique.getCaloriesBrules(),
+                                             activitePhysique.getNbSeries(),
+                                             activitePhysique.getNbRepSeries(),
+                                             activitePhysique.getPoidsParSerie()
+                                     );
+
+                                     Scene scene = new Scene(parent);
+                                     Stage stage = new Stage();
+                                     stage.setScene(scene);
+                                     stage.initStyle(StageStyle.UTILITY);
+                                     stage.show();
+
+
+                                 } catch (IOException ex) {
+                                     Logger.getLogger(AfficherActivitesFXML.class.getName()).log(Level.SEVERE, null, ex);
+                                 }
+                             } else {
+                                 // Handle case when no activity is selected
+                                 // You can show an alert or message to inform the user to select an activity
                              }
-
-                             AjouterActiviteFXML ajouterActiviteFXML = loader.getController();
-                             ajouterActiviteFXML.setTextField(activitePhysique.getId(), activitePhysique.getNomActivite(),
-                                     activitePhysique.getTypeActivite(),activitePhysique.getDureeActivite(), activitePhysique.getCaloriesBrules(),
-                             activitePhysique.getNbSeries(),activitePhysique.getNbRepSeries(),activitePhysique.getPoidsParSerie());
-                             try {
-                                 sap.updateOne(activitePhysique);
-                             } catch (SQLException e) {
-                                 throw new RuntimeException(e);
-                             }
-                             Parent parent = loader.getRoot();
-                             Stage stage = new Stage();
-                             stage.setScene(new Scene(parent));
-                             stage.initStyle(StageStyle.UTILITY);
-                             stage.show();
-
-
-
-
                          });
 
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
+                         infoIcon.setOnMouseClicked((MouseEvent event) -> {
+                             ActivitePhysique activitePhysique = new ActivitePhysique() ;
+                             activitePhysique = PhysicalActivitiesTable.getSelectionModel().getSelectedItem();
+
+                             System.out.println(activitePhysique.getObjectifs()) ;
+                             if (activitePhysique != null) {
+                                 try {
+                                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/InfoActiviteObjs.fxml"));
+                                  //   System.out.println(loader);
+                                     Parent parent = loader.load();
+
+                                     // Get the controller of ModifierActiviteFXML
+                                     InfoActiviteObjsFXML infoActiviteObjsFXML = loader.getController();
+                                     infoActiviteObjsFXML.display(activitePhysique);
+                                     // Pass the selected activity to AjouterActiviteFXML to populate its fields
+
+
+                                     Scene scene = new Scene(parent);
+                                     Stage stage = new Stage();
+                                     stage.setScene(scene);
+                                     stage.initStyle(StageStyle.UTILITY);
+                                     stage.show();
+
+
+                                 } catch (IOException ex) {
+                                     Logger.getLogger(AfficherActivitesFXML.class.getName()).log(Level.SEVERE, null, ex);
+                                 }
+                             } else {
+                                 // Handle case when no activity is selected
+                                 // You can show an alert or message to inform the user to select an activity
+                             }
+                         });
+
+
+
+                         HBox managebtn = new HBox(editIcon, deleteIcon,infoIcon);
                          managebtn.setStyle("-fx-alignment:center");
                          HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
                          HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                         HBox.setMargin(infoIcon, new Insets(2, 4, 0, 4));
 
                          setGraphic(managebtn);
-
                          setText(null);
-
                      }
                  }
 
@@ -235,7 +270,5 @@ public class AfficherActivitesFXML implements Initializable {
          };
          operCol.setCellFactory(cellFoctory);
          PhysicalActivitiesTable.setItems(ActiviteList);
-
-
      }
     }

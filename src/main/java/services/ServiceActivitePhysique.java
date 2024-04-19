@@ -46,15 +46,15 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
 
     @Override
     public void updateOne(ActivitePhysique ActivitePhysique) throws SQLException {
-        String req = "UPDATE `activite_physique` SET `nomActivite`=?, `typeActivite`=?, `dureeActivite`=?, `caloriesBrules`=?, `nbSeries`=?, `nbRepSeries`=?, `poidsParSerie`=? WHERE `id`=?";
+        String req = "UPDATE `activite_physique` SET `nom_Activite`=?, `type_Activite`=?, `duree_Activite`=?, `calories_Brules`=?, `nb_Series`=?, `nb_Rep_Series`=?, `poids_Par_Serie`=? WHERE `id`=?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, ActivitePhysique.getNomActivite());
         ps.setString(2, ActivitePhysique.getTypeActivite());
-        ps.setInt(3, ActivitePhysique.getDureeActivite());
-        ps.setInt(4, ActivitePhysique.getCaloriesBrules());
-        ps.setInt(5, ActivitePhysique.getNbSeries());
-        ps.setInt(6, ActivitePhysique.getNbRepSeries());
-        ps.setInt(7, ActivitePhysique.getPoidsParSerie());
+        ps.setObject(3, ActivitePhysique.getDureeActivite());
+        ps.setObject(4, ActivitePhysique.getCaloriesBrules());
+        ps.setObject(5, ActivitePhysique.getNbSeries());
+        ps.setObject(6, ActivitePhysique.getNbRepSeries());
+        ps.setObject(7, ActivitePhysique.getPoidsParSerie());
         ps.setInt(8, ActivitePhysique.getId()); // Assuming you have an id field in your ActivitePhysique class
         ps.executeUpdate();
         System.out.println("ActivitePhysique Updated !");
