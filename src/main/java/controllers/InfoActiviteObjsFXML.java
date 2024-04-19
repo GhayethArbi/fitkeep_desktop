@@ -34,20 +34,21 @@ public class InfoActiviteObjsFXML implements Initializable {
 
     public void display (ActivitePhysique activitePhysique){
         objAssActTable.getItems().clear();
-
+        //System.out.println(activitePhysique);
         // Get the list of objectives associated with the passed ActivitePhysique
         List<Objectif> objectifs = activitePhysique.getObjectifs();
-        System.out.println(objectifs);
+
         // Create a new ObservableList to hold the objectives
         ObservableList<Objectif> observableObjectifs = FXCollections.observableArrayList(objectifs);
-
+        //System.out.println(objectifs);
         // Set the items of the TableView to the list of objectives
         objAssActTable.setItems(observableObjectifs);
 
         // Set the cell value factories for each column
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("nom_objectif"));
 
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("nomObjectif"));
+        System.out.println("------------------------->");
       }
     @FXML
     private void close(MouseEvent event) {

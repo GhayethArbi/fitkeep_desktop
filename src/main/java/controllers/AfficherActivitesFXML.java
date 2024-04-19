@@ -222,7 +222,7 @@ public class AfficherActivitesFXML implements Initializable {
                              ActivitePhysique activitePhysique = new ActivitePhysique() ;
                              activitePhysique = PhysicalActivitiesTable.getSelectionModel().getSelectedItem();
 
-                             System.out.println(activitePhysique.getObjectifs()) ;
+                           //  System.out.println(activitePhysique.getObjectifs()) ;
                              if (activitePhysique != null) {
                                  try {
                                      FXMLLoader loader = new FXMLLoader(getClass().getResource("/InfoActiviteObjs.fxml"));

@@ -140,6 +140,19 @@
             <TextField fx:id="WeightFld" prefHeight="26.0" prefWidth="294.0" />
          </children>
       </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Associated Objectives: " wrappingWidth="172.348388671875">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Text>
+            <VBox fx:id="objVbox" prefHeight="56.0" prefWidth="294.0" />
+         </children>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="46.0" prefWidth="552.0">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#save" prefHeight="31.0" prefWidth="80.0" text="Save">
