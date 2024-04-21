@@ -28,7 +28,6 @@ import javafx.scene.Node;
 import services.ServiceObjectif;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 public class ModifierActiviteFXML implements Initializable {
     @FXML
     private TextField nameFld;
@@ -56,6 +55,7 @@ public class ModifierActiviteFXML implements Initializable {
 
     @FXML
     private ImageView activiteImg ;
+     String previousImage ;
 
     private File selectedFile;
     Integer activitePhysiqueId;
@@ -110,6 +110,8 @@ public class ModifierActiviteFXML implements Initializable {
             activitePhysique.setPoidsParSerie(weight); // Handle null value
             activitePhysique.setObjectifs(selectedObjectifs); // Set selected objectives
 
+
+
             // Update the image if a new image is selected
             if (selectedFile != null) {
                 try {
@@ -124,11 +126,14 @@ public class ModifierActiviteFXML implements Initializable {
 
                     // Set the image path in the activitePhysique object
                     String imageActivitePath = fileName;
+                    System.out.println(imageActivitePath);
                     activitePhysique.setImageActivite(imageActivitePath);
                 } catch (IOException e) {
                     // Handle file I/O exception
                     e.printStackTrace();
                 }
+            }else{
+                 activitePhysique.setImageActivite(previousImage);
             }
 
             // Update the physical activity
@@ -172,7 +177,7 @@ public class ModifierActiviteFXML implements Initializable {
 
         // Show open file dialog
          selectedFile = fileChooser.showOpenDialog(new Stage());
-
+        System.out.println(selectedFile);
         // Check if a file was selected
         if (selectedFile != null) {
             // Convert the selected file to a file URI
@@ -227,15 +232,16 @@ public class ModifierActiviteFXML implements Initializable {
         SerieNumFld.setText(nbSeries.toString());
         SerieRepNumFLd.setText(nbRepSeries.toString());
         WeightFld.setText(poidsPerSerie.toString());
-
+        previousImage = imageName ;
         // Construct the full file path
         String imageFilePath = "C:/Users/manso/PIP/public/Uploads/" + imageName;
-
+        System.out.println(imageFilePath);
         // Load and display the image
         if (imageName != null && !imageName.isEmpty()) {
             try {
-                Image image = new Image("file:///" + imageFilePath);
-                activiteImg.setImage(image);
+                Image imageSelected = new Image("file:///" + imageFilePath);
+                System.out.println(imageSelected);
+                activiteImg.setImage(imageSelected);
             } catch (Exception e) {
                 e.printStackTrace();
             }

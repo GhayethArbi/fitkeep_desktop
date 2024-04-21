@@ -195,9 +195,7 @@ public class AjouterActiviteFXML  implements Initializable {
         }
     }
 
-    private void loadDate() {
-        // Method to refresh the TableView
-        }
+
         private Integer parseInteger(String value) {
         if (value.trim().isEmpty()) {
             return null; // Return null if the value is empty

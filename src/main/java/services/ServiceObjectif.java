@@ -16,26 +16,87 @@ public class ServiceObjectif implements CRUD<Objectif> {
     }
     @Override
     public void insertOne(Objectif objectif) throws SQLException {
-        String req = "INSERT INTO `objectif`(`nom_objectif`, `date_objectif`, `total_calories`, `total_duree`, `note`) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setString(1, objectif.getNomObjectif());
-        ps.setDate(2, objectif.getDateObjectif());
-        ps.setObject(3, objectif.getTotalCalories());
-        ps.setObject(4, objectif.getTotalDuree());
-        ps.setObject(5, objectif.getNote());
+        // Insert objectif
+        String reqObjectif = "INSERT INTO `objectif`(`nom_objectif`, `date_objectif`, `total_calories`, `total_duree`, `note`) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement psObjectif = cnx.prepareStatement(reqObjectif, Statement.RETURN_GENERATED_KEYS);
+        psObjectif.setString(1, objectif.getNomObjectif());
+        psObjectif.setDate(2, objectif.getDateObjectif());
+        psObjectif.setObject(3, objectif.getTotalCalories());
+        psObjectif.setObject(4, objectif.getTotalDuree());
+        psObjectif.setString(5, objectif.getNote());
 
-        ps.executeUpdate();
-        System.out.println("Objectif Added !");
+        psObjectif.executeUpdate();
+
+        // Retrieve the generated id of the newly inserted objectif
+        ResultSet generatedKeys = psObjectif.getGeneratedKeys();
+        int objectId = -1;
+        if (generatedKeys.next()) {
+            objectId = generatedKeys.getInt(1);
+        } else {
+            throw new SQLException("Failed to retrieve the generated id of the objectif.");
+        }
+
+        // Insert links between objectif and existing activites
+        for (ActivitePhysique activite : objectif.getActivites()) {
+            String reqLink = "INSERT INTO `objectif_activite_physique`(`activite_physique_id`, `objectif_id`) VALUES (?, ?)";
+            PreparedStatement psLink = cnx.prepareStatement(reqLink);
+            psLink.setInt(1, activite.getId()); // Assuming activite has an ID
+            psLink.setInt(2, objectId);
+            psLink.executeUpdate();
+        }
+
+        System.out.println("Objectif and associated Activites Added!");
     }
+
 
     @Override
     public void updateOne(Objectif objectif) throws SQLException {
+        String updateQuery = "UPDATE `objectif` SET `nom_objectif`=?, `date_objectif`=?, `total_calories`=?, `total_duree`=?, `note`=? WHERE `id`=?";
+        String deleteOldActivitesQuery = "DELETE FROM `objectif_activite_physique` WHERE `objectif_id`=?";
+        String insertNewActivitesQuery = "INSERT INTO `objectif_activite_physique` (`objectif_id`, `activite_physique_id`) VALUES (?, ?)";
 
+        try (
+                PreparedStatement updateStatement = cnx.prepareStatement(updateQuery);
+                PreparedStatement deleteStatement = cnx.prepareStatement(deleteOldActivitesQuery);
+                PreparedStatement insertStatement = cnx.prepareStatement(insertNewActivitesQuery)) {
+
+            // Set parameters for updating the objectif
+            updateStatement.setString(1, objectif.getNomObjectif());
+            updateStatement.setDate(2, objectif.getDateObjectif());
+            updateStatement.setObject(3, objectif.getTotalCalories());
+            updateStatement.setObject(4, objectif.getTotalDuree());
+            updateStatement.setString(5, objectif.getNote());
+            updateStatement.setInt(6, objectif.getId());
+
+            // Execute the update query
+            updateStatement.executeUpdate();
+
+            // Delete old associations
+            deleteStatement.setInt(1, objectif.getId());
+            deleteStatement.executeUpdate();
+
+            // Insert new associations
+            for (ActivitePhysique activite : objectif.getActivites()) {
+                insertStatement.setInt(1, objectif.getId());
+                insertStatement.setInt(2, activite.getId());
+                insertStatement.executeUpdate();
+            }
+
+            System.out.println("Objectif Updated with Associated Activites!");
+        } catch (SQLException e) {
+            System.err.println("Error updating Objectif: " + e.getMessage());
+            throw e;
+        }
     }
+
 
     @Override
     public void deleteOne(Objectif objectif) throws SQLException {
-
+        String req = "DELETE FROM `objectif` WHERE `id`=?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, objectif.getId());
+        ps.executeUpdate();
+        System.out.println("Objectif Deleted !");
     }
 
 
@@ -61,7 +122,7 @@ public class ServiceObjectif implements CRUD<Objectif> {
             p.setDateObjectif(rs.getDate(3));
             p.setTotalCalories(rs.getInt(4));
             p.setTotalDuree(rs.getInt(5));
-            List<ActivitePhysique> activitePhysiques = fetchActiviteForObjectifs(p.getId());
+            List<ActivitePhysique> activitePhysiques = fetchActivitesForObjectif(p.getId());
             p.setActivites(activitePhysiques);
             objectifList.add(p);
         }
@@ -69,7 +130,7 @@ public class ServiceObjectif implements CRUD<Objectif> {
 
     }
 
-    public List<ActivitePhysique> fetchActiviteForObjectifs (int objectifId) throws SQLException {
+    public List<ActivitePhysique> fetchActivitesForObjectif (int objectifId) throws SQLException {
         List<ActivitePhysique> activitePhysiques = new ArrayList<>();
         String req = "SELECT * FROM `objectif_activite_physique` WHERE objectif_id = ?";
 
