@@ -17,7 +17,7 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
 
     @Override
     public void insertOne(ActivitePhysique activitePhysique) throws SQLException {
-        String reqActivite = "INSERT INTO `activite_physique`(`nom_Activite`, `type_Activite`, `duree_Activite`, `calories_Brules`, `nb_Series`, `nb_Rep_Series`, `poids_Par_Serie`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String reqActivite = "INSERT INTO `activite_physique`(`nom_Activite`, `type_Activite`, `duree_Activite`, `calories_Brules`, `nb_Series`, `nb_Rep_Series`, `poids_Par_Serie`,`image_Activite`) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
         PreparedStatement psActivite = cnx.prepareStatement(reqActivite, Statement.RETURN_GENERATED_KEYS);
         psActivite.setString(1, activitePhysique.getNomActivite());
         psActivite.setString(2, activitePhysique.getTypeActivite());
@@ -26,8 +26,10 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
         psActivite.setObject(5, activitePhysique.getNbSeries());
         psActivite.setObject(6, activitePhysique.getNbRepSeries());
         psActivite.setObject(7, activitePhysique.getPoidsParSerie());
-        psActivite.executeUpdate();
+        psActivite.setString(8, activitePhysique.getImageActivite());
 
+        psActivite.executeUpdate();
+        System.out.println(psActivite);
         // Retrieve the generated id of the newly inserted activite_physique
         ResultSet generatedKeys = psActivite.getGeneratedKeys();
         int activiteId = -1;
@@ -67,7 +69,7 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
 
     @Override
     public void updateOne(ActivitePhysique activitePhysique) throws SQLException {
-        String updateQuery = "UPDATE `activite_physique` SET `nom_Activite`=?, `type_Activite`=?, `duree_Activite`=?, `calories_Brules`=?, `nb_Series`=?, `nb_Rep_Series`=?, `poids_Par_Serie`=? WHERE `id`=?";
+        String updateQuery = "UPDATE `activite_physique` SET `nom_Activite`=?, `type_Activite`=?, `duree_Activite`=?, `calories_Brules`=?, `nb_Series`=?, `nb_Rep_Series`=?, `poids_Par_Serie`=? , `image_Activite`=? WHERE `id`=?";
         String deleteOldObjectifsQuery = "DELETE FROM `objectif_activite_physique` WHERE `activite_physique_id`=?";
         String insertNewObjectifsQuery = "INSERT INTO `objectif_activite_physique` (`activite_physique_id`, `objectif_id`) VALUES (?, ?)";
 
@@ -84,7 +86,8 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
             updateStatement.setObject(5, activitePhysique.getNbSeries());
             updateStatement.setObject(6, activitePhysique.getNbRepSeries());
             updateStatement.setObject(7, activitePhysique.getPoidsParSerie());
-            updateStatement.setInt(8, activitePhysique.getId());
+            updateStatement.setString(8, activitePhysique.getImageActivite());
+            updateStatement.setInt(9, activitePhysique.getId());
 
             // Execute the update query
             updateStatement.executeUpdate();
@@ -140,7 +143,7 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
             p.setNbSeries(rs.getInt(6));
             p.setNbRepSeries(rs.getInt(7));
             p.setPoidsParSerie(rs.getInt(8));
-
+            p.setImageActivite(rs.getString(9));
             // Fetch objectives for this activity
             List<Objectif> objectifs = fetchObjectifsForActivite(p.getId());
             p.setObjectifs(objectifs);

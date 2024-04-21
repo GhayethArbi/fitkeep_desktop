@@ -3,7 +3,6 @@ package controllers;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import models.ActivitePhysique;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
@@ -30,6 +29,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import services.ServiceActivitePhysique;
+import javafx.scene.image.Image;
 
 public class AfficherActivitesFXML implements Initializable {
     @FXML
@@ -61,7 +61,11 @@ public class AfficherActivitesFXML implements Initializable {
 
     @FXML
     TableColumn<ActivitePhysique, String> operCol;
+
+    @FXML
+    TableColumn<ActivitePhysique,String> imgCol ;
     int activitePhysiqueId ;
+    private final ImageView imageView = new ImageView();
 
     ObservableList<ActivitePhysique> ActiviteList = FXCollections.observableArrayList();
     ServiceActivitePhysique sap = new ServiceActivitePhysique();
@@ -131,8 +135,60 @@ public class AfficherActivitesFXML implements Initializable {
          nbSerCol.setCellValueFactory(new PropertyValueFactory<>("nbSeries"));
          nbRepSerCol.setCellValueFactory(new PropertyValueFactory<>("nbRepSeries"));
          poSerCol.setCellValueFactory(new PropertyValueFactory<>("poidsParSerie"));
+         imgCol.setCellValueFactory(new PropertyValueFactory<>("imageActivite"));
 
-         Callback<TableColumn<ActivitePhysique, String>, TableCell<ActivitePhysique, String>> cellFoctory = (TableColumn<ActivitePhysique, String> param) -> {
+         imgCol.setCellFactory(column -> {
+             return new TableCell<ActivitePhysique, String>() {
+                 private final ImageView imageView = new ImageView();
+
+                 {
+                     // Set preserveRatio to true to maintain aspect ratio
+                     imageView.setPreserveRatio(true);
+                     // Set fixed width and height for the image view
+                     imageView.setFitWidth(100); // Adjust as needed
+                     imageView.setFitHeight(100); // Adjust as needed
+                 }
+
+                 @Override
+                 protected void updateItem(String imagePath, boolean empty) {
+                     super.updateItem(imagePath, empty);
+                     if (imagePath == null || empty) {
+                         setGraphic(null);
+                     } else {
+                         // Load image from file path
+                         Image image = new Image("file:///C:/Users/manso/PIP/public/Uploads/" + imagePath);
+                         imageView.setImage(image);
+                         setGraphic(imageView);
+                     }
+                 }
+             };
+         });
+
+
+         /*   .setCellValueFactory(new PropertyValueFactory<>("imageActivite"));
+         imgCol.setCellFactory(column -> {
+             return new TableCell() {
+                 private final ImageView imageView = new ImageView();
+
+                 @Override
+                 protected void updateItem(String imagePath, boolean empty) {
+                     super.updateItem(imagePath, empty);
+                     if (imagePath == null || empty) {
+                         setGraphic(null);
+                     } else {
+                         // Load image from file path
+                         Image image = new Image("file:///C:/Users/manso/PIP/public/Uploads/" + imagePath);
+                         imageView.setImage(image);
+                         imageView.setFitWidth(50); // Adjust as needed
+                         imageView.setFitHeight(50); // Adjust as needed
+                         setGraphic(imageView);
+                     }
+                 }
+             };
+         });*/
+
+
+    Callback<TableColumn<ActivitePhysique, String>, TableCell<ActivitePhysique, String>> cellFoctory = (TableColumn<ActivitePhysique, String> param) -> {
              // make cell containing buttons
              final TableCell<ActivitePhysique, String> cell = new TableCell<ActivitePhysique, String>() {
                  @Override
@@ -199,7 +255,8 @@ public class AfficherActivitesFXML implements Initializable {
                                              activitePhysique.getCaloriesBrules(),
                                              activitePhysique.getNbSeries(),
                                              activitePhysique.getNbRepSeries(),
-                                             activitePhysique.getPoidsParSerie()
+                                             activitePhysique.getPoidsParSerie(),
+                                             activitePhysique.getImageActivite()
                                      );
 
                                      Scene scene = new Scene(parent);

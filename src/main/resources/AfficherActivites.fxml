@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="667.0" prefWidth="1003.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherActivitesFXML">
     <children>
-        <TableView fx:id="PhysicalActivitiesTable" editable="true" layoutX="65.0" layoutY="235.0" prefHeight="302.0" prefWidth="873.0">
+        <TableView fx:id="PhysicalActivitiesTable" editable="true" layoutX="65.0" layoutY="235.0" prefHeight="302.0" prefWidth="1041.0">
             <columns>
                 <TableColumn fx:id="idCol" prefWidth="75.0" style="-fx-alignment: center;" text="ID" />
                 <TableColumn fx:id="nomCol" prefWidth="104.0" style="-fx-alignment: center;" text="Name" />
@@ -22,6 +22,7 @@
                 <TableColumn fx:id="nbSerCol" prefWidth="90.0" text="Serie Number" />
                 <TableColumn fx:id="nbRepSerCol" prefWidth="120.0" text="Serie Repetiton Number" />
                 <TableColumn fx:id="poSerCol" prefWidth="90.0" text="Serie Weight" />
+                <TableColumn fx:id="imgCol" prefWidth="140.0" text="Image" />
                 <TableColumn fx:id="operCol" prefWidth="100.0" text="Operations" />
             </columns>
         </TableView>
