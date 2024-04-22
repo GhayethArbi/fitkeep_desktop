@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="502.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductDetails">
+   <children>
+      <TableView fx:id="ProductTab" layoutX="24.0" layoutY="115.0" prefHeight="362.0" prefWidth="1177.0" stylesheets="/CSS/style1.css">
+        <columns>
+          <TableColumn fx:id="IdCol" prefWidth="65.60000228881836" text="Id" />
+          <TableColumn fx:id="Id_categ_col" prefWidth="74.39999389648438" text="Category_id" />
+            <TableColumn fx:id="NameCol" prefWidth="124.00004577636719" text="Name" />
+            <TableColumn fx:id="Slug_Col" prefWidth="124.00004577636719" text="Slug" />
+            <TableColumn fx:id="IllustrationCol" prefWidth="208.0" text="Illustration" />
+            <TableColumn fx:id="SubtitleCol" prefWidth="124.00004577636719" text="Subtitle" />
+            <TableColumn fx:id="DescriCol" prefWidth="180.7999267578125" text="Description" />
+            <TableColumn fx:id="PriceCol" prefWidth="91.2000732421875" text="Price" />
+            <TableColumn fx:id="QuantityCol" prefWidth="91.20001220703125" text="Quantity" />
+            <TableColumn fx:id="operCol" prefWidth="91.20001220703125" text="operCol" />
+        </columns>
+      </TableView>
+      <Text layoutX="24.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Details" wrappingWidth="320.44337463378906">
+         <font>
+            <Font name="Bauhaus 93" size="37.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="50.0" prefHeight="62.0" prefWidth="274.0" stylesheets="/CSS/style1.css">
+         <children>
+            <FontAwesomeIconView glyphName="PLUS" onMouseClicked="#AddView" size="45">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView glyphName="PRINT" onMouseClicked="#PrintPdf" size="45">
+         </FontAwesomeIconView>
+
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
