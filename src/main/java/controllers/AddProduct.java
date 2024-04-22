@@ -6,6 +6,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.Category;
@@ -45,6 +47,14 @@ public class AddProduct {
 
     @FXML
     private TextField SubtitleField;
+    @FXML
+    private Text SlugError;
+    @FXML
+    private Text SubError;
+    @FXML
+    private Text nameError;
+    @FXML
+    private Text DescriError;
     private ProductDetails productDetailsController;
 
     private final ServiceProduit sp = new ServiceProduit();
@@ -99,19 +109,26 @@ public class AddProduct {
         String productName = NameField.getText().trim();
         String productSubtitle = SubtitleField.getText().trim();
 
-        // Validation du nom
-        if (productName.isEmpty() || productName.length() > 255) {
+        if (productName.isEmpty() || productName.length() > 8) {
             // Handle invalid product name
+            nameError.setFill(Color.RED); // Set error text color to red
+            nameError.setText(" length < 8 characters)");
+            nameError.setVisible(true); // Make the error text visible
             return;
+        } else {
+            nameError.setVisible(false); // Hide the error text if validation succeeds
         }
 
         // Validation du sous-titre
-        if (productSubtitle.isEmpty() || productSubtitle.length() > 255) {
+        if (productSubtitle.isEmpty() || productSubtitle.length() > 8) {
             // Handle invalid subtitle
+            SubError.setFill(Color.RED); // Set error text color to red
+            SubError.setText("Invalid subtitle (must be non-empty and <= 255 characters)");
+            SubError.setVisible(true); // Make the error text visible
             return;
+        } else {
+            SubError.setVisible(false); // Hide the error text if validation succeeds
         }
-
-        // Validate other fields (PriceField, QuantiteField, DescriField, Categ_id) as needed
 
         try {
             String fileName = generateUniqueFileName();

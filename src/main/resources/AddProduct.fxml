@@ -63,4 +63,9 @@
          <Font name="Berlin Sans FB" size="21.0" />
       </font>
    </Text>
+   <Text fx:id="nameError" layoutX="300.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nameEror" visible="false" />
+   <Text fx:id="SlugError" layoutX="280.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="slugError" visible="false" />
+   <Text fx:id="DescriError" layoutX="314.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="descri erorr" visible="false" />
+   <Text fx:id="SubError" layoutX="304.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub error" wrappingWidth="60.16406249999977" visible="false" />
+
 </AnchorPane>
