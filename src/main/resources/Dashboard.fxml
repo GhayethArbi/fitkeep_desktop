@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
+   <top>
+      <AnchorPane prefHeight="51.0" prefWidth="1200.0" styleClass="header" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="userName" fill="#012970" layoutX="1072.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" AnchorPane.rightAnchor="50.0" />
+            <ImageView fitHeight="51.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@fitkeepedited.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </top>
+   <left>
+      <VBox prefWidth="200" styleClass="sidebar" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+         <Button prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: #f6f9ff;" text="Dashboard" textFill="#4154f1" />
+         <Button layoutX="30.0" layoutY="56.0" onAction="#goToListUsers" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: white;" text="Table of users" textFill="#012970" />
+         <Button onAction="#goToEditProfile" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: white;" text="Profile Setting" textFill="#012970" />
+         <Button onAction="#Logout" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Logout" textFill="#012970" />
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard">
-   <children>
-      <AnchorPane prefHeight="400.0" prefWidth="165.0" />
-      <AnchorPane layoutX="166.0" prefHeight="400.0" prefWidth="434.0" />
-   </children>
-</AnchorPane>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView layoutX="56.0" layoutY="48.0" prefHeight="391.0" prefWidth="599.0" style="-fx-background-color: white;" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

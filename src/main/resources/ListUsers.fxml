@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListUsersController">
+<VBox layoutY="60.0" prefHeight="540.0" prefWidth="200" styleClass="sidebar" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<Button onAction="#goToDash" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: white;" text="Dashboard" textFill="#012970" />
+<Button prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #f6f9ff;" text="Table of users" textFill="#4154f1" />
+      <Button layoutX="30.0" layoutY="30.0" onAction="#goToEditProfile" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: white;" text="Profile Setting" textFill="#012970" />
+<Button onAction="#Logout" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Logout" textFill="#012970" />
+
+</VBox>
+   <HBox prefHeight="60.0" prefWidth="1200.0" styleClass="header" />
+   <ImageView fitHeight="60.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@fitkeepedited.png" />
+      </image>
+   </ImageView>
+   <ListView layoutX="232.0" layoutY="100.0" prefHeight="486.0" prefWidth="893.0" styleClass="card" />
+   <Text fx:id="currentUserName" fill="#012970" layoutX="1074.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   <Text fill="#012970" layoutX="1018.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome " />
+   <TreeTableView fx:id="tableView" layoutX="259.0" layoutY="177.0" prefHeight="320.0" prefWidth="839.0">
+     <columns>
+       <TreeTableColumn fx:id="ftName" prefWidth="72.80001831054688" text="First Name" />
+       <TreeTableColumn fx:id="ftLn" prefWidth="79.99993896484375" text="Last Name" />
+         <TreeTableColumn fx:id="ftEmail" prefWidth="150.40011596679688" text="Email" />
+         <TreeTableColumn fx:id="ftBirth" minWidth="0.0" prefWidth="88.800048828125" text="Birth Day" />
+         <TreeTableColumn fx:id="ftPhone" prefWidth="106.4000244140625" text="Phone Number" />
+         <TreeTableColumn fx:id="ftGender" minWidth="0.0" prefWidth="52.800048828125" text="Gender" />
+         <TreeTableColumn fx:id="ftStatus" prefWidth="50.4000244140625" text="Status" />
+         <TreeTableColumn fx:id="ftPoint" prefWidth="84.0" text="Loyality Point" />
+         <TreeTableColumn fx:id="ftAction" prefWidth="153.5999755859375" text="Actions" />
+     </columns>
+   </TreeTableView>
+</AnchorPane>

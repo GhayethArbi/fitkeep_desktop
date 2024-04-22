@@ -1,13 +1,13 @@
 package models;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class User {
+
     private int id;
     private String email;
     private Roles roles;
     private String password;
-
     private String name, lastName;
     private String gender;
     private Date birthDay;
@@ -23,7 +23,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String email, Roles roles, String password, String name, String lastName, String gender, Date birthDay, int phoneNumber, int loyalityPoints, String profileImage, String address, String authCode, boolean isBanned, Date registration_date) {
+    public User(int id, String email, Roles roles, String password, String name, String lastName, String gender, Date birthDay, int phoneNumber, int loyalityPoints, String profileImage, String address, String authCode, boolean isBanned, Date registration_date, String resetToken) {
         this.id = id;
         this.email = email;
         this.roles = roles;
@@ -39,70 +39,68 @@ public class User {
         this.authCode = authCode;
         this.isBanned = isBanned;
         this.registration_date = registration_date;
+        this.resetToken = resetToken;
     }
 
-    public User(  String name, String lastName,String email) {
+    public User(String name, String lastName, String email) {
 
-        this.email = email;
-        this.name = name;
-        this.lastName = lastName;
-    }
+    this.email = email;
+    this.name = name;
+    this.lastName = lastName;
 
+}
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
+
+    public void setLoyalityPoints(int loyalityPoints) {
+        this.loyalityPoints = loyalityPoints;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
 
     public Roles getRoles() {
         return roles;
     }
 
-    public void setRoles(Roles roles) {
-        this.roles = roles;
-    }
+
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+
 
     public Date getBirthDay() {
         return birthDay;
@@ -111,29 +109,48 @@ public class User {
     public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
     }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setRoles(String roleString) {
+        roleString = roleString.replaceAll("[\\[\\]\"]", ""); // Remove square brackets and double quotes
+        Roles roles = Roles.valueOf(roleString);// Convert the string value to Roles enum
+        this.roles = roles;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
 
     public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public int getLoyalityPoints() {
         return loyalityPoints;
     }
 
-    public void setLoyalityPoints(int loyalityPoints) {
-        this.loyalityPoints = loyalityPoints;
-    }
 
     public String getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
+    public void setId(int id) {
+        this.id = id;
+
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getAddress() {
@@ -195,4 +212,5 @@ public class User {
                 ", registration_date=" + registration_date +
                 '}';
     }
+
 }

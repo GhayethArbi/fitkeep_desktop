@@ -14,16 +14,15 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass()
-                .getResource("/AjouterUserFXML.fxml"));
-        Parent parent = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
 
-        Scene scene = new Scene(parent);
+        Parent root = loader.load();
 
-        stage.setTitle("Ajouter un user ");
+        Scene scene = new Scene(root, 822,495);
+        stage.setTitle("Login");
         stage.setScene(scene);
 
         stage.show();
-
     }
+
 }
