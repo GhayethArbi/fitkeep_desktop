@@ -4,6 +4,7 @@ import models.Roles;
 import models.User;
 import models.User1;
 import org.mindrot.jbcrypt.BCrypt;
+import repository.UserRepository;
 import services.session.UserSession;
 import utils.DBConnection;
 
@@ -16,9 +17,11 @@ public class ServiceUser implements CRUD<User>{
 
     private Connection cnx ;
     PreparedStatement ps;
+    private final UserRepository userRepository;
 
     public ServiceUser() {
         cnx = DBConnection.getInstance().getCnx();
+        userRepository=new UserRepository();
     }
 
     /*@Override
@@ -83,7 +86,47 @@ public class ServiceUser implements CRUD<User>{
 
         }
     }
-    /*public void insertOne1(User1 user) throws SQLException {
+
+
+    @Override
+    public void updateOne(User user) throws SQLException {
+
+        String req = "UPDATE `user` SET `name`=?, `last_name`=?, `email`=?, `gender`=?, `birth_day`=?, `phone_number`=?, `address`=?  WHERE `id`=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getLastName());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getGender());
+            ps.setDate(5, user.getBirthDay());
+            ps.setInt(6, user.getPhoneNumber());
+            ps.setString(7, user.getAddress());
+            ps.setInt(8, user.getId());
+            ps.executeUpdate();
+
+
+        } catch (SQLException e){
+            // Handle SQLException appropriately, e.g., log or propagate
+            System.err.println("Error adding user: " + e.getMessage());
+
+        }
+    }
+
+    @Override
+    public void deleteOne(int userId) throws SQLException {
+        userRepository.deleteUser(userId);
+    }
+
+    @Override
+    public List<User> selectAll()throws SQLException {
+        List<User> userList = userRepository.getAllUsers();
+        return userList;
+    }
+
+
+
+}
+   /*public void insertOne1(User1 user) throws SQLException {
         String req = "INSERT INTO `user`(`id`, `email`, `roles`, `password`, `name`, `last_name`,`gender`,`birth_day`, `phone_number`, `loyality_points`, `profile_image`, `address`,`is_banned`,`registration_date`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1,user.getId());
@@ -101,98 +144,9 @@ public class ServiceUser implements CRUD<User>{
         ps.setString(12,user.getAddress());
         ps.setBoolean(13,false);
         ps.setDate(14, new Date(System.currentTimeMillis()));
-
-
-
-
-
-
         ps.executeUpdate();
     }*/
-
- //   part of login
-
-
-    @Override
-    public void updateOne(User user) throws SQLException {
-
-        String req = "UPDATE `user` SET `name`=?, `last_name`=?, `email`=?, `gender`=?, `birth_day`=?, `phone_number`=?, `address`=?  WHERE `id`=?";
-        try {
-            PreparedStatement ps = cnx.prepareStatement(req);
-            System.out.println("------------------------------------------------>1");
-            ps.setString(1, user.getName());
-            System.out.println("------------------------------------------------>2");
-
-            ps.setString(2, user.getLastName());
-            System.out.println("------------------------------------------------>3");
-            ps.setString(3, user.getEmail());
-            System.out.println("------------------------------------------------>4");
-            ps.setString(4, user.getGender());
-            System.out.println("------------------------------------------------>5");
-            ps.setDate(5, user.getBirthDay());
-            System.out.println("------------------------------------------------>6");
-            ps.setInt(6, user.getPhoneNumber());
-            System.out.println("------------------------------------------------>7");
-            ps.setString(7, user.getAddress());
-            System.out.println("------------------------------------------------>8");
-            ps.setInt(8, user.getId());
-            System.out.println("-----------------"+user.getId());
-
-            ps.executeUpdate();
-            System.out.println("------------------------------------------------>10");
-
-        } catch (SQLException e){
-            // Handle SQLException appropriately, e.g., log or propagate
-            System.err.println("Error adding user: " + e.getMessage());
-
-        }
-    }
-
-    @Override
-    public void deleteOne(User user) throws SQLException {
-        String req = "Delete `user` WHERE `id`=?";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, user.getId());
-
-        ps.executeUpdate(req);
-    }
-
-    @Override
-    public List<User> selectAll() throws SQLException {
-        List<User> userList = new ArrayList<>();
-
-        String req = "SELECT * FROM `user`";
-        Statement st = cnx.createStatement();
-
-        ResultSet rs = st.executeQuery(req);
-
-        while (rs.next()){
-           // String role = rs.getString("roles").trim().toUpperCase(); // Trim and convert to uppercase
-            User u = new User();
-            u.setId(rs.getInt(("id")));
-            u.setName(rs.getString((5)));
-            u.setLastName(rs.getString(("last_name")));
-            u.setEmail(rs.getString((2)));
-            u.setPassword(rs.getString("password"));
-            u.setGender(rs.getString("gender"));
-
-
-
-            u.setRoles(rs.getString("roles").trim().toUpperCase());// Set the role for the user
-            u.setBirthDay(rs.getDate("birth_day"));
-            u.setPhoneNumber(rs.getInt("phone_number"));
-            u.setLoyalityPoints(rs.getInt("loyality_points"));
-            u.setBanned(rs.getBoolean("is_banned"));
-
-
-            userList.add(u);
-        }
-
-        return userList;
-    }
-
-
-
+/*
     public List<User1> selectAll1() throws SQLException {
         List<User1> userList = new ArrayList<>();
 
@@ -217,5 +171,34 @@ public class ServiceUser implements CRUD<User>{
         }
 
         return userList;
-    }
-}
+    }*/
+//selectAll
+ /*String req = "SELECT * FROM `user`";
+        Statement st = cnx.createStatement();
+
+        ResultSet rs = st.executeQuery(req);
+
+        while (rs.next()){
+           // String role = rs.getString("roles").trim().toUpperCase(); // Trim and convert to uppercase
+            User u = new User();
+            u.setId(rs.getInt(("id")));
+            u.setName(rs.getString((5)));
+            u.setLastName(rs.getString(("last_name")));
+            u.setEmail(rs.getString((2)));
+            u.setPassword(rs.getString("password"));
+            u.setGender(rs.getString("gender"));
+            u.setRoles(rs.getString("roles").trim().toUpperCase());// Set the role for the user
+            u.setBirthDay(rs.getDate("birth_day"));
+            u.setPhoneNumber(rs.getInt("phone_number"));
+            u.setLoyalityPoints(rs.getInt("loyality_points"));
+            u.setBanned(rs.getBoolean("is_banned"));
+
+
+            userList.add(u);
+        }*/
+//deleteone
+   /*String req = "Delete `user` WHERE `id`=?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, userId);
+
+        ps.executeUpdate(req);*/

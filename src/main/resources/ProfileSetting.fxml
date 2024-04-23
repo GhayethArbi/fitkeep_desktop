@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileSettingController">
     <VBox layoutY="60.0" prefHeight="540.0" prefWidth="200" styleClass="sidebar" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-        <Button prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: white;" text="Dashboard" textFill="#012970" />
+        <Button onAction="#goToDash" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: white;" text="Dashboard" textFill="#012970" />
         <Button prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #f6f9ff;" text="Profile Setting" textFill="#4154f1" />
         <Button prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Logout" textFill="#012970" />
 

@@ -59,4 +59,15 @@
 
 .primary-button:hover {
     -fx-background-color: #0056b3;
+
+}
+.current-route{
+    -fx-background-color:  #f6f9ff;
+    -fx-text-fill: #4154f1;
+}
+.button-route{
+    -fx-background-color:  white;
+    -fx-text-fill: #012970;
+
+
 }

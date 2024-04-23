@@ -44,10 +44,10 @@ public class ServiceCategory implements CRUD<Category>{
     }
 
     @Override
-    public void deleteOne(Category category) throws SQLException {
+    public void deleteOne(int category) throws SQLException {
         String req = "Delete `category` WHERE `id`=?";
         PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, category.getId());
+        ps.setInt(1, category);
 
         ps.executeUpdate(req);
     }

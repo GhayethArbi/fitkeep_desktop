@@ -168,9 +168,20 @@ public class AuthDTO {
         return "AuthDTO{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", role=" + roles +
+                ", roles=" + roles +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthDay=" + birthDay +
+                ", phoneNumber=" + phoneNumber +
+                ", loyalityPoints=" + loyalityPoints +
+                ", profileImage='" + profileImage + '\'' +
+                ", address='" + address + '\'' +
+                ", authCode='" + authCode + '\'' +
                 ", isBanned=" + isBanned +
+                ", registration_date=" + registration_date +
+                ", resetToken='" + resetToken + '\'' +
                 '}';
     }
 }

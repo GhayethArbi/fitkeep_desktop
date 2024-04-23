@@ -6,15 +6,15 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.User;
@@ -33,7 +33,7 @@ public class ListUsersController {
     private Text currentUserName;
 
     @FXML
-    private TreeTableColumn<User, ?> ftAction;
+    private TreeTableColumn<User, HBox> ftAction;
 
     @FXML
     private TreeTableColumn<User, Date> ftBirth;
@@ -126,8 +126,10 @@ public class ListUsersController {
         assert ftPoint != null : "fx:id=\"ftPoint\" was not injected: check your FXML file 'ListUsers.fxml'.";
         assert ftStatus != null : "fx:id=\"ftStatus\" was not injected: check your FXML file 'ListUsers.fxml'.";
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        currentUserName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
         try {
             List<User> userList = serviceUser.selectAll();
+            System.out.println(userList);
             TreeItem<User> root = new TreeItem<>();
             for (User user : userList) {
                 TreeItem<User> userItem = new TreeItem<>(user);
@@ -136,21 +138,68 @@ public class ListUsersController {
             tableView.setRoot(root);
             tableView.setShowRoot(false); // Hides the root node
             // Set cell value factories for each column
+            Button deleteBtn = new Button("Delete");
+            Button showBtn = new Button("Show");
+            Button banBtn = new Button("Ban");
+            HBox btns = new HBox();
+            btns.getChildren().addAll(deleteBtn,showBtn,banBtn);
+
+
 
             ftName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getName()));
             ftLn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getLastName()));
             ftEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getEmail()));
             ftGender.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getGender()));
-           // ftBirth.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getBirthDay()));
-           // ftPhone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getPhoneNumber()));
-            //ftPoint.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getLoyalityPoints()));
-            //ftStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().isBanned()));
+            ftBirth.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValue().getBirthDay()));
+            ftPhone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValue().getPhoneNumber()));
+            ftPoint.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValue().getLoyalityPoints()));
+            ftStatus.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValue().isBanned()));
+            ftAction.setCellValueFactory(cellData-> new SimpleObjectProperty<>(btns));
+            ftAction.setCellFactory(column -> new TreeTableCell<User, HBox>() {
+                final Button deleteBtn = new Button("Delete");
+                final Button showBtn = new Button("Show");
+                final Button banBtn = new Button("Ban");
+
+                {
+                    deleteBtn.setOnAction(event -> {
+                        User user = getTreeTableRow().getItem();
+                        try {
+                            serviceUser.deleteOne(user.getId()); // Assuming serviceUser has a delete method
+                            getTreeTableView().getRoot().getChildren().remove(getTreeTableRow().getIndex());
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    showBtn.setOnAction(event -> {
+                        // Implement show action
+                    });
+
+                    banBtn.setOnAction(event -> {
+                        // Implement ban action
+                    });
+                }
+
+                @Override
+                protected void updateItem(HBox item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        HBox buttons = new HBox(deleteBtn, showBtn, banBtn);
+                        setGraphic(buttons);
+                    }
+                }
+            });
+
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
 
     }
+
 
 
 }

@@ -17,7 +17,7 @@ import models.User;
 import services.ServiceUser;
 
 public class RegisterController {
-    private ServiceUser serviceUser;
+    private ServiceUser serviceUser=new ServiceUser();
 
     @FXML
     private ResourceBundle resources;
@@ -115,6 +115,7 @@ public class RegisterController {
     }
     @FXML
     void createAccount(ActionEvent event) {
+
         clearError();
         boolean isValid = true;
         int phoneNumber;
@@ -243,6 +244,7 @@ public class RegisterController {
                 user.setGender("Female");
             }
             try{
+                System.out.println("----------------------------------------------->");
                 serviceUser.insertOne(user);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Sign Up");
@@ -250,6 +252,7 @@ public class RegisterController {
                 alert.show();
             }
             catch (SQLException e){
+                System.out.println(e.getMessage());
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("SQLException");
                 alert.setContentText(e.getMessage());

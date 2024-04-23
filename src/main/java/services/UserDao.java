@@ -47,7 +47,7 @@ public class UserDao {
     }
 
 
-        public String login(String email, String password) throws SQLException {
+    public String login(String email, String password) throws SQLException {
         UserSession  userSession = UserSession.CURRENT_USER;
         if (UserSession.CURRENT_USER!=null){
 
@@ -82,12 +82,24 @@ public class UserDao {
             authDTO.setPassword(password);
             authDTO.setRoles(rs.getString("roles").trim().toUpperCase());
             authDTO.setBanned(rs.getBoolean("is_banned"));
-            System.out.println(authDTO);
+            authDTO.setBirthDay(rs.getDate("birth_day"));
+            authDTO.setAddress(rs.getString("address"));
+            authDTO.setGender(rs.getString("gender"));
+            authDTO.setLastName(rs.getString("last_name"));
+            authDTO.setName(rs.getString("name"));
+            authDTO.setLoyalityPoints(rs.getInt("loyality_points"));
+            authDTO.setRegistration_date(rs.getDate("registration_date"));
+            authDTO.setResetToken(rs.getString("reset_token"));
+            authDTO.setAuthCode(rs.getString("auth_code"));
+            authDTO.setProfileImage(rs.getString("profile_image"));
+
+
             UserSession.getSession(authDTO);
             userSession = new UserSession(authDTO);
 
             UserSession.getSession(authDTO);
-            System.out.println(userSession.getUserLoggedIn().getRoles());
+
+            System.out.println("Current user "+UserSession.CURRENT_USER.getUserLoggedIn());
 
 
             return "Login successful";

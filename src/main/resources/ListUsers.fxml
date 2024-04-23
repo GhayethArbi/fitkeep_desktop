@@ -19,7 +19,7 @@
 <Button onAction="#Logout" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Logout" textFill="#012970" />
 
 </VBox>
-   <HBox prefHeight="60.0" prefWidth="1200.0" styleClass="header" />
+    <HBox prefHeight="60.0" prefWidth="1200.0" styleClass="header" />
    <ImageView fitHeight="60.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@fitkeepedited.png" />

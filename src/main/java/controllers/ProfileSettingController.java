@@ -15,10 +15,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.User;
 import services.ServiceUser;
+import services.session.AuthDTO;
 import services.session.UserSession;
 
 public class ProfileSettingController {
     ServiceUser serviceUser;
+
 
     @FXML
     private ResourceBundle resources;
@@ -98,6 +100,23 @@ public class ProfileSettingController {
         ftBirth.getStyleClass().remove("error");
 
         ftLastName.getStyleClass().remove("error");
+    }
+    @FXML
+    void goToDash(ActionEvent event) {
+        Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            stage.setTitle("Dashboard");
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+
+            stage.setScene(scene);
+        } catch (Exception e){
+            System.err.println(e);
+        }
+
     }
 
     @FXML
@@ -271,10 +290,23 @@ public class ProfileSettingController {
         assert genderToggleGroup != null : "fx:id=\"genderToggleGroup\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
         assert lnError != null : "fx:id=\"lnError\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
         assert phoneError != null : "fx:id=\"phoneError\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
-        currentUserNameUp.setText(UserSession.CURRENT_USER.getUserLoggedIn().getEmail());
-        currentUserName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getEmail());
-        serviceUser =new ServiceUser();
+        currentUserNameUp.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
 
+        currentUserName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
+
+        serviceUser =new ServiceUser();
+        AuthDTO curr=UserSession.CURRENT_USER.getUserLoggedIn();
+        ftEmail.setText(curr.getEmail());
+        ftBirth.setValue(curr.getBirthDay().toLocalDate());
+        ftAddress.setText(curr.getAddress());
+        ftPhone.setText(curr.getPhoneNumber()+"");
+        ftName.setText(curr.getName());
+        ftLastName.setText(curr.getLastName());
+        if(curr.getGender().equalsIgnoreCase("male")){
+            ftMale.setSelected(true);
+        }else{
+            ftFemale.setSelected(true);
+        }
     }
 
 }
