@@ -11,6 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.User;
@@ -18,7 +22,7 @@ import services.ServiceUser;
 import services.session.AuthDTO;
 import services.session.UserSession;
 
-public class ProfileSettingController {
+public class ProfileSettingController extends NavigationController{
     ServiceUser serviceUser;
 
 
@@ -79,8 +83,12 @@ public class ProfileSettingController {
     @FXML
     private Text lnError;
 
+
     @FXML
     private Text phoneError;
+    @FXML
+    private Circle image;
+
     void clearError(){
         phoneError.setText("");
 
@@ -101,23 +109,8 @@ public class ProfileSettingController {
 
         ftLastName.getStyleClass().remove("error");
     }
-    @FXML
-    void goToDash(ActionEvent event) {
-        Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
-        try {
-            stage.setTitle("Dashboard");
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
-            Parent p = loader.load();
-            Scene scene = new Scene(p);
-
-            stage.setScene(scene);
-        } catch (Exception e){
-            System.err.println(e);
-        }
-
-    }
 
     @FXML
     void saveChanges(ActionEvent event)
@@ -270,10 +263,9 @@ public class ProfileSettingController {
             }
         }
 
-
-
     @FXML
     void initialize() {
+        super.initialize();
         assert addressError != null : "fx:id=\"addressError\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
         assert birthError != null : "fx:id=\"birthError\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
         assert currentUserName != null : "fx:id=\"currentUserName\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
@@ -293,7 +285,9 @@ public class ProfileSettingController {
         currentUserNameUp.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
 
         currentUserName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
-
+        image.setStroke(Color.SEAGREEN);
+        Image img =new Image("/IMG-20221027-WA0012.jpg", false);
+        image.setFill(new ImagePattern(img));
         serviceUser =new ServiceUser();
         AuthDTO curr=UserSession.CURRENT_USER.getUserLoggedIn();
         ftEmail.setText(curr.getEmail());

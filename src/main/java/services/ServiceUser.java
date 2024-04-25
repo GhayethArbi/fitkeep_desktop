@@ -34,7 +34,7 @@ public class ServiceUser implements CRUD<User>{
     }*/
 
 // the part of register
-    private boolean emailExists(String email) {
+    public boolean emailExists(String email) {
         String query = "SELECT COUNT(*) FROM user WHERE email = ?";
         try (PreparedStatement ps = cnx.prepareStatement(query)) {
             ps.setString(1, email);
@@ -54,7 +54,7 @@ public class ServiceUser implements CRUD<User>{
         // Check if the email already exists
         if (emailExists(user.getEmail())) {
             System.err.println("Error adding user: Email already exists");
-            return; // Exit method, don't proceed with insertion
+            return;
         }
 
         // Encrypt the password using BCrypt

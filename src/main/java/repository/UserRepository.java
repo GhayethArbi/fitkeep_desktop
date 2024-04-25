@@ -25,6 +25,7 @@ public class UserRepository {
         try {
             ps = cnx.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt(("id")));
@@ -96,6 +97,36 @@ public class UserRepository {
                 ps.close();
             }
         }
+    }
+    public User findById(int id)throws SQLException{
+        User user =new User();
+        String query = "SELECT * FROM user WHERE id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                user.setId(id);
+                user.setName(rs.getString(("name")));
+                System.out.println("-------------------------------------");
+                user.setLastName(rs.getString(("last_name")));
+                user.setEmail(rs.getString((2)));
+                user.setPassword(rs.getString("password"));
+                user.setGender(rs.getString("gender"));
+                user.setRoles(rs.getString("roles").trim().toUpperCase());// Set the role for the user
+                user.setBirthDay(rs.getDate("birth_day"));
+                user.setPhoneNumber(rs.getInt("phone_number"));
+                user.setLoyalityPoints(rs.getInt("loyality_points"));
+                user.setBanned(rs.getBoolean("is_banned"));
+            }
+            rs.close();
+        }
+        finally {
+            if (ps != null) {
+                ps.close();
+            }
+        }
+        return user;
     }
 
 

@@ -15,9 +15,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.User;
 import services.ServiceUser;
+import services.UserDao;
+import services.session.AuthDTO;
+import services.session.UserSession;
 
 public class RegisterController {
     private ServiceUser serviceUser=new ServiceUser();
+    private final UserDao userDao = new UserDao();
 
     @FXML
     private ResourceBundle resources;
@@ -174,6 +178,10 @@ public class RegisterController {
             emailError.setText("invalid email address.");
             ftEmail.getStyleClass().add("error");
             isValid = false;
+        }else if(serviceUser.emailExists(ftEmail.getText())){
+            emailError.setText("Email already exists.");
+            ftEmail.getStyleClass().add("error");
+            isValid = false;
         }
 
         // Password validation
@@ -244,12 +252,21 @@ public class RegisterController {
                 user.setGender("Female");
             }
             try{
-                System.out.println("----------------------------------------------->");
                 serviceUser.insertOne(user);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Sign Up");
                 alert.setContentText("You have an account now.");
                 alert.show();
+                userDao.login(ftEmail.getText(),fpPass.getText());
+                Stage stage = (Stage) this.ftPhone.getScene().getWindow(); // Get reference to the login window's stage
+                stage.setTitle("Dashboard");
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+                Parent p = loader.load();
+                Scene scene = new Scene(p);
+
+                stage.setScene(scene);
             }
             catch (SQLException e){
                 System.out.println(e.getMessage());
@@ -257,8 +274,11 @@ public class RegisterController {
                 alert.setTitle("SQLException");
                 alert.setContentText(e.getMessage());
                 alert.show();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+
         }
-    }
     }
 
     @FXML

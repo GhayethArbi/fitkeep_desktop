@@ -55,11 +55,10 @@ public class LoginController {
                 String loggedIn = userDao.login(tfEmail.getText(), pfPassword.getText());
                 // Login successful, proceed to next screen or action
                 // For now, just display a success message
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Login Successful");
                 alert.setContentText("Welcome!" + loggedIn);
-                alert.show();
-
+                alert.show();*/
                 Stage stage = (Stage) tfEmail.getScene().getWindow(); // Get reference to the login window's stage
                 stage.setTitle("Dashboard");
 

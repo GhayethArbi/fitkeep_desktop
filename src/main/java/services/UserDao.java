@@ -1,7 +1,9 @@
 package services;
 
 import models.Roles;
+import models.User;
 import org.mindrot.jbcrypt.BCrypt;
+import repository.UserRepository;
 import services.session.AuthDTO;
 import services.session.UserSession;
 import utils.DBConnection;
@@ -13,6 +15,8 @@ public class UserDao {
     // prepare sql query
     PreparedStatement ps;
     UserSession userSession;
+    private final ServiceUser serviceUser = new ServiceUser();
+    private final UserRepository userRepository =new UserRepository();
 
     public UserDao() {
         cnx = DBConnection.getInstance().getCnx();
@@ -92,6 +96,9 @@ public class UserDao {
             authDTO.setResetToken(rs.getString("reset_token"));
             authDTO.setAuthCode(rs.getString("auth_code"));
             authDTO.setProfileImage(rs.getString("profile_image"));
+            if (authDTO.isBanned()){
+                return "Your account is banned!";
+            }
 
 
             UserSession.getSession(authDTO);
@@ -108,6 +115,21 @@ public class UserDao {
             return "Incorrect password";
         }
     }
+
+    public String banUser(int id)throws SQLException{
+        User user = userRepository.findById(id);
+        System.out.println(user+"   zefkjndkvnkjvnkdfjcvc;v;");
+        if(user.isBanned()){
+            user.setBanned(false);
+        }else{
+            user.setBanned(true);
+        }
+        serviceUser.updateOne(user);
+
+        return "Updating Successful.";
+    }
+
+}
     /*public String verifierPassword(String email, String inputPassword )throws SQLException {
 
         String hashedPasswordFromDatabase =getHashedPasswordByUsername(email);
@@ -137,4 +159,3 @@ public class UserDao {
         }
         return null; // Return null if email not found or error occurs
     }*/
-}
