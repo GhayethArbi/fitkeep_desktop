@@ -1,0 +1,92 @@
+.root {
+    -fx-font-family: "Segoe UI"; /* This is an assumption about the font */
+    -fx-base: #FFFFFF; /* Assuming a white base color for components */
+}
+
+.table-view {
+    -fx-table-cell-border-color: transparent; /* Remove cell borders */
+    -fx-background-color: #F5F5F5; /* Light grey background for the table */
+}
+
+.table-row-cell {
+    -fx-border-color: #D3D3D3; /* Light grey borders for the rows */
+    -fx-border-insets: -1 0 0 0; /* Single border at the bottom */
+    -fx-padding: 5px; /* Cell padding */
+}
+
+.table-column {
+    -fx-alignment: CENTER-LEFT; /* Align text to the center-left */
+}
+
+.table-cell {
+    -fx-text-fill: #000000; /* Black text */
+}
+
+.button {
+    -fx-graphic-size: 14; /* Assuming a 14px icon size for the buttons */
+    -fx-background-color: transparent; /* Buttons with no background */
+    -fx-cursor: hand; /* Hand cursor on hover */
+}
+
+/* You may also want to add hover effects for buttons */
+.button:hover {
+    -fx-opacity: 0.7; /* Slightly transparent on hover */
+}
+
+.button#menuBTN {
+    -fx-font-size: 28px;
+    -fx-font-family: 'Arial';
+    -fx-font-weight: bold;
+
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 10px;
+}
+
+.button#menuBTN:hover {
+    -fx-background-color: #367C39;
+}
+
+.label#Title {
+    -fx-font-size: 48px;
+    -fx-font-family: 'Helvetica';
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 5,0,0,1 );
+}
+
+.combo-box#inputCommand {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+}
+
+.combo-box#inputCommand .arrow {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 0;
+}
+
+.combo-box#inputCommand .arrow-button {
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}
+
+.combo-box#inputCommand .list-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.combo-box#inputCommand .list-cell:hover {
+    -fx-background-color: #f2f2f2;
+}
+
+.combo-box#inputCommand:focused, .combo-box#inputCommand .cell:selected, .combo-box#inputCommand .cell:focused:selected {
+    -fx-background-color: #e8e8e8;
+}
+
+.combo-box#inputCommand .list-view {
+    -fx-background-insets: 0, 0, 1, 0;
+    -fx-padding: 0;
+}

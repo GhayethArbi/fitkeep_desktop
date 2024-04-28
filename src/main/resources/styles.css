@@ -1,0 +1,64 @@
+/* Button styles */
+.button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Darker Green */
+}
+
+/* Text field styles */
+.text-field {
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-padding: 5px;
+}
+
+.table-view {
+    -fx-background-color: #f4f4f4; /* Set background color */
+}
+
+.table-column {
+    -fx-text-fill: #333333; /* Set text color */
+    -fx-font-size: 14px; /* Set font size */
+}
+
+/* Style the column headers */
+.table-view .column-header {
+    -fx-background-color: #007bff; /* Set column header background color */
+    -fx-text-fill: white; /* Set column header text color */
+}
+/* Set font to Times New Roman */
+.table-view {
+    -fx-font-family: "Times New Roman";
+}
+
+/* Make the borders round */
+.table-view .table-row-cell {
+    -fx-background-radius: 5px; /* Set border radius */
+}
+/* Set font size and style for column headers */
+.table-view .column-header .label {
+    -fx-font-size: 14px; /* Set font size */
+    -fx-font-weight: bold; /* Set font weight */
+}
+
+/* Center the TableView within the AnchorPane */
+.table-view {
+    -fx-alignment: center; /* Center horizontally */
+}
+/* Set border color */
+/* Round the corners of the TableView */
+.table-view {
+    -fx-background-radius: 10px; /* Set border radius */
+}
+/* Increase the size of the columns */
+.table-view .column {
+    -fx-pref-width: 300px; /* Set preferred width of columns */
+}
