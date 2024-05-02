@@ -10,17 +10,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="667.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherObjectifsFXML">
+<AnchorPane prefHeight="667.0" prefWidth="1205.0" stylesheets="@values/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherObjectifsFXML">
     <children>
-        <TableView fx:id="ObjectifsTable" editable="true" layoutX="99.0" layoutY="243.0" prefHeight="302.0" prefWidth="781.0">
+        <TableView fx:id="ObjectifsTable" editable="true" layoutX="80.0" layoutY="244.0" prefHeight="302.0" prefWidth="1044.0">
             <columns>
                 <TableColumn fx:id="idCol" minWidth="0.0" prefWidth="58.39997100830078" style="-fx-alignment: center;" text="ID" />
-                <TableColumn fx:id="nomCol" prefWidth="119.2000732421875" style="-fx-alignment: center;" text="Name" />
-                <TableColumn fx:id="dateCol" prefWidth="106.39996337890625" text="Date" />
-                <TableColumn fx:id="durCol" prefWidth="110.0" text="Total Duration" />
-                <TableColumn fx:id="calBrCol" prefWidth="100.0" text="Total Calories" />
-                <TableColumn fx:id="noteCol" prefWidth="166.39990234375" text="Note" />
-                <TableColumn fx:id="operCol" prefWidth="88.7999267578125" text="Operations" />
+                <TableColumn fx:id="nomCol" prefWidth="230.40003204345703" style="-fx-alignment: center;" text="Name" />
+                <TableColumn fx:id="dateCol" prefWidth="136.00006103515625" text="Date" />
+                <TableColumn fx:id="durCol" prefWidth="115.20001220703125" text="Total Duration" />
+                <TableColumn fx:id="calBrCol" minWidth="8.79998779296875" prefWidth="115.199951171875" text="Total Calories" />
+                <TableColumn fx:id="noteCol" prefWidth="261.5999755859375" text="Note" />
+                <TableColumn fx:id="operCol" minWidth="0.0" prefWidth="88.800048828125" text="Operations" />
             </columns>
         </TableView>
         <Pane layoutY="70.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />

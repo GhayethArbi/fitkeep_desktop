@@ -10,18 +10,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="667.0" prefWidth="1003.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherActivitesFXML">
+<AnchorPane prefHeight="667.0" prefWidth="1403.0" stylesheets="@values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherActivitesFXML">
     <children>
-        <TableView fx:id="PhysicalActivitiesTable" editable="true" layoutX="65.0" layoutY="235.0" prefHeight="302.0" prefWidth="1041.0">
+        <TableView fx:id="PhysicalActivitiesTable" editable="true" layoutX="128.0" layoutY="240.0" prefHeight="302.0" prefWidth="1148.0">
             <columns>
-                <TableColumn fx:id="idCol" prefWidth="75.0" style="-fx-alignment: center;" text="ID" />
-                <TableColumn fx:id="nomCol" prefWidth="104.0" style="-fx-alignment: center;" text="Name" />
+                <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nomCol" prefWidth="104.0" text="Name" />
                 <TableColumn fx:id="typeCol" prefWidth="104.0" text="Type" />
                 <TableColumn fx:id="durCol" prefWidth="75.0" text="Duration" />
-                <TableColumn fx:id="calBrCol" prefWidth="100.0" text="Burned Calories" />
-                <TableColumn fx:id="nbSerCol" prefWidth="90.0" text="Serie Number" />
-                <TableColumn fx:id="nbRepSerCol" prefWidth="120.0" text="Serie Repetiton Number" />
-                <TableColumn fx:id="poSerCol" prefWidth="90.0" text="Serie Weight" />
+                <TableColumn fx:id="calBrCol" prefWidth="120.0" text="Burned Calories" />
+                <TableColumn fx:id="nbSerCol" prefWidth="120.0" text="Serie Number" />
+                <TableColumn fx:id="nbRepSerCol" prefWidth="180.0" text="Serie Repetiton Number" />
+                <TableColumn fx:id="poSerCol" prefWidth="100.0" text="Serie Weight" />
                 <TableColumn fx:id="imgCol" prefWidth="140.0" text="Image" />
                 <TableColumn fx:id="operCol" prefWidth="100.0" text="Operations" />
             </columns>

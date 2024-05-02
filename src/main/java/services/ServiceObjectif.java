@@ -32,6 +32,7 @@ public class ServiceObjectif implements CRUD<Objectif> {
         int objectId = -1;
         if (generatedKeys.next()) {
             objectId = generatedKeys.getInt(1);
+            System.out.println(objectId);
         } else {
             throw new SQLException("Failed to retrieve the generated id of the objectif.");
         }
@@ -44,7 +45,7 @@ public class ServiceObjectif implements CRUD<Objectif> {
             psLink.setInt(2, objectId);
             psLink.executeUpdate();
         }
-
+        objectif.setId(objectId);
         System.out.println("Objectif and associated Activites Added!");
     }
 

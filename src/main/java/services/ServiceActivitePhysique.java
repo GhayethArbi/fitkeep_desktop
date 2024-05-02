@@ -52,6 +52,39 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
     }
 
 
+    public void insertActivityWithidObjectif (ActivitePhysique activitePhysique, int idObj) throws SQLException {
+        String reqActivite = "INSERT INTO `activite_physique`(`nom_Activite`, `type_Activite`, `duree_Activite`, `calories_Brules`, `nb_Series`, `nb_Rep_Series`, `poids_Par_Serie`,`image_Activite`) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+        PreparedStatement psActivite = cnx.prepareStatement(reqActivite, Statement.RETURN_GENERATED_KEYS);
+        psActivite.setString(1, activitePhysique.getNomActivite());
+        psActivite.setString(2, activitePhysique.getTypeActivite());
+        psActivite.setObject(3, activitePhysique.getDureeActivite());
+        psActivite.setObject(4, activitePhysique.getCaloriesBrules());
+        psActivite.setObject(5, activitePhysique.getNbSeries());
+        psActivite.setObject(6, activitePhysique.getNbRepSeries());
+        psActivite.setObject(7, activitePhysique.getPoidsParSerie());
+        psActivite.setString(8, activitePhysique.getImageActivite());
+
+        psActivite.executeUpdate();
+
+        // Retrieve the generated id of the newly inserted activite_physique
+        ResultSet generatedKeys = psActivite.getGeneratedKeys();
+        int activiteId = -1;
+        if (generatedKeys.next()) {
+            activiteId = generatedKeys.getInt(1);
+        } else {
+            throw new SQLException("Failed to retrieve the generated id of the activite_physique.");
+        }
+
+        // Insert associated objectif
+        String reqObjectif = "INSERT INTO `objectif_activite_physique`(`activite_physique_id`, `objectif_id`) VALUES (?, ?)";
+        PreparedStatement psObjectif = cnx.prepareStatement(reqObjectif);
+        psObjectif.setInt(1, activiteId);
+        psObjectif.setInt(2, idObj);
+        psObjectif.executeUpdate();
+
+        System.out.println("ActivitePhysique and associated Objectif Added!");
+    }
+
    /*
    public void insertOne1(ActivitePhysique ActivitePhysique) throws SQLException {
         String req = "INSERT INTO `person`(`nomActivite`, `prenom`, `age`) VALUES " +
@@ -149,6 +182,7 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
             p.setObjectifs(objectifs);
             physicalActivityList.add(p);
         }
+        System.out.println(physicalActivityList);
         return physicalActivityList;
     }
 
@@ -174,6 +208,7 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
         return objectifs;
     }
 
+
     public Objectif fetchObjectifById(int objectId) throws SQLException {
         Objectif objectif = null;
         String req = "SELECT * FROM `objectif` WHERE id = ?";
@@ -197,4 +232,33 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
         return objectif;
     }
 
+
+    public List<ActivitePhysique> selectAllWithNullObjectifs() throws SQLException {
+        List<ActivitePhysique> physicalActivityList = new ArrayList<>();
+
+        String req = "SELECT * FROM activite_physique";
+
+        try (Statement st = cnx.createStatement();
+             ResultSet rs = st.executeQuery(req)) {
+
+            while (rs.next()) {
+                ActivitePhysique p = new ActivitePhysique();
+                p.setId(rs.getInt("id"));
+                p.setNomActivite(rs.getString("nom_activite"));
+                p.setTypeActivite(rs.getString("type_activite"));
+                p.setImageActivite(rs.getString("image_activite"));
+
+                // Fetch objectives for this activity
+                List<Objectif> objectifs = fetchObjectifsForActivite(p.getId());
+
+                // Check if objectives list is null or empty
+                if (objectifs == null || objectifs.isEmpty()) {
+                    physicalActivityList.add(p);
+                }
+            }
+            System.out.println(physicalActivityList);
+        }
+
+        return physicalActivityList;
+    }
 }

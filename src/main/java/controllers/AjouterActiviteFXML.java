@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
@@ -33,30 +34,52 @@ public class AjouterActiviteFXML  implements Initializable {
     private TextField nameFld;
 
     @FXML
+    private Text nameErrorLabel ;
+
+    @FXML
     private ComboBox<String> typeFLd;
+
+    @FXML
+    private Text TypeErrorLabel ;
 
     @FXML
     private TextField DurationFLd;
 
     @FXML
+    private Text durErrorLabel ;
+
+    @FXML
     private TextField CaloriesFld;
+
+    @FXML
+    private Text calErrorLabel ;
 
     @FXML
     private TextField SerieNumFld;
 
     @FXML
+    private Text serErrorLabel ;
+
+    @FXML
     private TextField SerieRepNumFLd;
+
+    @FXML
+    private Text repSerErrorLabel ;
 
     @FXML
     private TextField WeightFld;
 
     @FXML
-    private VBox objVbox ;
+    private Text weigErrorLabel ;
 
+    @FXML
+    private VBox objVbox ;
 
     @FXML
     private ImageView activiteImg;
 
+    @FXML
+    private Text imgErrorLabel ;
     Integer activitePhysiqueId ;
     AfficherActivitesFXML parentFXMLLoader ;
     ServiceActivitePhysique sapActivite = new ServiceActivitePhysique();
@@ -83,11 +106,73 @@ public class AjouterActiviteFXML  implements Initializable {
 
     @FXML
     private void save(MouseEvent event) {
+        // Reset error labels
+        nameErrorLabel.setVisible(false);
+        TypeErrorLabel.setVisible(false);
+        durErrorLabel.setVisible(false);
+        calErrorLabel.setVisible(false);
+        serErrorLabel.setVisible(false);
+        repSerErrorLabel.setVisible(false);
+        weigErrorLabel.setVisible(false);
+        imgErrorLabel.setVisible(false);
 
         // Retrieve values from UI components
         String name = nameFld.getText();
         String selectedType = typeFLd.getSelectionModel().getSelectedItem();
+        String durationText = DurationFLd.getText().trim();
+        String caloriesText = CaloriesFld.getText().trim();
+        String serieNumText = SerieNumFld.getText().trim();
+        String serieRepNumText = SerieRepNumFLd.getText().trim();
+        String weightText = WeightFld.getText().trim();
 
+        // Perform validation
+        boolean isValid = true;
+
+        if (name.isEmpty()) {
+            nameErrorLabel.setText("Name cannot be empty");
+            nameErrorLabel.setVisible(true);
+            isValid = false;
+        } else if (!name.matches("[a-zA-Z]+")) {
+            nameErrorLabel.setText("Name must contain only letters");
+            nameErrorLabel.setVisible(true);
+            isValid = false;
+        }
+
+        if (selectedType == null) {
+            TypeErrorLabel.setText("Please select a type");
+            TypeErrorLabel.setVisible(true);
+            isValid = false;
+        }
+
+        if (!durationText.isEmpty() && !isInteger(durationText)) {
+            durErrorLabel.setText("Invalid duration");
+            durErrorLabel.setVisible(true);
+            isValid = false;
+        }
+
+        if (!caloriesText.isEmpty() && !isInteger(caloriesText)) {
+            calErrorLabel.setText("Invalid calories");
+            calErrorLabel.setVisible(true);
+            isValid = false;
+        }
+
+        if (!serieNumText.isEmpty() && !isInteger(serieNumText)) {
+            serErrorLabel.setText("Invalid Serie number");
+            serErrorLabel.setVisible(true);
+            isValid = false;
+        }
+
+        if (!serieRepNumText.isEmpty() && !isInteger(serieRepNumText)) {
+            repSerErrorLabel.setText("Invalid RepSerie number");
+            repSerErrorLabel.setVisible(true);
+            isValid = false;
+        }
+
+        if (!weightText.isEmpty() && !isInteger(weightText)) {
+            weigErrorLabel.setText("Invalid Weight");
+            weigErrorLabel.setVisible(true);
+            isValid = false;
+        }
 
         try {
             String fileName = generateUniqueFileName();
@@ -104,17 +189,18 @@ public class AjouterActiviteFXML  implements Initializable {
 
             String ImageActivitePath = fileName;
             System.out.println(ImageActivitePath);
-            if (name.isEmpty() || selectedType == null) {
-                System.err.println("Please fill in all required fields.");
-                return; // Exit the method
+            if (image==null) {
+                imgErrorLabel.setText("The image cannot be empty");
+                imgErrorLabel.setVisible(true);
+                isValid = false;
             }
 
             // Parse integer values if provided
-            Integer duration = parseInteger(DurationFLd.getText().trim());
-            Integer calories = parseInteger(CaloriesFld.getText().trim());
-            Integer serieNum = parseInteger(SerieNumFld.getText().trim());
-            Integer serieRepNum = parseInteger(SerieRepNumFLd.getText().trim());
-            Integer weight = parseInteger(WeightFld.getText().trim());
+            Integer duration = parseInteger(durationText.trim());
+            Integer calories = parseInteger(caloriesText.trim());
+            Integer serieNum = parseInteger(serieNumText.trim());
+            Integer serieRepNum = parseInteger(serieRepNumText.trim());
+            Integer weight = parseInteger(weightText.trim());
 
             // Create an instance of ActivitePhysique with the retrieved data
             ActivitePhysique activitePhysique = new ActivitePhysique();
@@ -144,7 +230,7 @@ public class AjouterActiviteFXML  implements Initializable {
 
             // Set the selected objectives to the activitePhysique
             activitePhysique.setObjectifs(selectedObjectifs);
-
+            if (isValid){
             // Insert the new physical activity
             try {
                 sapActivite.insertOne(activitePhysique);
@@ -152,6 +238,8 @@ public class AjouterActiviteFXML  implements Initializable {
             } catch (Exception e) {
                 System.out.println(activitePhysique);
                 e.getMessage();
+            }}else{
+                System.out.println("errrrrrrooorrrrr");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,6 +247,15 @@ public class AjouterActiviteFXML  implements Initializable {
     }
 
 
+    // Helper method to check if a string can be parsed to an integer
+    private boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
 
     private String generateUniqueFileName() {

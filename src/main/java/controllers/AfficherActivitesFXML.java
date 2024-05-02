@@ -65,7 +65,7 @@ public class AfficherActivitesFXML implements Initializable {
     @FXML
     TableColumn<ActivitePhysique,String> imgCol ;
     int activitePhysiqueId ;
-    private final ImageView imageView = new ImageView();
+    //private final ImageView imageView = new ImageView();
 
     ObservableList<ActivitePhysique> ActiviteList = FXCollections.observableArrayList();
     ServiceActivitePhysique sap = new ServiceActivitePhysique();
@@ -126,6 +126,7 @@ public class AfficherActivitesFXML implements Initializable {
     private void print(MouseEvent event) {
     }
      private void loadDate() {
+
          refreshTable();
          idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
          nomCol.setCellValueFactory(new PropertyValueFactory<>("nomActivite"));

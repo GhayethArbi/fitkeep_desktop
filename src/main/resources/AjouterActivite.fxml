@@ -45,6 +45,10 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </TextField>
+            <!-- Étiquette d'erreur -->
+            <VBox>
+               <Text fx:id="nameErrorLabel" fill="red" text="Invalid input" visible="false" />
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
@@ -62,6 +66,10 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </ComboBox>
+            <!-- Étiquette d'erreur -->
+            <VBox prefHeight="10.0" prefWidth="52.0">
+               <Text fx:id="TypeErrorLabel" fill="red" text="Invalid input" visible="false" />
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
@@ -79,6 +87,10 @@
                   <Insets left="20.0" />
                </padding>
             </TextField>
+            <!-- Étiquette d'erreur -->
+            <VBox>
+               <Text fx:id="durErrorLabel" fill="red" text="Invalid input" visible="false" />
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
@@ -96,6 +108,10 @@
                   <Insets left="10.0" />
                </padding>
             </TextField>
+            <!-- Étiquette d'erreur -->
+            <VBox>
+               <Text fx:id="calErrorLabel" fill="red" text="Invalid input" visible="false" />
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
@@ -113,6 +129,10 @@
                   <Insets left="10.0" />
                </padding>
             </TextField>
+            <!-- Étiquette d'erreur -->
+            <VBox>
+               <Text fx:id="serErrorLabel" fill="red" text="Invalid input" visible="false" />
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
@@ -126,6 +146,10 @@
                </HBox.margin>
             </Text>
             <TextField fx:id="SerieRepNumFLd" prefHeight="26.0" prefWidth="279.0" />
+            <!-- Étiquette d'erreur -->
+            <VBox>
+               <Text fx:id="repSerErrorLabel" fill="red" text="Invalid input" visible="false" />
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
@@ -139,6 +163,10 @@
                </HBox.margin>
             </Text>
             <TextField fx:id="WeightFld" prefHeight="26.0" prefWidth="294.0" />
+            <!-- Étiquette d'erreur -->
+            <VBox>
+               <Text fx:id="weigErrorLabel" fill="red" text="Invalid input" visible="false" />
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="552.0">
@@ -154,7 +182,7 @@
             <VBox fx:id="objVbox" prefHeight="56.0" prefWidth="294.0" />
          </children>
       </HBox>
-      <HBox fx:id="" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox fx:id="" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@values/style.css">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#chooseImage" text="Choose your Image " />
             <ImageView fx:id="activiteImg" fitHeight="150.0" fitWidth="200.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
@@ -162,6 +190,11 @@
                   <Insets left="70.0" />
                </HBox.margin>
             </ImageView>
+            <Text fx:id="imgErrorLabel" fill="red" text="Invalid input" visible="false">
+               <HBox.margin>
+                  <Insets left="4.0" />
+               </HBox.margin></Text>
+
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="46.0" prefWidth="552.0">

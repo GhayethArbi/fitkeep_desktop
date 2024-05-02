@@ -127,6 +127,7 @@ public class AjouterObjectifFXML implements Initializable {
     }
 
     public void setParentFXMLLoader(AfficherObjectifsFXML parentFXMLLoader) {
+       parentFXMLLoader.refreshTable();
         this.parentFXMLLoader = parentFXMLLoader;
     }
 }

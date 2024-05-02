@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="254.0" style="-fx-background-color: #F6EDD9; -fx-border-radius: 10; -fx-border-width: 2; -fx-border-color: black;" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Front.itemObjectifFXML">
+   <children>
+      <HBox layoutX="11.0" layoutY="13.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="252.0" prefWidth="230.0" stylesheets="@../values/style.css">
+               <children>
+                  <ImageView fx:id="imageObjective" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets top="-20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="215.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <Text fx:id="nameObjective" fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="208.78613471984863">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: #101212;">
+                     <children>
+                        <HBox fx:id="addObjective" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#handleClick" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #0F1E1D;">
+                           <children>
+                              <FontAwesomeIconView fill="#099088" glyphName="CALENDAR" selectionEnd="0" size="14">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Text fill="#099088" strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>
