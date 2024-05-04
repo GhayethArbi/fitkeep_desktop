@@ -91,9 +91,10 @@ public class ServiceUser implements CRUD<User>{
     @Override
     public void updateOne(User user) throws SQLException {
 
-        String req = "UPDATE `user` SET `name`=?, `last_name`=?, `email`=?, `gender`=?, `birth_day`=?, `phone_number`=?, `address`=?  WHERE `id`=?";
+        String req = "UPDATE `user` SET `name`=?, `last_name`=?, `email`=?, `gender`=?, `birth_day`=?, `phone_number`=?, `address`=?, `roles`=?, `password`=?, `loyality_points`=?, `profile_image`=?,`is_banned`=? WHERE `id`=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
+
             ps.setString(1, user.getName());
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getEmail());
@@ -101,7 +102,17 @@ public class ServiceUser implements CRUD<User>{
             ps.setDate(5, user.getBirthDay());
             ps.setInt(6, user.getPhoneNumber());
             ps.setString(7, user.getAddress());
-            ps.setInt(8, user.getId());
+            ps.setString(8, "[\"" + user.getRoles() + "\"]");
+            ps.setString(9,user.getPassword());
+            ps.setInt(10,user.getLoyalityPoints());
+            ps.setString(11,user.getProfileImage());
+            ps.setBoolean(12,user.isBanned());
+            ps.setInt(13, user.getId());
+
+
+
+
+
             ps.executeUpdate();
 
 

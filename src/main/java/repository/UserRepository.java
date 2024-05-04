@@ -30,6 +30,7 @@ public class UserRepository {
                 User user = new User();
                 user.setId(rs.getInt(("id")));
                 user.setName(rs.getString((5)));
+                user.setAddress(rs.getString("address"));
                 user.setLastName(rs.getString(("last_name")));
                 user.setEmail(rs.getString((2)));
                 user.setPassword(rs.getString("password"));
@@ -108,9 +109,9 @@ public class UserRepository {
             if(rs.next()) {
                 user.setId(id);
                 user.setName(rs.getString(("name")));
-                System.out.println("-------------------------------------");
                 user.setLastName(rs.getString(("last_name")));
                 user.setEmail(rs.getString((2)));
+                user.setAddress(rs.getString("address"));
                 user.setPassword(rs.getString("password"));
                 user.setGender(rs.getString("gender"));
                 user.setRoles(rs.getString("roles").trim().toUpperCase());// Set the role for the user

@@ -47,6 +47,21 @@ public class NavigationController {
         }
     }
     @FXML
+    public void goToOverview(ActionEvent event) {
+        Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowProfile.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root, 822, 495);
+            stage.setTitle("Profile Setting");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e){
+            System.err.println(e);
+        }
+    }
+    @FXML
     public void Logout(ActionEvent event) {
         Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
         try {
@@ -82,5 +97,7 @@ public class NavigationController {
         imgCircle.setStroke(Color.SEAGREEN);
         Image in =new Image("/IMG-20221027-WA0012.jpg", false);
         imgCircle.setFill(new ImagePattern(in));
+
     }
+
 }

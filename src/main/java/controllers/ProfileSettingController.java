@@ -110,7 +110,22 @@ public class ProfileSettingController extends NavigationController{
         ftLastName.getStyleClass().remove("error");
     }
 
+    void chargeData(){
+        serviceUser =new ServiceUser();
+        AuthDTO curr=UserSession.CURRENT_USER.getUserLoggedIn();
+        ftEmail.setText(curr.getEmail());
+        ftBirth.setValue(curr.getBirthDay().toLocalDate());
+        ftAddress.setText(curr.getAddress());
+        ftPhone.setText(curr.getPhoneNumber()+"");
+        ftName.setText(curr.getName());
+        ftLastName.setText(curr.getLastName());
+        if(curr.getGender().equalsIgnoreCase("male")){
+            ftMale.setSelected(true);
+        }else{
+            ftFemale.setSelected(true);
+        }
 
+    }
 
     @FXML
     void saveChanges(ActionEvent event)
@@ -288,19 +303,7 @@ public class ProfileSettingController extends NavigationController{
         image.setStroke(Color.SEAGREEN);
         Image img =new Image("/IMG-20221027-WA0012.jpg", false);
         image.setFill(new ImagePattern(img));
-        serviceUser =new ServiceUser();
-        AuthDTO curr=UserSession.CURRENT_USER.getUserLoggedIn();
-        ftEmail.setText(curr.getEmail());
-        ftBirth.setValue(curr.getBirthDay().toLocalDate());
-        ftAddress.setText(curr.getAddress());
-        ftPhone.setText(curr.getPhoneNumber()+"");
-        ftName.setText(curr.getName());
-        ftLastName.setText(curr.getLastName());
-        if(curr.getGender().equalsIgnoreCase("male")){
-            ftMale.setSelected(true);
-        }else{
-            ftFemale.setSelected(true);
-        }
+        chargeData();
     }
 
 }

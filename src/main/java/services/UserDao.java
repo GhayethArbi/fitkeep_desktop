@@ -72,14 +72,10 @@ public class UserDao {
         // Verify the provided password against the hashed password
         if (BCrypt.checkpw(password, hashedPasswordFromDatabase)) {
             // Passwords match, authenticate the user
-
             PreparedStatement ps = cnx.prepareStatement("SELECT * FROM user WHERE email = ?");
-
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-
             rs.next();
-
             AuthDTO authDTO = new AuthDTO();
             authDTO.setId(rs.getInt(1));
             authDTO.setEmail(email);
@@ -96,6 +92,7 @@ public class UserDao {
             authDTO.setResetToken(rs.getString("reset_token"));
             authDTO.setAuthCode(rs.getString("auth_code"));
             authDTO.setProfileImage(rs.getString("profile_image"));
+            System.out.println(authDTO);
             if (authDTO.isBanned()){
                 return "Your account is banned!";
             }
@@ -103,8 +100,8 @@ public class UserDao {
 
             UserSession.getSession(authDTO);
             userSession = new UserSession(authDTO);
-
-            UserSession.getSession(authDTO);
+            //UserSession.getSession(authDTO);
+            userSession.getSession(authDTO);
 
             System.out.println("Current user "+UserSession.CURRENT_USER.getUserLoggedIn());
 
@@ -118,13 +115,16 @@ public class UserDao {
 
     public String banUser(int id)throws SQLException{
         User user = userRepository.findById(id);
-        System.out.println(user+"   zefkjndkvnkjvnkdfjcvc;v;");
+        System.out.println(user+"  /n zefkjndkvnkjvnkdfjcvc;v;");
         if(user.isBanned()){
             user.setBanned(false);
+            System.out.println(  user.isBanned()+"1");
         }else{
             user.setBanned(true);
+            System.out.println(  user.isBanned()+"2");
         }
         serviceUser.updateOne(user);
+        System.out.println(  user.isBanned()+"3");
 
         return "Updating Successful.";
     }

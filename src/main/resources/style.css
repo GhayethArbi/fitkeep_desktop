@@ -68,6 +68,37 @@
 .button-route{
     -fx-background-color:  white;
     -fx-text-fill: #012970;
+}
+.delete-button {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 3px 9px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
 
 
 }
+.show-button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 3px 9px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+
+}
+.ban-button {
+    -fx-background-color: #39ff21;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 3px 9px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+
+}
+.label-overview {
+     -fx-font-weight: 600; /* Font weight 600 (bold) */
+     -fx-text-fill: rgba(1, 41, 112, 0.6); /* Text color with rgba values */
+ }
+

@@ -8,9 +8,12 @@ import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -65,33 +68,18 @@ public class ListUsersController extends NavigationController {
 
     private final ServiceUser serviceUser = new ServiceUser();
     private final UserDao userDao = new UserDao();
-
-
-
-
-
-
-
     @FXML
-    void initialize() {
-        super.initialize();
-        assert currentUserName != null : "fx:id=\"currentUserName\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftAction != null : "fx:id=\"ftAction\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftBirth != null : "fx:id=\"ftBirth\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftEmail != null : "fx:id=\"ftEmail\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftGender != null : "fx:id=\"ftGender\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftLn != null : "fx:id=\"ftLn\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftName != null : "fx:id=\"ftName\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftPhone != null : "fx:id=\"ftPhone\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftPoint != null : "fx:id=\"ftPoint\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert ftStatus != null : "fx:id=\"ftStatus\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'ListUsers.fxml'.";
-        currentUserName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
+    private ObservableList<User> userList = FXCollections.observableArrayList();
+
+    void initializeList(){
+        this.userList.clear();
         try {
+
             List<User> userList = serviceUser.selectAll();
+            this.userList.addAll(userList);
             System.out.println(userList);
             TreeItem<User> root = new TreeItem<>();
-            for (User user : userList) {
+            for (User user : this.userList) {
                 TreeItem<User> userItem = new TreeItem<>(user);
                 root.getChildren().add(userItem);
             }
@@ -103,8 +91,6 @@ public class ListUsersController extends NavigationController {
             Button banBtn = new Button("Ban");
             HBox btns = new HBox();
             btns.getChildren().addAll(deleteBtn,showBtn,banBtn);
-
-
 
             ftName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getName()));
             ftLn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getLastName()));
@@ -120,7 +106,17 @@ public class ListUsersController extends NavigationController {
                 final Button showBtn = new Button("Show");
                 final Button banBtn = new Button("Ban");
 
+
                 {
+                    deleteBtn.getStyleClass().add("delete-button");
+
+                    showBtn.getStyleClass().add("show-button");
+
+
+                    banBtn.getStyleClass().add("ban-button");
+
+
+
                     deleteBtn.setOnAction(event -> {
                         User user = getTreeTableRow().getItem();
                         try {
@@ -141,6 +137,7 @@ public class ListUsersController extends NavigationController {
                         try {
                             userDao.banUser(user.getId()); // Assuming serviceUser has a ban method
 
+                            initializeList();
                         } catch (SQLException e) {
 
                             System.out.println(e.getMessage()+"lknkjbhbkjb");
@@ -148,7 +145,10 @@ public class ListUsersController extends NavigationController {
                         }
                         // Implement ban action
                     });
+                    ;
+
                 }
+
 
                 @Override
                 protected void updateItem(HBox item, boolean empty) {
@@ -161,11 +161,40 @@ public class ListUsersController extends NavigationController {
                     }
                 }
             });
+           // userList = serviceUser.selectAll();
+            //this.userList.clear();
+            //this.userList.addAll(userList);
 
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+
+    }
+
+
+
+
+
+
+    @FXML
+    void initialize() {
+
+        super.initialize();
+
+        assert currentUserName != null : "fx:id=\"currentUserName\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftAction != null : "fx:id=\"ftAction\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftBirth != null : "fx:id=\"ftBirth\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftEmail != null : "fx:id=\"ftEmail\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftGender != null : "fx:id=\"ftGender\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftLn != null : "fx:id=\"ftLn\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftName != null : "fx:id=\"ftName\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftPhone != null : "fx:id=\"ftPhone\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftPoint != null : "fx:id=\"ftPoint\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert ftStatus != null : "fx:id=\"ftStatus\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'ListUsers.fxml'.";
+        currentUserName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
+        initializeList();
 
 
     }

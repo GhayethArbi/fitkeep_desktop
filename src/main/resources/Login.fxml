@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@style.css" fx:controller="controllers.LoginController">
+<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="254.0" BorderPane.alignment="CENTER">
          <children>
@@ -37,7 +37,7 @@
             <Button layoutX="93.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="154.0" snapToPixel="false" style="-fx-background-color: #1b1ccd;" text="Login" textAlignment="CENTER" textFill="WHITE" />
             <Label fx:id="ft1" layoutX="79.0" layoutY="346.0" text="Don't have an account?" />
             <Hyperlink layoutX="217.0" layoutY="343.0" onAction="#navigateToRegister" text="Sign up" />
-            <CheckBox layoutX="25.0" layoutY="249.0" mnemonicParsing="false" text="Remember me" />
+            <CheckBox fx:id="rememberMeCheckbox" layoutX="25.0" layoutY="249.0" mnemonicParsing="false" text="Remember me" />
             <Hyperlink layoutX="219.0" layoutY="249.0" text="Forget Password?" />
             <Label fx:id="invalidLogin" alignment="CENTER" layoutX="28.0" layoutY="215.0" prefHeight="18.0" prefWidth="306.0" textFill="#ec1818" wrapText="true" />
             <Label fx:id="currentUser" layoutX="100.0" layoutY="97.0" prefHeight="18.0" prefWidth="162.0" textFill="#f21212" />

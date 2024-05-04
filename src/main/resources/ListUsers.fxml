@@ -17,7 +17,7 @@
 <VBox layoutY="60.0" prefHeight="540.0" prefWidth="200" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
 <Button onAction="#goToDash" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: white;" text="Dashboard" textFill="#012970" />
 <Button onAction="#goToUsers" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #f6f9ff;" text="Table of users" textFill="#4154f1" />
-      <Button layoutX="30.0" layoutY="30.0" onAction="#goToEditProfile" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: white;" text="Profile Setting" textFill="#012970" />
+      <Button layoutX="30.0" layoutY="30.0" onAction="#goToOverview" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: white;" text="Profile Setting" textFill="#012970" />
 <Button onAction="#Logout" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Logout" textFill="#012970" />
 
 </VBox>
@@ -27,7 +27,7 @@
          <Image url="@fitkeepedited.png" />
       </image>
    </ImageView>
-   <ListView layoutX="232.0" layoutY="100.0" prefHeight="486.0" prefWidth="893.0" styleClass="card" />
+   <ListView layoutX="232.0" layoutY="100.0" prefHeight="486.0" prefWidth="966.0" styleClass="card" />
     <HBox layoutX="959.0" layoutY="16.0" prefHeight="34.0" prefWidth="200.0" AnchorPane.rightAnchor="41.0">
         <children>
             <Circle fx:id="imgCircle" fill="DODGERBLUE" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
@@ -36,7 +36,7 @@
                <Insets left="10.0" top="5.0" />
             </HBox.margin></Text>
         </children>
-    </HBox>   <TreeTableView fx:id="tableView" layoutX="259.0" layoutY="177.0" prefHeight="320.0" prefWidth="839.0">
+    </HBox>   <TreeTableView fx:id="tableView" layoutX="259.0" layoutY="177.0" prefHeight="320.0" prefWidth="900.0">
      <columns>
        <TreeTableColumn fx:id="ftName" prefWidth="72.80001831054688" text="First Name" />
        <TreeTableColumn fx:id="ftLn" prefWidth="79.99993896484375" text="Last Name" />
@@ -46,7 +46,7 @@
          <TreeTableColumn fx:id="ftGender" minWidth="0.0" prefWidth="52.800048828125" text="Gender" />
          <TreeTableColumn fx:id="ftStatus" prefWidth="50.4000244140625" text="Status" />
          <TreeTableColumn fx:id="ftPoint" prefWidth="84.0" text="Loyality Point" />
-         <TreeTableColumn fx:id="ftAction" prefWidth="153.5999755859375" text="Actions" />
+         <TreeTableColumn fx:id="ftAction" prefWidth="208.79998779296875" text="Actions" />
      </columns>
    </TreeTableView>
 </AnchorPane>

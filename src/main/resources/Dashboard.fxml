@@ -15,7 +15,7 @@
    <VBox layoutY="60.0" prefHeight="540.0" prefWidth="200" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
       <Button onAction="#goToDash" prefHeight="26.0" prefWidth="182.0" styleClass="current-route" text="Dashboard" textFill="#4154f1" />
       <Button onAction="#goToUsers" prefHeight="26.0" prefWidth="175.0" styleClass="button-route" text="Table of users" textFill="#4154f1" />
-      <Button layoutX="30.0" layoutY="30.0" onAction="#goToEditProfile" prefHeight="26.0" prefWidth="182.0" styleClass="button-route" text="Profile Setting" textFill="#012970" />
+      <Button layoutX="30.0" layoutY="30.0" onAction="#goToOverview" prefHeight="26.0" prefWidth="182.0" styleClass="button-route" text="Profile Setting" textFill="#012970" />
       <Button onAction="#Logout" prefHeight="26.0" prefWidth="170.0" styleClass="button-route" text="Logout" textFill="#012970" />
 
    </VBox>
