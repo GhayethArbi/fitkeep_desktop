@@ -19,6 +19,27 @@ public class NavigationController {
     private Text currentUserName;
     @FXML
     private Circle imgCircle;
+
+
+    @FXML
+    void goToLogin(ActionEvent event) {
+        try {
+            Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+            stage.setTitle("Login");
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle navigation failure
+        }
+
+    }
     @FXML
     void goToDash() {
         Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
@@ -53,7 +74,7 @@ public class NavigationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangePassword.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Profile Setting");
+            stage.setTitle("Change Password");
             stage.setScene(scene);
             stage.show();
 
@@ -99,7 +120,7 @@ public class NavigationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileSetting.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Edit Profile");
+            stage.setTitle("Profile edit");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e){

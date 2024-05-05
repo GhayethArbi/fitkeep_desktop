@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import services.UserDao;
 import services.session.UserSession;
 
-public class LoginController {
+public class LoginController extends NavigationController {
     @FXML
     private ResourceBundle resources;
 
@@ -48,6 +48,29 @@ public class LoginController {
     private static final String REMEMBER_ME_EMAIL_KEY = "rememberMeEmail";
     private static final String REMEMBER_ME_PASSWORD_KEY = "rememberMePassword";
     private final  Preferences prefs = Preferences.userNodeForPackage(LoginController.class);
+    @FXML
+    void goToForgotPass(ActionEvent event){
+        try {
+            System.out.println("_________________________1");
+            Stage stage = (Stage) tfEmail.getScene().getWindow(); // Get reference to the login window's stage
+            stage.setTitle("Login");
+            System.out.println("_________________________2");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ForgotPassword.fxml"));
+            System.out.println("_________________________3");
+            Parent p = loader.load();
+            System.out.println("_________________________4");
+            Scene scene = new Scene(p);
+
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+            e.printStackTrace();
+            // Handle navigation failure
+        }
+    }
     void clearError(){
         invalidLogin.setText("");
         currentUser.setText("");
@@ -158,6 +181,7 @@ public class LoginController {
 
     @FXML
     void initialize() {
+
         assert ft != null : "fx:id=\"ft\" was not injected: check your FXML file 'Login.fxml'.";
         assert pfPassword != null : "fx:id=\"pfPassword\" was not injected: check your FXML file 'Login.fxml'.";
         assert tfEmail != null : "fx:id=\"tfEmail\" was not injected: check your FXML file 'Login.fxml'.";
