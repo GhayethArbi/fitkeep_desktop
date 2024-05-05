@@ -20,7 +20,7 @@ public class NavigationController {
     @FXML
     private Circle imgCircle;
     @FXML
-    void goToDash(ActionEvent event) {
+    void goToDash() {
         Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
         try {
             stage.setTitle("Dashboard");
@@ -33,12 +33,12 @@ public class NavigationController {
         }
     }
     @FXML
-    public void goToUsers(ActionEvent event) {
+    public void goToUsers() {
         Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListUsers.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root, 1200, 600);
+            Scene scene = new Scene(root);
             stage.setTitle("User List");
             stage.setScene(scene);
             stage.show();
@@ -47,12 +47,12 @@ public class NavigationController {
         }
     }
     @FXML
-    public void goToOverview(ActionEvent event) {
+    public void goToChangePassword() {
         Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowProfile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangePassword.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root, 822, 495);
+            Scene scene = new Scene(root);
             stage.setTitle("Profile Setting");
             stage.setScene(scene);
             stage.show();
@@ -62,7 +62,22 @@ public class NavigationController {
         }
     }
     @FXML
-    public void Logout(ActionEvent event) {
+    public void goToOverview() {
+        Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowProfile.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Profile Setting");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e){
+            System.err.println(e);
+        }
+    }
+    @FXML
+    public void Logout() {
         Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
@@ -78,12 +93,12 @@ public class NavigationController {
     }
 
     @FXML
-    public void goToEditProfile(ActionEvent event) {
+    public void goToEditProfile() {
         Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileSetting.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root, 1200, 600);
+            Scene scene = new Scene(root);
             stage.setTitle("Edit Profile");
             stage.setScene(scene);
             stage.show();

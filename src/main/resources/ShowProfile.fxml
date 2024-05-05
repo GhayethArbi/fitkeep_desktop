@@ -31,7 +31,7 @@
         <children>
             <Button onAction="#goToOverview" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #f6f9ff;" text="Overview" textFill="#4154f1" />
             <Button layoutX="10.0" layoutY="10.0" onAction="#goToEditProfile" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: white;" text="Edit Profile" textFill="#012970" />
-            <Button layoutX="109.0" layoutY="10.0" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: white;" text="Change Password" textFill="#012970" />
+            <Button layoutX="109.0" layoutY="10.0" onAction="#goToChangePassword" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: white;" text="Change Password" textFill="#012970" />
         </children>
     </HBox>
     <HBox layoutX="959.0" layoutY="16.0" prefHeight="34.0" prefWidth="200.0" AnchorPane.rightAnchor="41.0">

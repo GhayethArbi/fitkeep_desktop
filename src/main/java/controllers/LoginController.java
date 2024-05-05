@@ -164,6 +164,7 @@ public class LoginController {
         assert rememberMeCheckbox != null : "fx:id=\"rememberMeCheckbox\" was not injected: check your FXML file 'Login.fxml'.";
         tfEmail.setText(getSavedEmail());
         pfPassword.setText(getSavedPassword());
+        rememberMeCheckbox.setSelected(true);
     }
 
 

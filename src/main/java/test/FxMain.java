@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import models.User;
+import repository.UserRepository;
+
+import java.sql.SQLException;
 
 public class FxMain extends Application {
 
@@ -14,6 +18,16 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+       /*try {
+           UserRepository userRepository=new UserRepository();
+
+        User user = new User();
+        user.setPassword("12345678");
+        user.setId(41);
+        userRepository.changePassword(user);
+       }catch (SQLException e){
+           System.out.println(e.getMessage());
+       }*/
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
 
         Parent root = loader.load();

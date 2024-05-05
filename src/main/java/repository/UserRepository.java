@@ -1,6 +1,7 @@
 package repository;
 
 import models.User;
+import org.mindrot.jbcrypt.BCrypt;
 import utils.DBConnection;
 
 import java.sql.Connection;
@@ -128,6 +129,24 @@ public class UserRepository {
             }
         }
         return user;
+    }
+    public void changePassword(User user)throws SQLException{
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+        String req = "UPDATE `user` SET `password`=? WHERE `id`=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+
+            ps.setString(1, user.getPassword());
+            ps.setInt(2, user.getId());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e){
+            // Handle SQLException appropriately, e.g., log or propagate
+            System.err.println("Error adding user: " + e.getMessage());
+
+        }
     }
 
 

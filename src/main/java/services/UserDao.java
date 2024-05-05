@@ -12,11 +12,13 @@ import java.sql.*;
 
 public class UserDao {
     private Connection cnx ;
+
     // prepare sql query
     PreparedStatement ps;
     UserSession userSession;
     private final ServiceUser serviceUser = new ServiceUser();
     private final UserRepository userRepository =new UserRepository();
+    private final OTPService otpService= new OTPService();
 
     public UserDao() {
         cnx = DBConnection.getInstance().getCnx();
@@ -128,6 +130,14 @@ public class UserDao {
 
         return "Updating Successful.";
     }
+    public void resetPassword(String email) {
+        if (serviceUser.emailExists(email)) {
+            String temPassword = OTPService.generateOTP(email, 8);
+            OTPService.sendOTP(email, temPassword);
+        }
+    }
+
+
 
 }
     /*public String verifierPassword(String email, String inputPassword )throws SQLException {
