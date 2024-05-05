@@ -55,6 +55,7 @@
       </ImageView>
       <Label fx:id="status" layoutX="171.0" layoutY="420.0" prefHeight="39.0" prefWidth="198.0" style="-fx-font-size: 24; -fx-font-family: &quot;Segoe UI&quot;; -fx-font-weight: 700;" text="STATUS" />
       <Button id="menuBTN" layoutX="45.0" layoutY="488.0" mnemonicParsing="false" onAction="#showListeCommandes" style="-fx-background-color: red;" text="Close" />
-      <Button id="menuBTN" layoutX="278.0" layoutY="488.0" mnemonicParsing="false" onAction="#showEdit" text="Edit" />
+      <Button id="menuBTN" layoutX="296.0" layoutY="488.0" mnemonicParsing="false" onAction="#showEdit" text="Edit" />
+      <Button id="menuBTN" fx:id="payBTN" layoutX="153.0" layoutY="488.0" mnemonicParsing="false" onAction="#payBtn" prefHeight="52.0" prefWidth="129.0" style="-fx-background-color: blue;" text="Pay" />
    </children>
 </AnchorPane>

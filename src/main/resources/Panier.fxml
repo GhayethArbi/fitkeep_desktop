@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="736.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PanierController">
+<AnchorPane prefHeight="736.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PanierController">
 
     <stylesheets>
         <URL value="@panierStyle.css" />
@@ -53,7 +53,7 @@
                         </tooltip></TextField>
                      <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="file:/C:/Users/Aziza/Desktop/ProductPanier/src/main/resources/icons/icons8-search.gif" />
+                           <Image url="@icons/icons8-search.gif" />
                         </image>
                      </ImageView>
                   </children>
@@ -63,7 +63,7 @@
                   <children>
                      <ImageView fitHeight="57.0" fitWidth="69.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="file:/C:/Users/Aziza/Desktop/ProductPanier/src/main/resources/icons/icons8-view.gif" />
+                           <Image url="@icons/icons8-view.gif" />
                         </image>
                      </ImageView>
                        <Button onAction="#viewCommand" prefHeight="57.0" prefWidth="57.0" text=" ">
@@ -89,7 +89,7 @@
                   <children>
                      <ImageView fitHeight="57.0" fitWidth="69.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="file:/C:/Users/Aziza/Desktop/ProductPanier/src/main/resources/icons/icons8-delete.gif" />
+                           <Image url="@icons/icons8-delete.gif" />
                         </image>
                      </ImageView>
                      <Button layoutX="-1.0" onAction="#deletePanier" prefHeight="57.0" prefWidth="57.0" text=" ">
@@ -102,7 +102,7 @@
                   <children>
                      <ImageView fitHeight="57.0" fitWidth="69.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="file:/C:/Users/Aziza/Desktop/ProductPanier/src/main/resources/icons/icons8-edit.gif" />
+                           <Image url="@icons/icons8-edit.gif" />
                         </image>
                      </ImageView>
                      <Button layoutX="-1.0" onAction="#editPanier" prefHeight="57.0" prefWidth="57.0" text=" ">
