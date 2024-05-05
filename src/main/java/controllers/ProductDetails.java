@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
@@ -20,6 +21,7 @@ import javafx.stage.StageStyle;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import models.Product;
+import org.apache.pdfbox.pdmodel.PDDocument;
 import services.ServiceProduit;
 
 import java.io.File;
@@ -56,20 +58,16 @@ public class ProductDetails implements Initializable {
 
     private final ServiceProduit sp = new ServiceProduit();
     private final ObservableList<Product> ProductList = FXCollections.observableArrayList();
+
     public void refreshTableView() {
         loadData();
     }
     @FXML
     private void PrintPdf() {
-        // Get the Downloads directory path
-        String downloadsDir = System.getProperty("user.home") + "/Downloads";
-
-        // Specify the file name
-        String filePath = downloadsDir + "/output.pdf";
-
-        // Export TableView to PDF
-        PDFExporter.exportTableViewToPDF(ProductTab, filePath);
+        String filePath = "C:/Users/Dell/Desktop/output.pdf";
+        PDFExporter.exportTableViewToPDF(ProductTab, "C:/Users/Dell/Desktop/logo.jpg", filePath, new PDDocument());
     }
+
 
 
     @FXML
@@ -95,7 +93,6 @@ public class ProductDetails implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -156,10 +153,13 @@ public class ProductDetails implements Initializable {
             private final HBox hbox = new HBox();
             private final FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
             private final FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+            private final FontAwesomeIconView infoIcon = new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE);
 
             {
-                editIcon.setStyle("-fx-cursor: hand; -glyph-size: 28px; -fx-fill: #00E676;");
-                deleteIcon.setStyle("-fx-cursor: hand; -glyph-size: 28px; -fx-fill: #ff1744;");
+                // Set icon colors
+                editIcon.setStyle("-fx-cursor: hand; -glyph-size: 28px; -fx-fill: green;");
+                deleteIcon.setStyle("-fx-cursor: hand; -glyph-size: 28px; -fx-fill: red;");
+                infoIcon.setStyle("-fx-cursor: hand; -glyph-size: 28px; -fx-fill: blue;");
 
                 editIcon.setOnMouseClicked((MouseEvent event) -> {
                     Product product = getTableView().getItems().get(getIndex());
@@ -174,9 +174,16 @@ public class ProductDetails implements Initializable {
                     // Example: Delete the product from the database
                     deleteProduct(product);
                 });
+                infoIcon.setOnMouseClicked((MouseEvent event) -> {
+                    Product product = getTableView().getItems().get(getIndex());
+                    // Redirect to the page displaying the QR code
+                    redirectToQRCodePage(product);
+                });
 
-                hbox.getChildren().addAll(editIcon, deleteIcon);
+                // Add icons to HBox
+                hbox.getChildren().addAll(editIcon, deleteIcon, infoIcon);
                 hbox.setStyle("-fx-alignment:center");
+                hbox.setSpacing(10); // Adjust spacing as needed
             }
 
             @Override
@@ -209,8 +216,6 @@ public class ProductDetails implements Initializable {
         }
     }
 
-
-
     private void deleteProduct(Product product) {
         try {
             sp.deleteOne(product);
@@ -219,4 +224,23 @@ public class ProductDetails implements Initializable {
             Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    private void redirectToQRCodePage(Product product) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/QrCodeGenerator.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller instance
+            QRCodeGenerator qrCodeGeneratorController = loader.getController();
+
+            // Generate QR code containing product details
+            qrCodeGeneratorController.generateQRCode(product);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

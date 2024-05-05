@@ -15,7 +15,7 @@ public class FxMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/dashboard.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/ProductDetails.fxml"));
             Scene scene = new Scene(parent);
            // scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);

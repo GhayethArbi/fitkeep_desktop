@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="502.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductDetails">
+<AnchorPane prefHeight="502.0" prefWidth="1259.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductDetails">
    <children>
-      <TableView fx:id="ProductTab" layoutX="24.0" layoutY="115.0" prefHeight="362.0" prefWidth="1177.0" stylesheets="/CSS/style1.css">
+      <TableView fx:id="ProductTab" layoutX="24.0" layoutY="115.0" prefHeight="362.0" prefWidth="1218.0" stylesheets="/CSS/style1.css">
         <columns>
           <TableColumn fx:id="IdCol" prefWidth="65.60000228881836" text="Id" />
           <TableColumn fx:id="Id_categ_col" prefWidth="74.39999389648438" text="Category_id" />
@@ -19,7 +19,7 @@
             <TableColumn fx:id="DescriCol" prefWidth="180.7999267578125" text="Description" />
             <TableColumn fx:id="PriceCol" prefWidth="91.2000732421875" text="Price" />
             <TableColumn fx:id="QuantityCol" prefWidth="91.20001220703125" text="Quantity" />
-            <TableColumn fx:id="operCol" prefWidth="91.20001220703125" text="operCol" />
+            <TableColumn fx:id="operCol" prefWidth="129.6000732421876" text="operCol" />
         </columns>
       </TableView>
       <Text layoutX="24.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Details" wrappingWidth="320.44337463378906">

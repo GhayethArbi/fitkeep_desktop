@@ -1,0 +1,35 @@
+/* CSS/style.css */
+
+.fruit-item {
+    -fx-background-color: #f0f0f0; /* Background color of the card */
+    -fx-background-radius: 10px; /* Rounded corners */
+    -fx-border-color: #ddd; /* Border color */
+    -fx-border-radius: 10px; /* Rounded corners for border */
+    -fx-border-width: 1px; /* Border width */
+    -fx-padding: 10px; /* Padding inside the card */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10,0,2,2 ); /* Drop shadow effect */
+}
+
+.fruit-item:hover {
+    -fx-background-color: #e0e0e0; /* Background color on hover */
+}
+
+#ProductImg {
+    -fx-fit-height: 172px; /* Fixed height for image */
+    -fx-fit-width: 180px; /* Fixed width for image */
+    -fx-padding: 10px; /* Padding for image */
+}
+
+#priceLabel {
+    -fx-text-fill: #333; /* Text color for price */
+    -fx-font-family: "Arial"; /* Font family for price */
+    -fx-font-size: 18px; /* Font size for price */
+    -fx-padding: 5px; /* Padding for price label */
+}
+
+#NameProductLabel {
+    -fx-text-fill: #222; /* Text color for name */
+    -fx-font-family: "Arial"; /* Font family for name */
+    -fx-font-size: 24px; /* Font size for name */
+    -fx-padding: 5px; /* Padding for name label */
+}

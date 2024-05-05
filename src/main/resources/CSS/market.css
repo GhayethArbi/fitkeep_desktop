@@ -1,0 +1,41 @@
+/* market.css */
+
+.anchor-pane {
+    -fx-background-color: #f0f0f0;
+}
+
+.fruit-item {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 2, 2);
+}
+
+.fruit-item:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.cart {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 2, 2);
+}
+
+#leftGridPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+/* market.css */
+
+.scroll-pane {
+    -fx-background-color: transparent; /* Set the background color of the ScrollPane to transparent */
+    -fx-background: transparent; /* Set the background to transparent */
+    -fx-border-color: transparent; /* Set the border color to transparent */
+}

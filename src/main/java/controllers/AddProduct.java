@@ -14,7 +14,6 @@ import models.Category;
 import models.Product;
 import services.ServiceCategory;
 import services.ServiceProduit;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,6 +21,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 public class AddProduct {
     @FXML
@@ -55,13 +57,19 @@ public class AddProduct {
     private Text nameError;
     @FXML
     private Text DescriError;
+    private static final String ACCOUNT_SID = "ACacecc750024966258be4ef1c74c3cfe7";
+    private static final String AUTH_TOKEN = "3b445010e6bf2d74796ceb0ac34d9184";
+    private static final String FROM_PHONE_NUMBER = "+12242796337";
     private ProductDetails productDetailsController;
-
     private final ServiceProduit sp = new ServiceProduit();
     private final ServiceCategory sc = new ServiceCategory();
 
     public void setProductDetailsController(ProductDetails controller) {
         this.productDetailsController = controller;
+    }
+
+    static {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
 
     // Method to initialize the controller
@@ -169,12 +177,15 @@ public class AddProduct {
             // Refresh the TableView to display the new data
             loadDate();
             System.out.println("Product added successfully: " + productName);
+
+            // Send Twilio message
+            String successMessage = "Product added successfully: " + productName;
+            sendMessage("+21656688168", successMessage);
         } catch (IOException | SQLException e) {
             e.printStackTrace();
             // Handle IO or SQL exception
         }
     }
-
 
     private String generateUniqueFileName() {
         String extension = "jpg"; // You can modify this to support other image formats
@@ -223,5 +234,16 @@ public class AddProduct {
     private void updateSlug(String productName) {
         String slug = generateSlug(productName);
         SlugField.setText(slug);
+    }
+
+    // Method to send Twilio message
+    private void sendMessage(String toPhoneNumber, String messageBody) {
+        Message message = Message.creator(
+                        new PhoneNumber(toPhoneNumber),
+                        new PhoneNumber(FROM_PHONE_NUMBER),
+                        messageBody)
+                .create();
+
+        System.out.println("Twilio Message SID: " + message.getSid());
     }
 }

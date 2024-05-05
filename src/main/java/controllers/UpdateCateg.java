@@ -22,7 +22,7 @@ public class UpdateCateg {
 
     // Method to set text in the TextField
     public void setTextField(String text) {
-        UpdateField.setText(text);
+            UpdateField.setText(text);
     }
 
     // Method to set the reference to the CategoryDetails controller

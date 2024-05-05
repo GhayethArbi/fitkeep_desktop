@@ -13,9 +13,6 @@ public class ItemController {
     public Label priceLabel;
     @FXML
     private Label NameProductLabel;
-
-
-
     @FXML
     private ImageView ProductImg;
 
@@ -34,6 +31,8 @@ public class ItemController {
         Image image = new Image("file:///C:/Users/Dell/PEIPROJECT/public/Uploads/" + product.getIllustration());
         ProductImg.setImage(image);
     }
+
+
 
     @FXML
     void click() {
