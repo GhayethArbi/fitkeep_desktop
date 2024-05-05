@@ -1,4 +1,4 @@
-/*package Controllers;
+package Controllers;
 
 import Entity.Commande;
 import Services.CommandeService;
@@ -48,8 +48,9 @@ public class PaymentController {
     @FXML
     private TextField amountField;
 
-
     // Twilio API Info Lena
+
+
     private static final String TWILIO_ACCOUNT_SID = "ACb5f7e848ec4cee3d3969be034b0ff378";
     private static final String TWILIO_AUTH_TOKEN = "7e81303e2231c5ed666cb92381409399";
     private static final String TWILIO_PHONE_NUMBER = "+17603174631";
@@ -161,4 +162,3 @@ public class PaymentController {
         }
     }
 }
-*/
