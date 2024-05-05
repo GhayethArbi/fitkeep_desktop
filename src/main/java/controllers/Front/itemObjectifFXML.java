@@ -17,6 +17,8 @@ public class itemObjectifFXML implements Initializable {
    @FXML
    Text nameObjective ;
 
+
+
     private AfficherObjectifsFXML parentController;
 
     @Override
@@ -44,9 +46,10 @@ public class itemObjectifFXML implements Initializable {
         return imageObjective.getImage();
     }
 
-    public String getName() {
+    public  String getName() {
         return nameObjective.getText();
     }
+
     public void setParentController(AfficherObjectifsFXML parentController) {
         this.parentController = parentController;
     }

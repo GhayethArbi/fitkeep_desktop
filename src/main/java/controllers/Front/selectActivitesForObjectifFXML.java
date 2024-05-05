@@ -25,11 +25,11 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class selectActivitesFXML implements Initializable {
-
+public class selectActivitesForObjectifFXML implements Initializable {
 
     @FXML
     GridPane Mygrid ;
@@ -77,15 +77,19 @@ public class selectActivitesFXML implements Initializable {
     ServiceObjectif sapObjectif = new ServiceObjectif();
 
     public Integer IdObj ;
+    public Integer IdAct;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-     displayActivites();
+
     }
 
-    public void displayActivites() {
+    public void displayActivites(Objectif objectif) {
         try {
+
+            IdObj=objectif.getId();
+
             // Retrieve selected activities
-            List<ActivitePhysique> selectedActivities = sapActivite.selectAllWithNullObjectifs(); // Modify this according to your service
+            List<ActivitePhysique> selectedActivities = sapObjectif.fetchActivitesForObjectif(objectif.getId()); // Modify this according to your service
             // Clear existing content in the grid
             Mygrid.getChildren().clear();
 
@@ -108,21 +112,24 @@ public class selectActivitesFXML implements Initializable {
             int row = 0;
             int col = 0;
             for (ActivitePhysique activity : selectedActivities) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front/itemActivite.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front/itemActiviteCree.fxml"));
                 AnchorPane itemActivite = loader.load();
 
                 // Access the controller of itemActivite
-                itemActiviteFXML itemActiviteController = loader.getController();
-
+                itemActiviteCreeFXML itemActiviteCreeFXML = loader.getController();
+                System.out.println(activity);
                 // Set values for the itemActiviteFXML
-                itemActiviteController.setActivityInfo(activity.getNomActivite(), activity.getTypeActivite(), activity.getImageActivite()); // Assuming getImageActivite() returns the image path
+                // Set the parent controller
+                itemActiviteCreeFXML.setParentController(this);
+                itemActiviteCreeFXML.setActivityInfo(activity); // Assuming getImageActivite() returns the image path
+                // Set up event handler for HboxClicked
+                itemActiviteCreeFXML.getHboxClicked().setOnMouseClicked(event -> handleHBoxClicked(itemActiviteCreeFXML));
 
                 // Add itemActiviteFXML to the grid
                 Mygrid.add(itemActivite, col, row);
 
-                // Set up event handler for HboxClicked
-                itemActiviteController.getHboxClicked().setOnMouseClicked(event -> handleHBoxClicked(itemActiviteController));
-
+// Set the parent controller
+                itemActiviteCreeFXML.setParentController(this);
                 // Increment row index
                 row++;
 
@@ -136,65 +143,59 @@ public class selectActivitesFXML implements Initializable {
             e.printStackTrace();
         }
     }
+    private void handleHBoxClicked(itemActiviteCreeFXML itemActiviteCreeFXML){
+        imgActv.setImage(itemActiviteCreeFXML.getImage());
+        nameField.setText(itemActiviteCreeFXML.getName());
+        typeField.setValue(itemActiviteCreeFXML.getType());
+        calField.setText(itemActiviteCreeFXML.getCalories());
+        DuratField.setText(itemActiviteCreeFXML.getDurat());
+        nbSerField.setText(itemActiviteCreeFXML.getNbSer());
+        NbRepField.setText(itemActiviteCreeFXML.getNbRep());
+        weigField.setText(itemActiviteCreeFXML.getWeight());
+
+        if (typeField.getValue().equals("Cardiovasculaire")){
+            calHbox.setVisible(true);
+            durHbox.setVisible(true);
+            calHbox.setManaged(true);
+            durHbox.setManaged(true);
+            nbSHbox.setVisible(false);
+            nbRSHbox.setVisible(false);
+            weightHbox.setVisible(false);
+            nbSHbox.setManaged(false);
+            nbRSHbox.setManaged(false);
+            weightHbox.setManaged(false);
+
+            DuratField.setVisible(true);
+            calField.setVisible(true);
+            nbSerField.setVisible(false);
+            NbRepField.setVisible(false);
+            weigField.setVisible(false);
+        }else{
+
+            calHbox.setVisible(false);
+            durHbox.setVisible(false);
+            calHbox.setManaged(false);
+            durHbox.setManaged(false);
+            nbSHbox.setVisible(true);
+            nbRSHbox.setVisible(true);
+            weightHbox.setVisible(true);
+            nbSHbox.setManaged(true);
+            nbRSHbox.setManaged(true);
+            weightHbox.setManaged(true);
 
 
-    private void handleHBoxClicked(itemActiviteFXML itemActiviteFXML) {
-     imgActv.setImage(itemActiviteFXML.getImage());
-     nameField.setText(itemActiviteFXML.getName());
-     typeField.setValue(itemActiviteFXML.getType());
+            DuratField.setVisible(false);
+            calField.setVisible(false);
 
-     if (typeField.getValue().equals("Cardiovasculaire")){
-
-         calHbox.setVisible(true);
-         durHbox.setVisible(true);
-         calHbox.setManaged(true);
-         durHbox.setManaged(true);
-         nbSHbox.setVisible(false);
-         nbRSHbox.setVisible(false);
-         weightHbox.setVisible(false);
-         nbSHbox.setManaged(false);
-         nbRSHbox.setManaged(false);
-         weightHbox.setManaged(false);
-
-         DuratField.setVisible(true);
-         calField.setVisible(true);
-         nbSerField.setVisible(false);
-         NbRepField.setVisible(false);
-         weigField.setVisible(false);
-     }else{
-
-         calHbox.setVisible(false);
-         durHbox.setVisible(false);
-         calHbox.setManaged(false);
-         durHbox.setManaged(false);
-         nbSHbox.setVisible(true);
-         nbRSHbox.setVisible(true);
-         weightHbox.setVisible(true);
-         nbSHbox.setManaged(true);
-         nbRSHbox.setManaged(true);
-         weightHbox.setManaged(true);
-
-
-         DuratField.setVisible(false);
-         calField.setVisible(false);
-
-         nbSerField.setVisible(true);
-         NbRepField.setVisible(true);
-         weigField.setVisible(true);
-     }
+            nbSerField.setVisible(true);
+            NbRepField.setVisible(true);
+            weigField.setVisible(true);
+        }
     }
 
 
 
-    public void clearFields(MouseEvent mouseEvent) {
-        DuratField.setText("");
-        calField.setText("");
-        nbSerField.setText("");
-        NbRepField.setText("");
-        weigField.setText("");
-    }
-
-    public void addActivity(MouseEvent mouseEvent) throws IOException {
+    public void addActivity(MouseEvent mouseEvent) throws IOException, SQLException {
         String name = nameField.getText();
         String selectedType = typeField.getSelectionModel().getSelectedItem();
         String durationText = DuratField.getText().trim();
@@ -223,6 +224,10 @@ public class selectActivitesFXML implements Initializable {
 
         // Create an instance of ActivitePhysique with the retrieved data
         ActivitePhysique activitePhysique = new ActivitePhysique();
+        activitePhysique=sapObjectif.fetchActiviteById(IdAct) ;
+        Objectif objectif = sapActivite.fetchObjectifById(IdObj);
+        //System.out.println(IdAct);
+
         activitePhysique.setNomActivite(name);
         activitePhysique.setTypeActivite(selectedType);
         activitePhysique.setDureeActivite(duration); // Handle null value
@@ -232,24 +237,56 @@ public class selectActivitesFXML implements Initializable {
         activitePhysique.setPoidsParSerie(weight); // Handle null value
         activitePhysique.setImageActivite(ImageActivitePath);
 
-        System.out.println(IdObj);
+       // System.out.println(IdObj);
+
+            sapActivite.updateOnlyFields(activitePhysique);
+           sapObjectif.calculateAndUpdateTotalValuesForObjective(IdObj) ;
+            displayActivites(objectif) ;
+            //   System.out.println("ActivitePhysique added successfully!");
+
+    }
+
+    public void clearFields(MouseEvent mouseEvent) {
+    }
+
+    public void deleteActivite(ActivitePhysique activitePhysique) {
         try {
             Objectif objectif = sapActivite.fetchObjectifById(IdObj);
-            System.out.println(activitePhysique.getObjectifs());
-            activitePhysique.getObjectifs().add(objectif) ;
-            System.out.println(activitePhysique.getObjectifs());
-            if(selectedType.equals("Cardiovasculaire")) {
-                objectif.setTotalDuree(objectif.getTotalDuree() + duration);
-                objectif.setTotalCalories(objectif.getTotalCalories() + calories);
-                sapObjectif.updateTotalCaloriesAndDuration(objectif);
-            }
-            sapActivite.insertOne(activitePhysique);
-         //   System.out.println("ActivitePhysique added successfully!");
-        } catch (Exception e) {
-            System.out.println(activitePhysique);
+            sapActivite.deleteOne(activitePhysique);
+            sapObjectif.calculateAndUpdateTotalValuesForObjective(IdObj) ;
+            // Optionally, you can update the view after deletion
+            displayActivites(objectif);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+    }
+    public void getBack(MouseEvent mouseEvent) throws IOException {
+        try {
+            // Load the AfficherObjectifs.fxml file
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Front/AfficherObjectifs.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Get the controller associated with the loaded FXML file
+            AfficherObjectifsFXML controller = fxmlLoader.getController();
+
+            // Call a method on the controller to trigger the refresh
+            controller.clearList();
+            // Get the current stage
+            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+
+            // Create a new scene with the root and set it to the stage
+            stage.setScene(new Scene(root));
+
+            // Close the current stage
+            stage.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
 
     private Integer parseInteger(String value) {
         if (value.trim().isEmpty()) {
@@ -279,17 +316,5 @@ public class selectActivitesFXML implements Initializable {
         // Implement uniqid generation function (you can use libraries or built-in functions for this)
         // This is a simplified example
         return Long.toHexString(System.currentTimeMillis());
-    }
-
-    public void getBack(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Front/AfficherObjectifs.fxml"));
-        Parent root = fxmlLoader.load();
-
-        // Get the current stage
-        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-
-        // Create a new scene with the root and set it to the stage
-        stage.setScene(new Scene(root));
-        stage.show();
     }
 }

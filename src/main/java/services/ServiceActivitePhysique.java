@@ -47,13 +47,13 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
             psObjectif.setInt(2, objectif.getId());
             psObjectif.executeUpdate();
         }
-
+        activitePhysique.setId(activiteId);
         System.out.println("ActivitePhysique and associated Objectifs Added!");
     }
 
 
-    public void insertActivityWithidObjectif (ActivitePhysique activitePhysique, int idObj) throws SQLException {
-        String reqActivite = "INSERT INTO `activite_physique`(`nom_Activite`, `type_Activite`, `duree_Activite`, `calories_Brules`, `nb_Series`, `nb_Rep_Series`, `poids_Par_Serie`,`image_Activite`) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+    public void insertActivityWithidObjectif(ActivitePhysique activitePhysique, int idObj) throws SQLException {
+        String reqActivite = "INSERT INTO `activite_physique`(`nom_Activite`, `type_Activite`, `duree_Activite`, `calories_Brules`, `nb_Series`, `nb_Rep_Series`, `poids_Par_Serie`,`image_Activite`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement psActivite = cnx.prepareStatement(reqActivite, Statement.RETURN_GENERATED_KEYS);
         psActivite.setString(1, activitePhysique.getNomActivite());
         psActivite.setString(2, activitePhysique.getTypeActivite());
@@ -74,16 +74,24 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
         } else {
             throw new SQLException("Failed to retrieve the generated id of the activite_physique.");
         }
+        System.out.println("Generated activiteId: " + activiteId);
+        System.out.println("Received idObj: " + idObj);
 
-        // Insert associated objectif
-        String reqObjectif = "INSERT INTO `objectif_activite_physique`(`activite_physique_id`, `objectif_id`) VALUES (?, ?)";
-        PreparedStatement psObjectif = cnx.prepareStatement(reqObjectif);
-        psObjectif.setInt(1, activiteId);
-        psObjectif.setInt(2, idObj);
-        psObjectif.executeUpdate();
+        try {
+            String reqObjectif = "INSERT INTO `objectif_activite_physique`(`activite_physique_id`, `objectif_id`) VALUES (?, ?)";
+            PreparedStatement psObjectif = cnx.prepareStatement(reqObjectif);
+            psObjectif.setInt(1, activiteId);
+            psObjectif.setInt(2, idObj);
+            psObjectif.executeUpdate();
 
-        System.out.println("ActivitePhysique and associated Objectif Added!");
+            //activitePhysique.setId(activiteId);
+            System.out.println("ActivitePhysique and associated Objectif Added!");
+        } catch (SQLException e) {
+            System.out.println("Error inserting into objectif_activite_physique: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
    /*
    public void insertOne1(ActivitePhysique ActivitePhysique) throws SQLException {
@@ -143,15 +151,48 @@ public class ServiceActivitePhysique implements CRUD<ActivitePhysique>{
         }
     }
 
+    public void updateOnlyFields(ActivitePhysique activitePhysique) throws SQLException {
+        String updateQuery = "UPDATE `activite_physique` SET `duree_Activite`=?, `calories_Brules`=?, `nb_Series`=?, `nb_Rep_Series`=?, `poids_Par_Serie`=? WHERE `id`=?";
+
+        try (PreparedStatement updateStatement = cnx.prepareStatement(updateQuery)) {
+            // Set parameters for updating specific fields
+            updateStatement.setObject(1, activitePhysique.getDureeActivite());
+            updateStatement.setObject(2, activitePhysique.getCaloriesBrules());
+            updateStatement.setObject(3, activitePhysique.getNbSeries());
+            updateStatement.setObject(4, activitePhysique.getNbRepSeries());
+            updateStatement.setObject(5, activitePhysique.getPoidsParSerie());
+            updateStatement.setInt(6, activitePhysique.getId());
+
+            // Execute the update query
+            updateStatement.executeUpdate();
+
+            System.out.println("Selected fields of ActivitePhysique Updated!");
+        } catch (SQLException e) {
+            System.err.println("Error updating selected fields of ActivitePhysique: " + e.getMessage());
+            throw e;
+        }
+    }
+
 
     @Override
-    public void deleteOne(ActivitePhysique ActivitePhysique) throws SQLException {
+    public void deleteOne(ActivitePhysique activitePhysique) throws SQLException {
+        if (activitePhysique == null) {
+            System.out.println("ActivitePhysique object is null.");
+            return; // Exit the method if activitePhysique is null
+        }
+
         String req = "DELETE FROM `activite_physique` WHERE `id`=?";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, ActivitePhysique.getId()); // Assuming you have an id field in your ActivitePhysique class
-        ps.executeUpdate();
-        System.out.println("ActivitePhysique Deleted !");
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, activitePhysique.getId());
+            ps.executeUpdate();
+            System.out.println("ActivitePhysique Deleted !");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQLException
+        }
     }
+
+
 
 
     @Override

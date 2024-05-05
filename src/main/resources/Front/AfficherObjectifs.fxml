@@ -28,53 +28,92 @@
         <Pane layoutX="348.0" layoutY="76.0" prefHeight="0.0" prefWidth="783.0" style="-fx-background-color: #414072;" />
         <VBox layoutX="450.0" layoutY="76.0" prefHeight="699.0" prefWidth="838.0" style="-fx-background-color: #234875; -fx-background-radius: 10; -fx-border-width: 2; -fx-border-radius: 10;" AnchorPane.rightAnchor="39.0">
             <children>
-                <HBox alignment="CENTER_RIGHT" prefHeight="102.0" prefWidth="817.0" style="-fx-background-radius: 15; -fx-background-color: #F6EDD9; -fx-border-radius: 10; -fx-border-color: #181B1B; -fx-border-width: 2;">
-                    <children>
-                        <VBox alignment="CENTER" prefHeight="98.0" prefWidth="154.0">
-                            <children>
-                                <Text fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" text="ᴏʙᴊᴇᴄᴛɪᴠᴇꜱ ʟɪꜱᴛ">
-                                    <font>
-                                        <Font name="System Bold" size="38.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                            <HBox.margin>
-                                <Insets right="-50.0" />
-                            </HBox.margin>
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                        </VBox>
-                        <VBox alignment="CENTER">
-                            <HBox.margin>
-                                <Insets right="250.0" />
-                            </HBox.margin>
-                        </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="102.0" prefWidth="817.0" style="-fx-background-radius: 15; -fx-background-color: #F6EDD9; -fx-border-radius: 10; -fx-border-color: #181B1B; -fx-border-width: 2;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="98.0" prefWidth="154.0">
+                     <children>
+                        <Text fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" text="ᴏʙᴊᴇᴄᴛɪᴠᴇꜱ ʟɪꜱᴛ:">
+                           <font>
+                              <Font name="System Bold" size="38.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="50.0" left="10.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" onMouseClicked="#createVbObj" prefHeight="101.0" prefWidth="114.0">
+                     <children>
+                        <Text fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" text="create">
+                           <font>
+                              <Font name="Consolas Bold Italic" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Text>
+                        <ImageView fitHeight="50.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../img/createO.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" onMouseClicked="#viewVbObj" prefHeight="101.0" prefWidth="114.0">
+                     <children>
+                        <Text fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" text="view">
+                           <font>
+                              <Font name="Consolas Bold Italic" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Text>
+                        <ImageView fitHeight="44.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets top="6.0" />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../img/viewO.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="50.0" right="150.0" />
+                     </HBox.margin>
+                  </VBox>
                   <ImageView fitHeight="65.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/objective.png" />
                      </image>
                      <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets bottom="10.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                    </children>
-                    <opaqueInsets>
-                        <Insets bottom="20.0" />
-                    </opaqueInsets>
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </VBox.margin>
-                </HBox>
-                <HBox prefHeight="17.0" prefWidth="870.0">
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="20.0" />
+               </opaqueInsets>
+            </HBox>
+                <HBox prefHeight="75.0" prefWidth="838.0">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
                 </HBox>
-            <ListView fx:id="listObjectives" prefHeight="305.0" prefWidth="770.0" style="-fx-background-color: #234875;">
-               <VBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </VBox.margin></ListView>
+                <ListView fx:id="listObjectives" prefHeight="402.0" prefWidth="818.0" style="-fx-background-color: #234875;">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </VBox.margin>
+                </ListView>
 
             </children>
         </VBox>
@@ -91,9 +130,9 @@
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="20.0" top="30.0" />
-               </VBox.margin>
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="-4.0" />
+                    </VBox.margin>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
@@ -137,16 +176,16 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="342.0">
                             <children>
                                 <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="82.0">
-                           <children>
+                                    <children>
                                         <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../img/durationA.png" />
                                             </image>
                                         </ImageView>
-                           </children></HBox>
+                                    </children></HBox>
                                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="255.0">
                                     <children>
-                              <DatePicker fx:id="dateObjField" prefHeight="30.0" prefWidth="258.0" />
+                                        <DatePicker fx:id="dateObjField" prefHeight="30.0" prefWidth="258.0" />
                                     </children>
                                 </HBox>
                             </children>
@@ -157,33 +196,33 @@
                                 <Insets bottom="20.0" />
                             </VBox.margin>
                         </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="366.0">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="90.0" prefWidth="72.0">
-                           <children>
-                              <ImageView fitHeight="42.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/noteO.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="366.0">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="90.0" prefWidth="72.0">
+                                    <children>
+                                        <ImageView fitHeight="42.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../img/noteO.png" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </HBox>
+                                <TextArea fx:id="NoteObjField" prefHeight="86.0" prefWidth="257.0">
+                                    <HBox.margin>
+                                        <Insets left="9.0" />
+                                    </HBox.margin>
+                                </TextArea>
+                            </children>
                         </HBox>
-                        <TextArea fx:id="NoteObjField" prefHeight="86.0" prefWidth="256.0">
-                           <HBox.margin>
-                              <Insets left="9.0" />
-                           </HBox.margin>
-                        </TextArea>
-                     </children>
-                  </HBox>
                         <HBox alignment="CENTER" prefHeight="75.0" prefWidth="386.0">
                             <children>
-                                <ImageView fitHeight="52.0" fitWidth="72.0" onMouseClicked="#createObj" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="imgUpCr" fitHeight="52.0" fitWidth="72.0" onMouseClicked="#createOrUpdateObj" pickOnBounds="true" preserveRatio="true">
                                     <HBox.margin>
                                         <Insets right="60.0" />
                                     </HBox.margin>
-                                    <image>
-                                        <Image url="@../img/add.png" />
-                                    </image>
+                           <image>
+                              <Image url="@../img/add.png" />
+                           </image>
                                 </ImageView>
                                 <ImageView fitHeight="52.0" fitWidth="72.0" onMouseClicked="#clearFields" pickOnBounds="true" preserveRatio="true">
                                     <image>

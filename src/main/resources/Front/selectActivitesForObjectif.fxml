@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="799.0" prefWidth="1291.0" style="-fx-background-color: #F6EDD9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Front.selectActivitesForObjectifFXML">
+<children>
+    <HBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="14.0" prefHeight="59.0" prefWidth="1228.0" style="-fx-background-color: #234875; -fx-background-radius: 10; -fx-border-width: 2;">
+        <children>
+            <FontAwesomeIconView fill="#f6edd9" glyphName="ARROW_LEFT" onMouseClicked="#getBack" size="28">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </FontAwesomeIconView>
+        </children></HBox>
+    <Pane layoutX="348.0" layoutY="76.0" prefHeight="0.0" prefWidth="783.0" style="-fx-background-color: #414072;" />
+    <VBox layoutX="450.0" layoutY="76.0" prefHeight="699.0" prefWidth="838.0" style="-fx-background-color: #234875; -fx-background-radius: 10; -fx-border-width: 2; -fx-border-radius: 10;" AnchorPane.rightAnchor="39.0">
+        <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="102.0" prefWidth="817.0" style="-fx-background-radius: 15; -fx-background-color: #F6EDD9; -fx-border-radius: 10; -fx-border-color: #181B1B; -fx-border-width: 2;">
+                <children>
+                    <VBox alignment="CENTER" prefHeight="98.0" prefWidth="154.0">
+                        <children>
+                            <Text fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" text="your ᴀᴄᴛɪᴠɪᴛɪᴇꜱ ">
+                                <font>
+                                    <Font name="System Bold" size="38.0" />
+                                </font>
+                            </Text>
+                        </children>
+                        <HBox.margin>
+                            <Insets right="-50.0" />
+                        </HBox.margin>
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                    </VBox>
+                    <VBox alignment="CENTER">
+                        <HBox.margin>
+                            <Insets right="250.0" />
+                        </HBox.margin>
+                    </VBox>
+                    <ImageView fitHeight="82.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/filter.png" />
+                        </image>
+                        <HBox.margin>
+                            <Insets right="10.0" />
+                        </HBox.margin>
+                    </ImageView>
+                </children>
+                <opaqueInsets>
+                    <Insets bottom="20.0" />
+                </opaqueInsets>
+                <VBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </VBox.margin>
+            </HBox>
+            <HBox prefHeight="17.0" prefWidth="870.0">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </HBox>
+            <ScrollPane maxWidth="-Infinity" prefHeight="547.0" prefWidth="813.0" style="-fx-background-radius: 4; -fx-border-color: black; -fx-border-radius: 4; -fx-background-color: #F6EDD9;">
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+                <content>
+                    <GridPane fx:id="Mygrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="23.0" style="-fx-background-color: #F6EDD9;">
+                        <columnConstraints>
+                            <!-- Set a flexible width for the column -->
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                    </GridPane>
+                </content>
+            </ScrollPane>
+
+        </children>
+    </VBox>
+    <VBox fx:id="vboxSelAct" layoutX="24.0" layoutY="76.0" prefHeight="699.0" prefWidth="386.0" style="-fx-background-color: #234875; -fx-background-radius: 10;">
+        <children>
+            <HBox alignment="CENTER" prefHeight="68.0" prefWidth="319.0">
+                <children>
+                    <Text fill="#0092c3" strokeType="OUTSIDE" strokeWidth="0.0" text="ꜱᴇʟᴇᴄᴛᴇᴅ ᴀᴄᴛɪᴠɪᴛʏ">
+                        <font>
+                            <Font name="Arial Bold" size="38.0" />
+                        </font>
+                    </Text>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <ImageView fx:id="imgActv" fitHeight="150.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/altA.gif" />
+                        </image></ImageView>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </VBox.margin>
+            </HBox>
+            <VBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="324.0">
+                <children>
+                    <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="342.0">
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="82.0">
+                                <children>
+                                    <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/nameA.png" />
+                                        </image>
+                                    </ImageView>
+                                </children></HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="258.0">
+                                <children>
+                                    <TextField fx:id="nameField" disable="true" prefHeight="26.0" prefWidth="270.0" promptText="Name" />
+                                </children>
+                            </HBox>
+                        </children>
+                        <opaqueInsets>
+                            <Insets bottom="10.0" top="10.0" />
+                        </opaqueInsets>
+                        <VBox.margin>
+                            <Insets bottom="20.0" top="10.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="342.0">
+                        <children>
+                            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="82.0">
+                                <children>
+                                    <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/typeA.png" />
+                                        </image>
+                                    </ImageView>
+                                </children></HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="258.0">
+                                <children>
+                                    <ComboBox fx:id="typeField" disable="true" prefHeight="28.0" prefWidth="294.0" promptText="Type">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </ComboBox>
+                                </children>
+                            </HBox>
+                        </children>
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox fx:id="durHbox" prefHeight="40.0" prefWidth="342.0">
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="82.0">
+                                <children>
+                                    <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/durationA.png" />
+                                        </image>
+                                    </ImageView>
+                                </children></HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="257.0">
+                                <children>
+                                    <TextField fx:id="DuratField" prefHeight="26.0" prefWidth="271.0" promptText="Duration">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </TextField>
+                                </children>
+                            </HBox>
+                        </children>
+                        <opaqueInsets>
+                            <Insets top="10.0" />
+                        </opaqueInsets>
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox fx:id="calHbox" prefHeight="40.0" prefWidth="342.0">
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="82.0">
+                                <children>
+                                    <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/calories.png" />
+                                        </image>
+                                    </ImageView>
+                                </children></HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="258.0">
+                                <children>
+                                    <TextField fx:id="calField" prefHeight="26.0" prefWidth="292.0" promptText="Calories">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </TextField>
+                                </children>
+                            </HBox>
+                        </children>
+                        <opaqueInsets>
+                            <Insets top="10.0" />
+                        </opaqueInsets>
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox fx:id="nbSHbox" prefHeight="40.0" prefWidth="342.0">
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="82.0">
+                                <children>
+                                    <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/serieA.png" />
+                                        </image>
+                                    </ImageView>
+                                </children></HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="259.0">
+                                <children>
+                                    <TextField fx:id="nbSerField" prefHeight="26.0" prefWidth="306.0" promptText="Number of serie">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </TextField>
+                                </children>
+                            </HBox>
+                        </children>
+                        <opaqueInsets>
+                            <Insets top="10.0" />
+                        </opaqueInsets>
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox fx:id="nbRSHbox" prefHeight="40.0" prefWidth="342.0">
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="82.0">
+                                <children>
+                                    <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/serieRA.png" />
+                                        </image>
+                                    </ImageView>
+                                </children></HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="259.0">
+                                <children>
+                                    <TextField fx:id="NbRepField" prefHeight="26.0" prefWidth="268.0" promptText="Repetetion serie number ">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </TextField>
+                                </children>
+                            </HBox>
+                        </children>
+                        <opaqueInsets>
+                            <Insets top="10.0" />
+                        </opaqueInsets>
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox fx:id="weightHbox" prefHeight="40.0" prefWidth="342.0">
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="82.0">
+                                <children>
+                                    <ImageView fitHeight="40.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/weightA.png" />
+                                        </image>
+                                    </ImageView>
+                                </children></HBox>
+                            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="259.0">
+                                <children>
+                                    <TextField fx:id="weigField" prefHeight="26.0" prefWidth="270.0" promptText="Weight">
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </TextField>
+                                </children>
+                            </HBox>
+                        </children>
+                        <opaqueInsets>
+                            <Insets top="10.0" />
+                        </opaqueInsets>
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </HBox>
+                    <HBox alignment="CENTER" prefHeight="75.0" prefWidth="386.0">
+                        <children>
+                            <ImageView fitHeight="52.0" fitWidth="72.0" onMouseClicked="#addActivity" pickOnBounds="true" preserveRatio="true">
+                                <HBox.margin>
+                                    <Insets right="60.0" />
+                                </HBox.margin>
+                                <image>
+                                    <Image url="@../img/add.png" />
+                                </image>
+                            </ImageView>
+                            <ImageView fitHeight="52.0" fitWidth="72.0" onMouseClicked="#clearFields" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/clear.png" />
+                                </image>
+                            </ImageView>
+                        </children>
+                        <VBox.margin>
+                            <Insets top="20.0" />
+                        </VBox.margin>
+                    </HBox>
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+</children>
+</AnchorPane>
