@@ -11,12 +11,20 @@ public class Objectif {
     private int totalCalories;
     private int totalDuree;
     private String note;
+<<<<<<< HEAD
     //private List<ActivitePhysique> activites;
 
     /*public Objectif() {
         this.activites=new ArrayList<>();
     }
      */
+=======
+    private List<ActivitePhysique> activites;
+
+    public Objectif() {
+        this.activites=new ArrayList<>();
+    }
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 
     public Objectif(int id, String nomObjectif, Date dateObjectif, int totalCalories, int totalDuree, String note) {
         this.id = id;
@@ -25,7 +33,11 @@ public class Objectif {
         this.totalCalories = totalCalories;
         this.totalDuree = totalDuree;
         this.note = note;
+<<<<<<< HEAD
      //   this.activites=new ArrayList<>();
+=======
+        this.activites=new ArrayList<>();
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     }
 
     public int getId() {
@@ -76,7 +88,11 @@ public class Objectif {
         this.note = note;
     }
 
+<<<<<<< HEAD
     /*public List<ActivitePhysique> getActivites() {
+=======
+    public List<ActivitePhysique> getActivites() {
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
         return activites;
     }
 
@@ -84,8 +100,11 @@ public class Objectif {
         this.activites = activites;
     }
 
+<<<<<<< HEAD
      */
 
+=======
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     @Override
     public String toString() {
         return "Objectif{" +

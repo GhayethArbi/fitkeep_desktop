@@ -7,9 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
 import models.Category;
 import models.User;
 import services.ServiceCategory;
+=======
+import models.User;
+import services.ServiceUser;
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 
 public class AjouterUserFXML {
 
@@ -31,9 +36,15 @@ public class AjouterUserFXML {
     @FXML
     void ajouterUser(ActionEvent event) {
         try {
+<<<<<<< HEAD
             Category c = new Category();
             ServiceCategory cat = new ServiceCategory();
             cat.insertOne(c);
+=======
+            User u = new User(tfName.getText(), tfLastName.getText(), tfEmail.getText());
+            ServiceUser su = new ServiceUser();
+            su.insertOne(u);
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");

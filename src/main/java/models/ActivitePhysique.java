@@ -7,7 +7,11 @@ public class ActivitePhysique {
     private int id;
     private String nomActivite, typeActivite;
     private int dureeActivite, caloriesBrules, nbSeries, nbRepSeries, poidsParSerie;
+<<<<<<< HEAD
     //private String imageActivite;
+=======
+    private String imageActivite;
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     private List<Objectif> objectifs;
 
     public ActivitePhysique() {
@@ -23,12 +27,20 @@ public class ActivitePhysique {
         this.nbSeries = nbSeries;
         this.nbRepSeries = nbRepSeries;
         this.poidsParSerie = poidsParSerie;
+<<<<<<< HEAD
        /* this.imageActivite = imageActivite;
         this.objectifs =new ArrayList<>();
         */
     }
 
    public List<Objectif> getObjectifs() {
+=======
+        this.imageActivite = imageActivite;
+        this.objectifs =new ArrayList<>();
+    }
+
+    public List<Objectif> getObjectifs() {
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
         return objectifs;
     }
 
@@ -100,7 +112,11 @@ public class ActivitePhysique {
         this.poidsParSerie = poidsParSerie;
     }
 
+<<<<<<< HEAD
    /* public String getImageActivite() {
+=======
+    public String getImageActivite() {
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
         return imageActivite;
     }
 
@@ -108,8 +124,11 @@ public class ActivitePhysique {
         this.imageActivite = imageActivite;
     }
 
+<<<<<<< HEAD
 
     */
+=======
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     @Override
     public String toString() {
         return "ActivitePhysique{" +
@@ -121,7 +140,11 @@ public class ActivitePhysique {
                 ", nbSeries=" + nbSeries +
                 ", nbRepSeries=" + nbRepSeries +
                 ", poidsParSerie=" + poidsParSerie +
+<<<<<<< HEAD
               /* ", imageActivite='" + imageActivite + '\'' +*/
+=======
+                ", imageActivite='" + imageActivite + '\'' +
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
                 '}';
     }
 }

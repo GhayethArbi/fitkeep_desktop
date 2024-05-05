@@ -196,6 +196,7 @@ public class CategoryDetails implements Initializable {
 
         // Check if a category is selected
         if (selectedCategory != null) {
+            System.out.println("gjhjyggutf");
             // Update the name of the selected category
             selectedCategory.setName(newName);
 

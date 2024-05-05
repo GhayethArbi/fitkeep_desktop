@@ -1,6 +1,7 @@
 package models;
 
 public class Product {
+<<<<<<< HEAD
     private int id;
     private int category_id; // New property for category_id
     private Category category; // Reference to the Category
@@ -12,13 +13,27 @@ public class Product {
     private int quantite;
     private int price;
     private String color;
+=======
+    int id;
+    Category category;
+    String name;
+    String slug;
+    String illustration;
+    String subtitle;
+    String description;
+    int quantite;
+    int price;
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 
     public Product() {
     }
 
     public Product(int id, Category category, String name, String slug, String illustration, String subtitle, String description, int quantite, int price) {
         this.id = id;
+<<<<<<< HEAD
         this.category_id = category.getId(); // Set category_id based on Category's id
+=======
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
         this.category = category;
         this.name = name;
         this.slug = slug;
@@ -29,7 +44,10 @@ public class Product {
         this.price = price;
     }
 
+<<<<<<< HEAD
     // Getters and setters
+=======
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     public int getId() {
         return id;
     }
@@ -38,6 +56,7 @@ public class Product {
         this.id = id;
     }
 
+<<<<<<< HEAD
     public int getCategory_id() {
         return category_id;
     }
@@ -46,13 +65,18 @@ public class Product {
         this.category_id = category_id;
     }
 
+=======
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
+<<<<<<< HEAD
         this.category_id = category.getId(); // Update category_id when category is set
+=======
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     }
 
     public String getName() {
@@ -110,6 +134,7 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+<<<<<<< HEAD
     public String getColor() {
         return color;
     }
@@ -125,4 +150,6 @@ public class Product {
         }
     }
 
+=======
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import java.lang.*?>
 <?import javafx.scene.chart.*?>
@@ -289,3 +290,14 @@
       </AnchorPane>
    </children>
 </StackPane>
+=======
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="165.0" />
+      <AnchorPane layoutX="166.0" prefHeight="400.0" prefWidth="434.0" />
+   </children>
+</AnchorPane>
+>>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
