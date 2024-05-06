@@ -5,46 +5,34 @@ import java.util.Date;
 import java.util.List;
 
 public class Objectif {
-    private int id;
+    private Integer id;
     private String nomObjectif;
     private Date dateObjectif;
-    private int totalCalories;
-    private int totalDuree;
+    private Integer totalCalories;
+    private Integer totalDuree;
     private String note;
-<<<<<<< HEAD
-    //private List<ActivitePhysique> activites;
-
-    /*public Objectif() {
-        this.activites=new ArrayList<>();
-    }
-     */
-=======
     private List<ActivitePhysique> activites;
 
     public Objectif() {
         this.activites=new ArrayList<>();
     }
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 
-    public Objectif(int id, String nomObjectif, Date dateObjectif, int totalCalories, int totalDuree, String note) {
+
+    public Objectif(Integer id, String nomObjectif, Date dateObjectif, Integer totalCalories, Integer totalDuree, String note) {
         this.id = id;
         this.nomObjectif = nomObjectif;
         this.dateObjectif = dateObjectif;
         this.totalCalories = totalCalories;
         this.totalDuree = totalDuree;
         this.note = note;
-<<<<<<< HEAD
-     //   this.activites=new ArrayList<>();
-=======
         this.activites=new ArrayList<>();
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,27 +44,27 @@ public class Objectif {
         this.nomObjectif = nomObjectif;
     }
 
-    public Date getDateObjectif() {
-        return dateObjectif;
+    public java.sql.Date getDateObjectif() {
+        return (java.sql.Date) dateObjectif;
     }
 
     public void setDateObjectif(Date dateObjectif) {
         this.dateObjectif = dateObjectif;
     }
 
-    public int getTotalCalories() {
+    public Integer getTotalCalories() {
         return totalCalories;
     }
 
-    public void setTotalCalories(int totalCalories) {
+    public void setTotalCalories(Integer totalCalories) {
         this.totalCalories = totalCalories;
     }
 
-    public int getTotalDuree() {
+    public Integer getTotalDuree() {
         return totalDuree;
     }
 
-    public void setTotalDuree(int totalDuree) {
+    public void setTotalDuree(Integer totalDuree) {
         this.totalDuree = totalDuree;
     }
 
@@ -88,11 +76,7 @@ public class Objectif {
         this.note = note;
     }
 
-<<<<<<< HEAD
-    /*public List<ActivitePhysique> getActivites() {
-=======
     public List<ActivitePhysique> getActivites() {
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
         return activites;
     }
 
@@ -100,11 +84,7 @@ public class Objectif {
         this.activites = activites;
     }
 
-<<<<<<< HEAD
-     */
 
-=======
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     @Override
     public String toString() {
         return "Objectif{" +

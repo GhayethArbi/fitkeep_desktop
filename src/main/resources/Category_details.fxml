@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -33,17 +32,4 @@
         <Button layoutX="173.0" layoutY="331.0" mnemonicParsing="false" onAction="#AddCateg" prefHeight="26.0" prefWidth="151.0" stylesheets="/CSS/style1.css" text="SAVE" />
         <Button layoutX="383.0" layoutY="331.0" mnemonicParsing="false" onAction="#ClearField" prefHeight="26.0" prefWidth="151.0" stylesheets="/CSS/style1.css" text="CLEAR" />
     </children>
-=======
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CategoryDetails"
-            prefHeight="400.0" prefWidth="600.0">
-
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 </AnchorPane>

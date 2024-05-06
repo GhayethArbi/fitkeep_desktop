@@ -34,29 +34,23 @@ public class ServiceCategory implements CRUD<Category>{
 
     @Override
     public void updateOne(Category category) throws SQLException {
-
         String req = "UPDATE `category` SET `name` = ? WHERE `id` = ?";
-
         PreparedStatement ps = cnx.prepareStatement(req);
 
         ps.setString(1, category.getName());
         ps.setInt(2, category.getId());
 
-
         ps.executeUpdate();
-
     }
 
     @Override
     public void deleteOne(Category category) throws SQLException {
-
         String req = "DELETE FROM `category` WHERE `id`=?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, category.getId()); // Assuming you have an id field in your ActivitePhysique class
         ps.executeUpdate();
         System.out.println("ActivitePhysique Deleted !");
     }
-
     @Override
     public List<Category> selectAll() throws SQLException {
         List<Category> categoryList = new ArrayList<>();
@@ -74,7 +68,6 @@ public class ServiceCategory implements CRUD<Category>{
         }
         return categoryList;
     }
-
     public Category getCategoryByName(String categoryName) throws SQLException {
         String req = "SELECT * FROM `category` WHERE `name`=?";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
@@ -108,6 +101,5 @@ public class ServiceCategory implements CRUD<Category>{
 
         return categories;
     }
-
 
 }

@@ -1,20 +1,16 @@
 package test;
 
-<<<<<<< HEAD
 import controllers.CategoryDetails;
-=======
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-<<<<<<< HEAD
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/*
 public class FxMain extends Application {
     @Override
     public void start(Stage primaryStage) {
@@ -32,9 +28,14 @@ public class FxMain extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        launch(args);
-=======
+   /* public static void main(String[] args) {
+        launch(args);*/
+
+import models.User;
+import repository.UserRepository;
+
+import java.sql.SQLException;
+
 
 public class FxMain extends Application {
 
@@ -44,17 +45,28 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass()
-                .getResource("/AjouterUserFXML.fxml"));
-        Parent parent = loader.load();
+       /*try {
+           UserRepository userRepository=new UserRepository();
 
-        Scene scene = new Scene(parent);
+        User user = new User();
+        user.setPassword("12345678");
+        user.setId(41);
+        userRepository.changePassword(user);
+       }catch (SQLException e){
+           System.out.println(e.getMessage());
+       }*/
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
 
-        stage.setTitle("Ajouter un user ");
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        stage.setTitle("Login");
         stage.setScene(scene);
 
         stage.show();
 
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
+
+
     }
+
 }

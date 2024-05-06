@@ -10,4 +10,5 @@ public interface CRUD<T> {
     void deleteOne(T t) throws SQLException;
     List<T> selectAll() throws SQLException;
 
+
 }

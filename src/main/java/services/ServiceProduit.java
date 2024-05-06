@@ -1,6 +1,5 @@
 package services;
 
-<<<<<<< HEAD
 import models.Category;
 import models.Product;
 import utils.DBConnection;
@@ -102,7 +101,4 @@ public class ServiceProduit implements CRUD<Product> {
     public List<Product> getAllProducts() throws SQLException {
         return selectAll();
     }
-=======
-public class ServiceProduit {
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 }

@@ -8,11 +8,8 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-<<<<<<< HEAD
-    private static final String URL = "jdbc:mysql://localhost:3306/fit_keep";
-=======
+    //private static final String URL = "jdbc:mysql://localhost:3306/fit_keep";
     private static final String URL = "jdbc:mysql://localhost:3306/fitkeep";
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     private static final String USER = "root";
     private static final String PASSWORD = "";
 

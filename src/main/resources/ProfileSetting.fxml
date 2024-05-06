@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileSettingController">
+    <VBox layoutY="60.0" prefHeight="540.0" prefWidth="200" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+        <Button onAction="#goToDash" prefHeight="26.0" prefWidth="182.0" styleClass="button-route" text="Dashboard" textFill="#012970" />
+      <Button layoutX="30.0" layoutY="56.0" onAction="#goToUsers" prefHeight="26.0" prefWidth="175.0" styleClass="button-route" text="Table of users" textFill="#4154f1" />
+        <Button onAction="#goToOverview" prefHeight="26.0" prefWidth="175.0" styleClass="current-route" text="Profile Setting" textFill="#4154f1" />
+        <Button onAction="#Logout" prefHeight="26.0" prefWidth="170.0" styleClass="button-route" text="Logout" textFill="#012970" />
+
+    </VBox>
+    <HBox prefHeight="60.0" prefWidth="1200.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <ImageView fitHeight="60.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@fitkeepedited.png" />
+        </image>
+    </ImageView>
+    <ListView layoutX="414.0" layoutY="100.0" prefHeight="486.0" prefWidth="711.0" styleClass="card" />
+    <HBox layoutX="430.0" layoutY="121.0" prefHeight="26.0" prefWidth="475.0">
+        <children>
+            <Button onAction="#goToOverview" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: white;" text="Overview" textFill="#012970" />
+            <Button layoutX="10.0" layoutY="10.0" onAction="#goToEditProfile" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #f6f9ff;" text="Edit Profile" textFill="#4154f1" />
+            <Button layoutX="109.0" layoutY="10.0" onAction="#goToChangePassword" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: white;" text="Change Password" textFill="#012970" />
+        </children>
+    </HBox>
+    <HBox layoutX="959.0" layoutY="16.0" prefHeight="34.0" prefWidth="200.0" AnchorPane.rightAnchor="41.0">
+        <children>
+            <Circle fx:id="imgCircle" fill="DODGERBLUE" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="currentUserName" fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0">
+            <HBox.margin>
+               <Insets left="10.0" top="5.0" />
+            </HBox.margin></Text>
+        </children>
+    </HBox>    <VBox layoutX="448.0" layoutY="169.0" prefHeight="312.0" prefWidth="131.0">
+        <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Text fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
+                </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Text fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
+                </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Text fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" />
+                </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="143.0" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Text fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" text="Birth day" />
+                </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Text fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+                </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Text fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
+                </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="176.0" prefHeight="100.0" prefWidth="131.0">
+                <children>
+                    <Text fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+    <VBox layoutX="579.0" layoutY="169.0" prefHeight="312.0" prefWidth="271.0">
+        <children>
+            <TextField fx:id="ftName" prefHeight="26.0" prefWidth="257.0" />
+            <Text fx:id="fnError" fill="#dc3545" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.736572265625" />
+            <TextField fx:id="ftLastName" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="257.0" />
+            <Text fx:id="lnError" fill="#dc3545" layoutX="10.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.736572265625" />
+            <HBox prefHeight="26.0" prefWidth="271.0">
+                <children>
+                    <RadioButton fx:id="ftMale" mnemonicParsing="false" text="Male">
+                        <HBox.margin>
+                            <Insets top="4.0" />
+                        </HBox.margin>
+                  <toggleGroup>
+                     <ToggleGroup fx:id="genderToggleGroup" />
+                  </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="ftFemale" mnemonicParsing="false" text="Female" toggleGroup="$genderToggleGroup">
+                        <HBox.margin>
+                            <Insets left="4.0" top="4.0" />
+                        </HBox.margin>
+                    </RadioButton>
+                </children>
+            </HBox>
+            <Text fx:id="genderError" fill="#dc3545" layoutX="10.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.736572265625" />
+         <DatePicker fx:id="ftBirth" prefHeight="26.0" prefWidth="278.0" />
+            <Text fx:id="birthError" fill="#dc3545" layoutX="10.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.736572265625" />
+            <TextField fx:id="ftAddress" layoutX="10.0" layoutY="137.0" prefHeight="26.0" prefWidth="257.0" />
+            <Text fx:id="addressError" fill="#dc3545" layoutX="10.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.736572265625" />
+            <TextField fx:id="ftPhone" layoutX="10.0" layoutY="180.0" prefHeight="26.0" prefWidth="257.0" />
+            <Text fx:id="phoneError" fill="#dc3545" layoutX="10.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.736572265625" />
+            <TextField fx:id="ftEmail" layoutX="10.0" layoutY="222.0" prefHeight="26.0" prefWidth="257.0" />
+            <Text fx:id="emailError" fill="#dc3545" layoutX="10.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.736572265625" />
+        </children>
+    </VBox>
+    <Button layoutX="600.0" layoutY="493.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="38.0" prefWidth="145.0" styleClass="primary-button" text="Save Changes" />
+   <VBox alignment="TOP_CENTER" layoutX="221.0" layoutY="100.0" prefHeight="200.0" prefWidth="160.0" styleClass="card">
+      <children>
+         <Circle fx:id="image" fill="DODGERBLUE" radius="61.0" stroke="BLACK" strokeType="INSIDE" />
+          <Text fx:id="currentUserNameUp" fill="#012970" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" textAlignment="CENTER">
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+         </Text>
+      </children>
+   </VBox>
+</AnchorPane>
