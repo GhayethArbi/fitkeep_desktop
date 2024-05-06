@@ -1,4 +1,4 @@
-package controllers.Front;
+/*package controllers.Front;
 import java.io.IOException;
 
 import fi.iki.elonen.NanoHTTPD;
@@ -36,3 +36,4 @@ public class OAuthCallbackServer extends NanoHTTPD {
         }
 
 }
+*/

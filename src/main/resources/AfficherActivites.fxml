@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="667.0" prefWidth="1403.0" stylesheets="@values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherActivitesFXML">
+<AnchorPane prefHeight="667.0" prefWidth="1403.0" stylesheets="@values/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherActivitesFXML">
     <children>
         <TableView fx:id="PhysicalActivitiesTable" editable="true" layoutX="128.0" layoutY="240.0" prefHeight="302.0" prefWidth="1148.0">
             <columns>

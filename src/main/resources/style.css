@@ -1,0 +1,103 @@
+.error {
+    -fx-border-color: red;
+
+}
+.sidebar {
+    -fx-position: fixed;
+    -fx-top: 60px;
+    -fx-left: 0;
+    -fx-bottom: 0;
+    -fx-width: 300px;
+    -fx-z-index: 996;
+    -fx-transition: all 0.3s;
+    -fx-padding: 20px;
+    -fx-overflow-y: auto;
+    -fx-scrollbar-width: thin;
+    -fx-scrollbar-color: #aab7cf transparent;
+    -fx-effect: dropshadow(three-pass-box, rgba(1, 41, 112, 0.1), 20, 0, 0, 0);
+    -fx-background-color: #fff;
+}
+.header {
+    -fx-transition: all 0.5s;
+    -fx-z-index: 997;
+    -fx-height: 60px;
+    -fx-effect: dropshadow(three-pass-box, rgba(1, 41, 112, 0.1), 30, 0, 0, 2);
+    -fx-background-color: #fff;
+    -fx-padding-left: 20px;
+}
+.rounded-image {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-clip-path: url("rounded-rect.css");
+}
+.logo {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #012970;
+    -fx-font-family: "Nunito", sans-serif;
+}
+.card {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-spacing: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(1, 41, 112, 0.1), 20, 0, 0, 0);
+}
+
+.card-label {
+    -fx-font-size: 14px;
+}
+.primary-button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #0056b3;
+
+}
+.current-route{
+    -fx-background-color:  #f6f9ff;
+    -fx-text-fill: #4154f1;
+}
+.button-route{
+    -fx-background-color:  white;
+    -fx-text-fill: #012970;
+}
+.delete-button {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 3px 9px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+
+
+}
+.show-button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 3px 9px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+
+}
+.ban-button {
+    -fx-background-color: #39ff21;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 3px 9px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+
+}
+.label-overview {
+    -fx-font-weight: 600; /* Font weight 600 (bold) */
+    -fx-text-fill: rgba(1, 41, 112, 0.6); /* Text color with rgba values */
+}

@@ -1,0 +1,4 @@
+.rounded-rect {
+    -fx-arc-width: 10;
+    -fx-arc-height: 10;
+}

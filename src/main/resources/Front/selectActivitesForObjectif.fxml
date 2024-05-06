@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="799.0" prefWidth="1291.0" style="-fx-background-color: #F6EDD9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Front.selectActivitesForObjectifFXML">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="799.0" prefWidth="1291.0" style="-fx-background-color: #F6EDD9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Front.selectActivitesForObjectifFXML">
 <children>
     <HBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="14.0" prefHeight="59.0" prefWidth="1228.0" style="-fx-background-color: #234875; -fx-background-radius: 10; -fx-border-width: 2;">
         <children>
@@ -72,22 +72,34 @@
                     <Insets />
                 </opaqueInsets>
             </HBox>
-            <ScrollPane maxWidth="-Infinity" prefHeight="547.0" prefWidth="813.0" style="-fx-background-radius: 4; -fx-border-color: black; -fx-border-radius: 4; -fx-background-color: #F6EDD9;">
-                <VBox.margin>
-                    <Insets left="10.0" />
-                </VBox.margin>
-                <content>
-                    <GridPane fx:id="Mygrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="23.0" style="-fx-background-color: #F6EDD9;">
-                        <columnConstraints>
-                            <!-- Set a flexible width for the column -->
-                            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                        </columnConstraints>
-                        <opaqueInsets>
-                            <Insets />
-                        </opaqueInsets>
-                    </GridPane>
-                </content>
-            </ScrollPane>
+            <HBox>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+               <children>
+                  <ScrollPane maxWidth="-Infinity" prefHeight="546.0" prefWidth="470.0" style="-fx-background-radius: 4; -fx-border-color: black; -fx-border-radius: 4; -fx-background-color: #F6EDD9;">
+                      <content>
+                          <GridPane fx:id="Mygrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="23.0" style="-fx-background-color: #F6EDD9;">
+                              <columnConstraints>
+                                  <!-- Set a flexible width for the column -->
+                                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <opaqueInsets>
+                                  <Insets />
+                              </opaqueInsets>
+                          </GridPane>
+                      </content>
+                  </ScrollPane>
+                  <VBox prefHeight="546.0" prefWidth="350.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="13.0" />
+                     </HBox.margin>
+                     <children>
+                        <AnchorPane fx:id="AnchPChart" prefHeight="550.0" prefWidth="342.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 4;" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
 
         </children>
     </VBox>

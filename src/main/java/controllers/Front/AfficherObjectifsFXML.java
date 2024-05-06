@@ -236,7 +236,16 @@ public class AfficherObjectifsFXML implements Initializable {
 
     }
 
-    public void getBack(MouseEvent mouseEvent) {
+    public void getBack(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Front/Accueil.fxml"));
+        Parent root = fxmlLoader.load();
+
+        // Get the current stage
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+
+        // Create a new scene with the root and set it to the stage
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     public void clearFields(MouseEvent mouseEvent) {

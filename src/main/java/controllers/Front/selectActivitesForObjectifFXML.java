@@ -1,5 +1,7 @@
 package controllers.Front;
 
+import javafx.application.Platform;
+import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,9 +18,12 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.ActivitePhysique;
 import models.Objectif;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 import services.ServiceActivitePhysique;
 import services.ServiceObjectif;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +33,11 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.awt.Color;
+import java.awt.Font;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 public class selectActivitesForObjectifFXML implements Initializable {
 
@@ -73,6 +83,8 @@ public class selectActivitesForObjectifFXML implements Initializable {
     @FXML
     ImageView imgActv ;
 
+    @FXML
+    AnchorPane AnchPChart ;
     ServiceActivitePhysique sapActivite = new ServiceActivitePhysique();
     ServiceObjectif sapObjectif = new ServiceObjectif();
 
@@ -139,10 +151,72 @@ public class selectActivitesForObjectifFXML implements Initializable {
                     col++;
                 }
             }
+            displayChart(objectif) ;
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
+
+    public void displayChart(Objectif objectif) {
+        try {
+            // Fetch the activities associated with the objective
+            List<ActivitePhysique> activites = sapObjectif.fetchActivitesForObjectif(objectif.getId());
+            System.out.println(activites);
+            // Count the number of activities of each type
+            long cardioCount = activites.stream()
+                    .filter(activite -> activite.getTypeActivite().equalsIgnoreCase("Cardiovasculaire"))
+                    .count();
+
+            long musculaCount = activites.stream()
+                    .filter(activite -> activite.getTypeActivite().equalsIgnoreCase("Musculation"))
+                    .count();
+
+            System.out.println(musculaCount);
+            // Create a dataset for the pie chart
+            DefaultPieDataset dataset = new DefaultPieDataset();
+            dataset.setValue("Cardiovascule", cardioCount);
+            dataset.setValue("Musculation", musculaCount);
+
+            // Create the pie chart
+            JFreeChart chart = ChartFactory.createPieChart(
+                    "Répartition des activités pour l'objectif",
+                    dataset,
+                    true,
+                    true,
+                    false);
+
+            // Customizations for the chart...
+            chart.setBackgroundPaint(new Color(240, 240, 240)); // Background color
+            chart.getTitle().setFont(new Font("Arial", Font.BOLD, 18)); // Title font
+            chart.getTitle().setPaint(Color.DARK_GRAY); // Title color
+            chart.getLegend().setItemFont(new Font("Arial", Font.PLAIN, 12)); // Legend font
+            chart.getLegend().setBorder(0, 0, 0, 0); // Remove legend border
+
+            // Create a chart panel and add it to the Swing node
+            ChartPanel chartPanel = new ChartPanel(chart);
+            chartPanel.setPreferredSize(new java.awt.Dimension(600, 400));
+            chartPanel.setBackground(Color.WHITE); // Chart panel background color
+
+            // Clear existing content and add the new chart to the AnchorPane
+            AnchPChart.getChildren().clear();
+            Platform.runLater(() -> {
+                SwingNode swingNode = new SwingNode();
+                swingNode.setContent(chartPanel);
+                AnchPChart.getChildren().add(swingNode);
+
+                // Set the chart panel size in AnchorPane
+                AnchorPane.setTopAnchor(swingNode, 0.0);
+                AnchorPane.setLeftAnchor(swingNode, 0.0);
+                AnchorPane.setRightAnchor(swingNode, 0.0);
+                AnchorPane.setBottomAnchor(swingNode, 0.0);
+            });
+
+        } catch (SQLException e) {
+            System.err.println("Error fetching activities for objective: " + e.getMessage());
+        }
+    }
+
     private void handleHBoxClicked(itemActiviteCreeFXML itemActiviteCreeFXML){
         imgActv.setImage(itemActiviteCreeFXML.getImage());
         nameField.setText(itemActiviteCreeFXML.getName());

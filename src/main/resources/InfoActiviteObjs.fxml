@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ActiviteText" prefHeight="611.0" prefWidth="918.0" stylesheets="@values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InfoActiviteObjsFXML">
+<AnchorPane fx:id="ActiviteText" prefHeight="611.0" prefWidth="918.0" stylesheets="@values/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InfoActiviteObjsFXML">
    <children>
       <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="23.0" prefHeight="36.0" prefWidth="722.0">
          <children>
