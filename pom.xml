@@ -13,7 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-<<<<<<< HEAD
+
     <repositories>
         <repository>
             <id>jitpack.io</id>
@@ -48,31 +48,26 @@
             <version>2.0.24</version> <!-- or latest version -->
         </dependency>
 
-        <dependency>
-=======
 
-    <dependencies>
         <dependency>
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
+
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
-<<<<<<< HEAD
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>20.0.1</version>
         </dependency>
-=======
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.6</version>
         </dependency>
-<<<<<<< HEAD
+
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
@@ -89,15 +84,14 @@
             <artifactId>javafx-controls</artifactId>
             <version>20.0.1</version>
         </dependency>
-=======
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
+
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>17.0.6</version>
         </dependency>
-<<<<<<< HEAD
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -108,8 +102,7 @@
             <artifactId>fontawesomefx-fontawesome</artifactId>
             <version>4.7.0-9.1.2</version>
         </dependency>
-=======
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
+
 
     </dependencies>
 

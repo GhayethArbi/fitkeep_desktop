@@ -34,41 +34,29 @@ public class ServiceCategory implements CRUD<Category>{
 
     @Override
     public void updateOne(Category category) throws SQLException {
-<<<<<<< HEAD
+
         String req = "UPDATE `category` SET `name` = ? WHERE `id` = ?";
-=======
-        String req = "UPDATE `category` SET `name`=?WHERE `id`=?";
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
+
         PreparedStatement ps = cnx.prepareStatement(req);
 
         ps.setString(1, category.getName());
         ps.setInt(2, category.getId());
 
-<<<<<<< HEAD
+
         ps.executeUpdate();
-=======
-        ps.executeUpdate(req);
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
+
     }
 
     @Override
     public void deleteOne(Category category) throws SQLException {
-<<<<<<< HEAD
+
         String req = "DELETE FROM `category` WHERE `id`=?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, category.getId()); // Assuming you have an id field in your ActivitePhysique class
         ps.executeUpdate();
         System.out.println("ActivitePhysique Deleted !");
     }
-=======
-        String req = "Delete `category` WHERE `id`=?";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, category.getId());
 
-        ps.executeUpdate(req);
-    }
-
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
     @Override
     public List<Category> selectAll() throws SQLException {
         List<Category> categoryList = new ArrayList<>();
@@ -86,7 +74,7 @@ public class ServiceCategory implements CRUD<Category>{
         }
         return categoryList;
     }
-<<<<<<< HEAD
+
     public Category getCategoryByName(String categoryName) throws SQLException {
         String req = "SELECT * FROM `category` WHERE `name`=?";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
@@ -121,6 +109,5 @@ public class ServiceCategory implements CRUD<Category>{
         return categories;
     }
 
-=======
->>>>>>> ca935f6e13b21fdf28b7c8dbf7f9751984a06275
+
 }
