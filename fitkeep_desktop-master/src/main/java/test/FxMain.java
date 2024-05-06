@@ -14,14 +14,11 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPersonneFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/recette/AfficherRecette.fxml"));
         Parent root = loader.load();
-
         Scene scene = new Scene(root);
-
-        stage.setTitle("Ajouter un user ");
+        stage.setTitle("Ajouter une recette ");
         stage.setScene(scene);
-
         stage.show();
     }
 
