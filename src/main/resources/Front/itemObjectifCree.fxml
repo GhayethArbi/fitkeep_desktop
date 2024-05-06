@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="300.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Front.itemObjectifCreeFXML">
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+   <children>
+      <HBox>
+         <children>
+            <VBox prefHeight="372.0" prefWidth="300.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="300.0">
+                     <children>
+                        <Text fill="#234875" strokeType="OUTSIDE" strokeWidth="0.0" text="OBJECTIVE" wrappingWidth="127.13282012939453">
+                           <font>
+                              <Font name="Forte" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="90.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <ImageView fitHeight="47.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../img/goal.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="49.0" prefWidth="300.0">
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="75.0">
+                           <children>
+                              <Text fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="74.56640481948853">
+                                 <font>
+                                    <Font name="Corbel Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="234.0">
+                           <children>
+                              <Text fx:id="nameText" fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" underline="true" wrappingWidth="202.0522599220276">
+                                 <font>
+                                    <Font name="Corbel" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="49.0" prefWidth="300.0">
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="75.0">
+                           <children>
+                              <Text fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="74.56640481948853">
+                                 <font>
+                                    <Font name="Corbel Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="234.0">
+                           <children>
+                              <Text fx:id="dateText" fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" underline="true" wrappingWidth="202.0522599220276">
+                                 <font>
+                                    <Font name="Corbel" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="49.0" prefWidth="300.0">
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="75.0">
+                           <children>
+                              <Text fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Duration:" wrappingWidth="120.16638422012329">
+                                 <font>
+                                    <Font name="Corbel Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="157.0">
+                           <children>
+                              <Text fx:id="duratText" fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" underline="true" wrappingWidth="149.25227171182632">
+                                 <font>
+                                    <Font name="Corbel" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="49.0" prefWidth="300.0">
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="75.0">
+                           <children>
+                              <Text fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Calories:" wrappingWidth="118.56646966934204">
+                                 <font>
+                                    <Font name="Corbel Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="234.0">
+                           <children>
+                              <Text fx:id="calText" fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" underline="true" wrappingWidth="160.45222330093384">
+                                 <font>
+                                    <Font name="Corbel" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="49.0" prefWidth="300.0">
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="75.0">
+                           <children>
+                              <Text fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" text="Note:" wrappingWidth="56.16638231277466">
+                                 <font>
+                                    <Font name="Corbel Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="234.0">
+                           <children>
+                              <Text fx:id="noteText" fill="#174da2" strokeType="OUTSIDE" strokeWidth="0.0" underline="true" wrappingWidth="202.0522599220276">
+                                 <font>
+                                    <Font name="Corbel" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="5.0" prefWidth="300.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="148.0">
+                           <children>
+                              <ImageView fx:id="updateBtn" fitHeight="52.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/updateO.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="148.0">
+                           <children>
+                              <ImageView fx:id="deleteBtn" fitHeight="52.0" fitWidth="51.0" onMouseClicked="#deleteObjectif" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/deleteO.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="148.0">
+                           <children>
+                              <ImageView fx:id="viewBtn" fitHeight="38.0" fitWidth="38.0" onMouseClicked="#viewActivites" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/viewOO.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

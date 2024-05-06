@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="471.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2; -fx-border-color: #181B1B;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Front.itemActiviteCreeFXML">
+   <children>
+      <HBox layoutX="9.6" prefHeight="205.0" prefWidth="449.0" AnchorPane.leftAnchor="7.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="87.0">
+               <children>
+                  <VBox>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fx:id="imgActivite" fitHeight="131.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="205.0" prefWidth="326.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="282.0">
+                     <children>
+                        <Text fill="#4179c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="57.76030731201172">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fx:id="nomActivite" fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="112.16032791137695">
+                           <font>
+                              <Font name="Forte" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="260.0">
+                     <children>
+                        <Text fill="#4179c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" wrappingWidth="59.42613983154297">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fx:id="typeActivite" fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="167.42608642578125">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="260.0">
+                     <children>
+                        <Text fill="#4179c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" wrappingWidth="67.42613983154297">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fx:id="duratActivite" fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.4261474609375">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="260.0">
+                     <children>
+                        <Text fill="#4179c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Calories:" wrappingWidth="69.82616424560547">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fx:id="calActvite" fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.82616424560547">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="260.0">
+                     <children>
+                        <Text fill="#4179c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Nb_Serie:" wrappingWidth="69.82622528076172">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fx:id="nbSerActivite" fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="181.02623748779297">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="260.0">
+                     <children>
+                        <Text fill="#4179c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Nb_rep_Serie:" wrappingWidth="97.02619171142578">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fx:id="nbRepSerActivite" fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.02613067626953">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="260.0">
+                     <children>
+                        <Text fill="#4179c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight:" wrappingWidth="61.02617645263672">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fx:id="weightActivite" fill="#fa743d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="61.02617645263672">
+                           <font>
+                              <Font name="Forte" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="330.0" layoutY="206.0" prefHeight="34.0" prefWidth="112.0">
+         <children>
+            <HBox fx:id="hboxClicked" alignment="CENTER" prefHeight="34.0" prefWidth="53.0">
+               <children>
+                  <ImageView fitHeight="31.0" fitWidth="33.0" onMouseClicked="#updateActivite" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/updateOR.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#deleteActivite" prefHeight="34.0" prefWidth="53.0">
+               <children>
+                  <ImageView fitHeight="27.0" fitWidth="26.0" onMouseClicked="#deleteActivite" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/deleteOR.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+   <opaqueInsets>
+      <Insets right="5.0" />
+   </opaqueInsets>
+</AnchorPane>

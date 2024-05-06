@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="ActiviteText" prefHeight="611.0" prefWidth="918.0" stylesheets="@values/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InfoActiviteObjsFXML">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="23.0" prefHeight="36.0" prefWidth="722.0">
+         <children>
+            <FontAwesomeIconView glyphName="ARROW_LEFT" onMouseClicked="#close" size="20" text="" />
+         </children>
+      </HBox>
+      <TableView fx:id="objAssActTable" layoutX="343.0" layoutY="147.0" prefHeight="317.0" prefWidth="232.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="83.99996948242188" text="ID" />
+          <TableColumn fx:id="nameCol" minWidth="79.0" prefWidth="150.0" text="Name" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER_LEFT" layoutX="98.0" layoutY="59.0" prefHeight="36.0" prefWidth="722.0">
+         <children>
+            <Text fx:id="" strokeType="OUTSIDE" strokeWidth="0.0" text="Details Of Objectifves associated with your selected Activity">
+               <font>
+                  <Font name="Bauhaus 93" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

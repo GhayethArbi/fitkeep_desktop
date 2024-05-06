@@ -27,7 +27,7 @@ public class ActivitePhysique {
         this.objectifs =new ArrayList<>();
     }
 
-    public List<Objectif> getObjectifs() {
+   public List<Objectif> getObjectifs() {
         return objectifs;
     }
 
