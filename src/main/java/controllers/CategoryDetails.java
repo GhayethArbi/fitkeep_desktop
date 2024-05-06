@@ -29,7 +29,7 @@ import javafx.scene.input.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CategoryDetails implements Initializable {
+public class CategoryDetails extends NavigationController implements Initializable {
 
     @FXML
     private TableView<Category> CategoryTab;
@@ -51,6 +51,7 @@ public class CategoryDetails implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        super.initialize();
         // Initialize TableView columns
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         NameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

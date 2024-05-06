@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ProductDetails implements Initializable {
+public class ProductDetails extends NavigationController implements Initializable {
     @FXML
     private TableView<Product> ProductTab;
     @FXML
@@ -96,6 +96,7 @@ public class ProductDetails implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize();
         // Initialize TableView columns
         IdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         NameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

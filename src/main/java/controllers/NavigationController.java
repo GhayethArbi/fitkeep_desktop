@@ -40,6 +40,33 @@ public class NavigationController {
         }
 
     }
+
+    @FXML
+    void goToCategoryDetails(ActionEvent event) {
+        Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            stage.setTitle("Category Details");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Category_details.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+        } catch (Exception e){
+            System.err.println(e);
+        }
+
+    }    @FXML
+    void goToProduct(ActionEvent event) {
+        Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            stage.setTitle("Product Details");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProductDetails.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+        } catch (Exception e){
+            System.err.println(e);
+        }
+    }
     @FXML
     void goToDash() {
         Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
@@ -112,7 +139,36 @@ public class NavigationController {
             System.err.println(e);
         }
     }
+    @FXML
+    public void goToObjectives(){
+        Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherObjectifs.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Objectives Details");
+            stage.setScene(scene);
+            stage.show();
 
+        } catch (Exception e){
+            System.err.println(e);
+        }
+    }
+    @FXML
+    public void goToActivites (){
+        Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherActivites.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Activities Details");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e){
+            System.err.println(e);
+        }
+    }
     @FXML
     public void goToEditProfile() {
         Stage stage = (Stage) this.currentUserName.getScene().getWindow(); // Get reference to the login window's stage

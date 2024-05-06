@@ -31,7 +31,7 @@ import javafx.util.Callback;
 import services.ServiceActivitePhysique;
 import javafx.scene.image.Image;
 
-public class AfficherActivitesFXML implements Initializable {
+public class AfficherActivitesFXML extends NavigationController implements Initializable {
     @FXML
     TableView<ActivitePhysique> PhysicalActivitiesTable;
 
@@ -74,6 +74,7 @@ public class AfficherActivitesFXML implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        super.initialize();
         // TODO
 
          loadDate();

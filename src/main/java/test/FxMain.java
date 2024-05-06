@@ -55,7 +55,7 @@ public class FxMain extends Application {
        }catch (SQLException e){
            System.out.println(e.getMessage());
        }*/
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
 
         Parent root = loader.load();
 

@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AfficherObjectifsFXML implements Initializable {
+public class AfficherObjectifsFXML extends NavigationController implements Initializable {
     @FXML
     TableView<Objectif> ObjectifsTable;
 

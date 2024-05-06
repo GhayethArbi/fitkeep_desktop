@@ -30,7 +30,7 @@ import models.Roles;
 import services.ServiceUser;
 import services.session.UserSession;
 
-public class PanierController {
+public class PanierController extends NavigationController {
 
     private final int current_user = 1;
     public TextField searchText;

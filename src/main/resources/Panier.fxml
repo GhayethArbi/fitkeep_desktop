@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="736.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PanierController">
+<AnchorPane prefHeight="736.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PanierController">
 
     <stylesheets>
         <URL value="@panierStyle.css" />
@@ -33,7 +33,7 @@
             </children></AnchorPane>
          <AnchorPane prefHeight="703.0" prefWidth="772.0">
             <children>
-            
+
              <TableView fx:id="panierTableView" layoutY="235.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="750.0" style="-fx-background-radius: 11;">
                  <columns>
                      <TableColumn fx:id="productIdColumn" prefWidth="72.0" text="ID" />
