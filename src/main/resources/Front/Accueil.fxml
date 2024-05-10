@@ -10,12 +10,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0"
-            prefWidth="941.0" style="-fx-background-color: #234875;" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controllers.Front.AccueilFXML" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0" prefWidth="941.0" style="-fx-background-color: #234875;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Front.AccueilFXML">
    <children>
-      <HBox layoutX="-1.0" prefHeight="41.0" prefWidth="942.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <HBox alignment="TOP_RIGHT" layoutX="-1.0" prefHeight="41.0" prefWidth="942.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="49.0">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="34.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/icons8-log-out-100.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children></HBox>
       <Pane layoutX="469.0" layoutY="86.0" prefHeight="500.0" prefWidth="2.0" rotate="179.7" style="-fx-background-color: #F6EDD9;" />
       <HBox layoutX="67.0" layoutY="83.0" prefHeight="506.0" prefWidth="296.0">
          <children>
@@ -109,7 +117,7 @@
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </VBox.margin>
             </Pane>
-            <HBox maxHeight="-Infinity" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;">
+            <HBox maxHeight="-Infinity" onMouseClicked="#moveToShop" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;">
                <children>
                   <HBox alignment="CENTER" prefHeight="62.0" prefWidth="32.0">
                      <children>
@@ -136,7 +144,7 @@
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </VBox.margin>
             </Pane>
-            <HBox maxHeight="-Infinity" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;">
+            <HBox maxHeight="-Infinity" onMouseClicked="#MoveToPrSettings" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;">
                <children>
                   <HBox alignment="CENTER" prefHeight="62.0" prefWidth="32.0">
                      <children>

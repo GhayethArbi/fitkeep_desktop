@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import models.Roles;
 import services.UserDao;
 import services.session.UserSession;
 
@@ -125,17 +126,27 @@ public class LoginController extends NavigationController {
                 alert.setTitle("Login Successful");
                 alert.setContentText("Welcome!" + loggedIn);
                 alert.show();*/
+                    if (UserSession.CURRENT_USER.getUserLoggedIn().getRoles().equals(Roles.ROLE_ADMIN)) {
+                            Stage stage = (Stage) tfEmail.getScene().getWindow(); // Get reference to the login window's stage
+                            stage.setTitle("Dashboard");
 
-                    Stage stage = (Stage) tfEmail.getScene().getWindow(); // Get reference to the login window's stage
-                    stage.setTitle("Dashboard");
+
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+                            Parent p = loader.load();
+                            Scene scene = new Scene(p);
+
+                            stage.setScene(scene);
+                    }else {
+                        Stage stage = (Stage) tfEmail.getScene().getWindow(); // Get reference to the login window's stage
+                        stage.setTitle("Acceuil");
 
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
-                    Parent p = loader.load();
-                    Scene scene = new Scene(p);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front/Accueil.fxml"));
+                        Parent p = loader.load();
+                        Scene scene = new Scene(p);
 
-                    stage.setScene(scene);
-
+                        stage.setScene(scene);
+                    }
 
                 }
 

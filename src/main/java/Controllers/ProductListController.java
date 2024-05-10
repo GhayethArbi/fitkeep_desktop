@@ -26,7 +26,7 @@ import models.User;
 import repository.UserRepository;
 import services.session.UserSession;
 
-public class ProductListController {
+public class ProductListController extends NavigationController{
 
     @FXML
     public TextField quantityTextField;
@@ -60,6 +60,7 @@ public class ProductListController {
     private User userId;
     @FXML
     void initialize() {
+        super.initialize();
         // Set cell value factories for table columns
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getIdProduct()).asObject());
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));

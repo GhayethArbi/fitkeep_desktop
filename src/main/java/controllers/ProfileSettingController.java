@@ -8,10 +8,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -125,6 +127,156 @@ public class ProfileSettingController extends NavigationController{
             ftFemale.setSelected(true);
         }
 
+    }
+    @FXML
+    void saveChangesUser(ActionEvent event)
+    {
+        clearError();
+        boolean isValid = true;
+        int phoneNumber;
+        try {
+            phoneNumber=Integer.parseInt(ftPhone.getText());
+            if (ftPhone.getText().isEmpty()) {
+                isValid = false;
+                phoneError.setText("Phone number is required.");
+
+                ftPhone.getStyleClass().add("error");
+
+            } else if (ftPhone.getText().length()!=8) {
+                phoneError.setText("Phone number must contain at 8 characters.");
+                ftPhone.getStyleClass().add("error");
+                isValid = false;
+            }
+        } catch (NumberFormatException e)
+        {
+            phoneError.setText("Invalid phone number");
+            isValid=false;
+            ftPhone.getStyleClass().add("error");
+
+
+        }
+        // Phone number validation
+
+
+        // First name validation
+        if (ftName.getText().isEmpty()) {
+            isValid = false;
+            ftName.getStyleClass().add("error");
+            fnError.setText("First name is required");
+        } else if (ftName.getText().length()<4) {
+            fnError.setText("First name must contain at least 4 characters.");
+            isValid = false;
+            ftName.getStyleClass().add("error");
+        }
+
+        // Last name validation
+        if (ftLastName.getText().isEmpty()) {
+            isValid = false;
+            lnError.setText("Last name is required");
+            ftLastName.getStyleClass().add("error");
+        } else if (ftLastName.getText().length()<4) {
+            lnError.setText("Last name must contain at least 4 characters.");
+            ftLastName.getStyleClass().add("error");
+            isValid = false;
+        }
+
+        // Email validation
+        if (ftEmail.getText().isEmpty()) {
+            isValid = false;
+            ftEmail.getStyleClass().add("error");
+            emailError.setText("Email address is required.");
+        }else if (!ftEmail.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")){
+            emailError.setText("invalid email address.");
+            ftEmail.getStyleClass().add("error");
+            isValid = false;
+        }
+
+        // Gender validation
+        if (!ftMale.isSelected() && !ftFemale.isSelected()) {
+
+            isValid = false;
+            genderError.setText("Select your gender");
+        }
+
+        // Birthdate validation
+        if (ftBirth.getValue() == null) {
+            ftBirth.getStyleClass().add("error");
+            isValid = false;
+            birthError.setText("Select your birth date (MM/DD/YYYY)");
+        } else if (ftBirth.getValue().isAfter(LocalDate.now().minusYears(15))) {
+            ftBirth.getStyleClass().add("error");
+            isValid = false;
+            birthError.setText("You must be at least 15 years old");
+        }
+
+        // Address validation
+        if (ftAddress.getText().isEmpty()) {
+            ftAddress.getStyleClass().add("error");
+            isValid = false;
+            addressError.setText("Address is required");
+        } else if (ftAddress.getText().length()<5) {
+            ftAddress.getStyleClass().add("error");
+            isValid = false;
+            addressError.setText("Address must contain at least 5 characters.");
+        }
+
+        if(isValid){
+            User user = new User();
+            user.setName(ftName.getText());
+            user.setLastName(ftLastName.getText());
+            user.setPhoneNumber(Integer.parseInt(ftPhone.getText()));
+            user.setEmail(ftEmail.getText());
+            user.setAddress(ftAddress.getText());
+            user.setBirthDay(Date.valueOf(ftBirth.getValue()));
+            user.setId(UserSession.CURRENT_USER.getUserLoggedIn().getId());
+
+
+            if (ftMale.isSelected()) {
+                user.setGender("Male");
+                // Process male selection
+            } else {
+                user.setGender("Female");
+            }
+            user.setPassword(UserSession.CURRENT_USER.getUserLoggedIn().getPassword());
+            user.setRoles(UserSession.CURRENT_USER.getUserLoggedIn().getRoles().toString());
+            try{
+                serviceUser.updateOne(user);
+
+                UserSession.CURRENT_USER.getUserLoggedIn().setName(ftName.getText());
+                UserSession.CURRENT_USER.getUserLoggedIn().setLastName(ftLastName.getText());
+                UserSession.CURRENT_USER.getUserLoggedIn().setPhoneNumber(Integer.parseInt(ftPhone.getText()));
+                UserSession.CURRENT_USER.getUserLoggedIn().setEmail(ftEmail.getText());
+                UserSession.CURRENT_USER.getUserLoggedIn().setAddress(ftAddress.getText());
+                UserSession.CURRENT_USER.getUserLoggedIn().setBirthDay(Date.valueOf(ftBirth.getValue()));
+
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("User updated");
+                alert.setContentText("You are updates your account.");
+                alert.show();
+                Stage stage = (Stage) this.ftEmail.getScene().getWindow(); // Get reference to the login window's stage
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front/Accueil.fxml"));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root, 822, 495);
+                    stage.setTitle("Accueil");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (Exception e){
+                    System.err.println(e);
+                }
+            }
+
+            catch (SQLException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("SQLException");
+                alert.setContentText(e.getMessage());
+                alert.show();
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     @FXML
@@ -306,4 +458,12 @@ public class ProfileSettingController extends NavigationController{
         chargeData();
     }
 
+    public void getBack(MouseEvent mouseEvent) {
+
+            // Get the stage associated with the current scene
+            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            // Close the stage (window)
+            stage.close();
+
+    }
 }

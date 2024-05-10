@@ -2,9 +2,14 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import models.Product;
 import services.ServiceProduit;
 
@@ -60,5 +65,17 @@ public class MarketController {
 
     private void handleProductSelection(Product product) {
         // Handle product selection here if needed
+    }
+
+    public void getBack(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Front/Accueil.fxml"));
+        Parent root = fxmlLoader.load();
+
+        // Get the current stage
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+
+        // Create a new scene with the root and set it to the stage
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

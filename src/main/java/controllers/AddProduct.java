@@ -25,7 +25,7 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-public class AddProduct {
+public class AddProduct extends NavigationController {
     @FXML
     private ChoiceBox<String> Categ_id;
 
@@ -75,6 +75,7 @@ public class AddProduct {
     // Method to initialize the controller
     @FXML
     void initialize() {
+        super.initialize();
         try {
             List<Category> categories = sc.getAllCategories();
             if (categories != null) {

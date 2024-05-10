@@ -20,6 +20,20 @@ public class NavigationController {
     @FXML
     private Circle imgCircle;
 
+    @FXML
+    void goToAddToCart(ActionEvent event) {
+        Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            stage.setTitle("Add to Cart");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/add_panier.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+        } catch (Exception e){
+            System.err.println(e);
+        }
+
+    }
 
     @FXML
     void goToLogin(ActionEvent event) {
@@ -54,7 +68,8 @@ public class NavigationController {
             System.err.println(e);
         }
 
-    }    @FXML
+    }
+    @FXML
     void goToProduct(ActionEvent event) {
         Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
         try {
