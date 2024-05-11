@@ -124,7 +124,6 @@ public class AfficherRecetteFX implements Initializable {
          *  - Scene agit comme un conteneur dans stage
          *  N.B: une app javafx peut avoir plusieurs scenes mais un seul stage.
          * */
-
         Stage stage = new Stage(); // Create a new stage
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/recette/AjouterRecetteFXML.fxml")); // Load the FXML file
         Parent root = loader.load();

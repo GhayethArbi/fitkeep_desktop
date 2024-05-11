@@ -14,7 +14,7 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/recette/AfficherRecette.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/recette/RecetteFront.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Ajouter une recette ");

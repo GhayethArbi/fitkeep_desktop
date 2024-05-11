@@ -1,5 +1,7 @@
 package services;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import models.Recette;
 import utils.DBConnection;
 
@@ -70,4 +72,5 @@ public class ServiceRecette implements CRUD<Recette> {
         return Recettes;
 
     }
+
 }
