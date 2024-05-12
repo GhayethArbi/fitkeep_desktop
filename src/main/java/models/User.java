@@ -44,11 +44,11 @@ public class User {
 
     public User(String name, String lastName, String email) {
 
-    this.email = email;
-    this.name = name;
-    this.lastName = lastName;
+        this.email = email;
+        this.name = name;
+        this.lastName = lastName;
 
-}
+    }
     public int getId() {
         return id;
     }
@@ -195,22 +195,22 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", roles=" + roles +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthDay=" + birthDay +
-                ", phoneNumber=" + phoneNumber +
-                ", loyalityPoints=" + loyalityPoints +
-                ", profileImage='" + profileImage + '\'' +
-                ", address='" + address + '\'' +
-                ", authCode='" + authCode + '\'' +
-                ", isBanned=" + isBanned +
-                ", registration_date=" + registration_date +
-                '}';
+            "id=" + id +
+            ", email='" + email + '\'' +
+            ", roles=" + roles +
+            ", password='" + password + '\'' +
+            ", name='" + name + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", gender='" + gender + '\'' +
+            ", birthDay=" + birthDay +
+            ", phoneNumber=" + phoneNumber +
+            ", loyalityPoints=" + loyalityPoints +
+            ", profileImage='" + profileImage + '\'' +
+            ", address='" + address + '\'' +
+            ", authCode='" + authCode + '\'' +
+            ", isBanned=" + isBanned +
+            ", registration_date=" + registration_date +
+            '}';
     }
 
 }

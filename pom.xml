@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>tn.esprit</groupId>
     <artifactId>fitkeep</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -13,6 +14,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
 
     <repositories>
         <repository>
@@ -79,10 +81,12 @@
 
         <dependency>
 
+
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
@@ -101,6 +105,7 @@
 
 
 
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -108,6 +113,7 @@
         </dependency>
 
         <dependency>
+
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
             <version>3.4.1</version> <!-- or the latest version -->
@@ -126,12 +132,31 @@
 
 
         <dependency>
+
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>17.0.6</version>
         </dependency>
 
+        <!-- https:/farouk-core -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>7.1.17</version>
+            <type>pom</type>
+        </dependency>
+
+
     </dependencies>
+
+
 
     <build>
         <plugins>
@@ -145,5 +170,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

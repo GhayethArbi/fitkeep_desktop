@@ -9,7 +9,18 @@ public class Recette {
     private Date date;
     private String description;
 
-    public Recette() {
+
+
+
+    public Recette(int id) {
+    }
+
+    public Recette(String name, String category, Date date, String description) {
+        this.name = name;
+        this.category = category;
+        this.date = date;
+        this.description = description;
+
     }
 
     public Recette(int id, String name, String category, Date date, String description) {
@@ -19,6 +30,12 @@ public class Recette {
         this.date = date;
         this.description = description;
     }
+
+
+    public Recette() {
+
+    }
+
 
     public int getId() {
         return id;

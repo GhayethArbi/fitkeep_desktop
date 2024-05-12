@@ -27,7 +27,7 @@ public class ActivitePhysique {
         this.objectifs =new ArrayList<>();
     }
 
-   public List<Objectif> getObjectifs() {
+    public List<Objectif> getObjectifs() {
         return objectifs;
     }
 
@@ -112,15 +112,15 @@ public class ActivitePhysique {
     @Override
     public String toString() {
         return "ActivitePhysique{" +
-                "id=" + id +
-                ", nomActivite='" + nomActivite + '\'' +
-                ", typeActivite='" + typeActivite + '\'' +
-                ", dureeActivite=" + dureeActivite +
-                ", caloriesBrules=" + caloriesBrules +
-                ", nbSeries=" + nbSeries +
-                ", nbRepSeries=" + nbRepSeries +
-                ", poidsParSerie=" + poidsParSerie +
-                ", imageActivite='" + imageActivite + '\'' +
-                '}';
+            "id=" + id +
+            ", nomActivite='" + nomActivite + '\'' +
+            ", typeActivite='" + typeActivite + '\'' +
+            ", dureeActivite=" + dureeActivite +
+            ", caloriesBrules=" + caloriesBrules +
+            ", nbSeries=" + nbSeries +
+            ", nbRepSeries=" + nbRepSeries +
+            ", poidsParSerie=" + poidsParSerie +
+            ", imageActivite='" + imageActivite + '\'' +
+            '}';
     }
 }

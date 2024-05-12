@@ -33,7 +33,7 @@ public class ServiceUser implements CRUD<User>{
         System.out.println("User Added !");
     }*/
 
-// the part of register
+    // the part of register
     public boolean emailExists(String email) {
         String query = "SELECT COUNT(*) FROM user WHERE email = ?";
         try (PreparedStatement ps = cnx.prepareStatement(query)) {
@@ -81,8 +81,8 @@ public class ServiceUser implements CRUD<User>{
 
             ps.executeUpdate();
         } catch (SQLException e){
-                // Handle SQLException appropriately, e.g., log or propagate
-                System.err.println("Error adding user: " + e.getMessage());
+            // Handle SQLException appropriately, e.g., log or propagate
+            System.err.println("Error adding user: " + e.getMessage());
 
         }
     }

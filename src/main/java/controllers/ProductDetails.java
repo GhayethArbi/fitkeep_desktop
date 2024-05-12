@@ -64,7 +64,7 @@ public class ProductDetails extends NavigationController implements Initializabl
     }
     @FXML
     private void PrintPdf() {
-        String filePath = "C:/Users/Dell/Desktop/output.pdf";
+        String filePath = "C:/Users/ghaye/OneDrive/Bureau/output.pdf";
         PDFExporter.exportTableViewToPDF(ProductTab, "C:/Users/Dell/Desktop/logo.jpg", filePath, new PDDocument());
     }
 
@@ -142,7 +142,7 @@ public class ProductDetails extends NavigationController implements Initializabl
                     File file = new File("C:/Users/ghaye/OneDrive/Bureau/pidev/public/Uploads" + filename);
 
                     if (file.exists()) {
-                        System.out.println("esist");
+                        System.out.println("exist");
 
                         Image image = new Image(file.toURI().toString());
                         imageView.setImage(image);

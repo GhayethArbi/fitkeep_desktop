@@ -88,12 +88,12 @@ public class Objectif {
     @Override
     public String toString() {
         return "Objectif{" +
-                "id=" + id +
-                ", nomObjectif='" + nomObjectif + '\'' +
-                ", dateObjectif=" + dateObjectif +
-                ", totalCalories=" + totalCalories +
-                ", totalDuree=" + totalDuree +
-                ", note='" + note + '\'' +
-                '}';
+            "id=" + id +
+            ", nomObjectif='" + nomObjectif + '\'' +
+            ", dateObjectif=" + dateObjectif +
+            ", totalCalories=" + totalCalories +
+            ", totalDuree=" + totalDuree +
+            ", note='" + note + '\'' +
+            '}';
     }
 }
