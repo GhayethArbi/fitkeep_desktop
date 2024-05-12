@@ -135,13 +135,17 @@ public class ProductDetails extends NavigationController implements Initializabl
                     setGraphic(null);
                 } else {
                     // Load image from file
-                    File file = new File("C:/Users/Dell/PEIPROJECT/public/Uploads/" + filename);
+                    File file = new File("C:/Users/ghaye/OneDrive/Bureau/pidev/public/Uploads" + filename);
+
                     if (file.exists()) {
+                        System.out.println("esist");
+
                         Image image = new Image(file.toURI().toString());
                         imageView.setImage(image);
                         imageView.setFitWidth(50); // Adjust as needed
                         imageView.setFitHeight(50); // Adjust as needed
                         setGraphic(imageView);
+
                     } else {
                         setGraphic(null); // Clear the graphic if the file doesn't exist
                     }

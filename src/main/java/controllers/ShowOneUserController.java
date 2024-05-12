@@ -74,8 +74,9 @@ public class ShowOneUserController extends NavigationController{
         assert ftPhone != null : "fx:id=\"ftPhone\" was not injected: check your FXML file 'ShowOneUser.fxml'.";
         assert image != null : "fx:id=\"image\" was not injected: check your FXML file 'ShowOneUser.fxml'.";
         assert imgCircle != null : "fx:id=\"imgCircle\" was not injected: check your FXML file 'ShowOneUser.fxml'.";
-        currentUserNameUp.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
         User user= ListUsersController.userPass;
+        currentUserNameUp.setText(user.getName()+" "+user.getLastName());
+
         ftAddress.setText(user.getAddress());
         ftBirth.setText(user.getBirthDay().toString());
         ftLast.setText(user.getLastName());
