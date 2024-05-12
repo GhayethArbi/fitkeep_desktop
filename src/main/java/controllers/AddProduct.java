@@ -25,7 +25,9 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-public class AddProduct extends NavigationController {
+public class AddProduct{
+
+
     @FXML
     private ChoiceBox<String> Categ_id;
 
@@ -74,8 +76,10 @@ public class AddProduct extends NavigationController {
 
     // Method to initialize the controller
     @FXML
+
     void initialize() throws SQLException {
-        super.initialize();
+
+
         try {
             List<Category> categories = sc.getAllCategories();
             if (categories != null) {
@@ -142,7 +146,7 @@ public class AddProduct extends NavigationController {
         try {
             String fileName = generateUniqueFileName();
 
-            Path destinationPath = Paths.get("C:/Users/Dell/PEIPROJECT/public/Uploads", fileName);
+            Path destinationPath = Paths.get("C:/Users/ghaye/OneDrive/Bureau/pidev/public/Uploads", fileName);
 
             Image image = IllustrationView.getImage();
             if (image != null) {
