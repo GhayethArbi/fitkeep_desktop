@@ -11,8 +11,11 @@ import services.ServicesPlanNutritionnel;
 import test.FxMain;
 
 import java.sql.SQLException;
-
+import javafx.scene.layout.VBox;
 public class RecetteCardFront {
+
+    @FXML
+    private VBox card;
 
     @FXML
     private Text category;
@@ -45,18 +48,19 @@ public class RecetteCardFront {
         }
         category.setText(recette.getCategory());
         try {
-            Image img = new Image(getClass().getResource("images/cook-book.png").toExternalForm());
+            Image img = new Image(getClass().getResource("images/cooking.png").toExternalForm());
             image.setImage(img);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             // Handle the exception gracefully
             try {
-                Image img = new Image(getClass().getResource("images/cook-book.png").toExternalForm()); // added missing .png extension
+                Image img = new Image(getClass().getResource("images/cooking.png").toExternalForm()); // added missing .png extension
                 image.setImage(img);
             } catch (Exception ex) {
                 System.out.println("Error loading default image: " + ex.getMessage());
             }
         }
     }
+
 
 }

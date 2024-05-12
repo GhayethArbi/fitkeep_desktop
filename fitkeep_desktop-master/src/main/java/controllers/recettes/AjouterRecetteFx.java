@@ -5,13 +5,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.Recette;
+import org.controlsfx.control.Notifications;
 import services.ServiceRecette;
-
+import javafx.scene.image.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,6 +25,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.scene.input.KeyEvent;
+
+import javax.swing.text.html.ImageView;
 
 /** Initializable ?
  * 1) Est une interface
@@ -91,10 +97,17 @@ public class AjouterRecetteFx implements Initializable {
             ServiceRecette sr = new ServiceRecette();
             if (!name.isEmpty() && !category.isEmpty() && !description.isEmpty()) {
                 sr.insertOne(r);
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Success");
-                successAlert.setContentText("Recette ajoutée avec succès !");
-                successAlert.show();
+                //---------notif start
+                Notifications notification = Notifications.create()
+                        .title("Recipe")
+                        .text("Your Recipe was  Added  successfully ")
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.BOTTOM_RIGHT)
+                        .graphic(null) // No graphic
+                        .hideCloseButton(); // Hide close button
+                // Apply the CSS styling directly
+                          notification.show();
+                //---------notif end
             } else {Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setTitle("Veuillez remplir le formulaire");
                 errorAlert.show();}
@@ -109,6 +122,7 @@ public class AjouterRecetteFx implements Initializable {
             errorAlert.setContentText("Erreur lors de l'ajout de la recette à la base de données : " + e.getMessage());
             errorAlert.show();
         }
+
     }
 
 

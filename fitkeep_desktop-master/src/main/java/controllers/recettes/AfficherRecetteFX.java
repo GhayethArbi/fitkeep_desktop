@@ -1,21 +1,31 @@
 package controllers.recettes;
 
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.property.TextAlignment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.util.Duration;
 import models.PlanNutritionnel;
 import models.Recette;
 import services.ServiceRecette;
 import javafx.stage.Stage;
 import services.ServicesPlanNutritionnel;
 import javafx.event.ActionEvent;
-
+import org.controlsfx.control.Notifications;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -23,12 +33,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.io.image.ImageDataFactory;
+
 
 public class AfficherRecetteFX implements Initializable {
     ServiceRecette sr = new ServiceRecette();
     ServicesPlanNutritionnel pl = new ServicesPlanNutritionnel();
     Recette selectedRecette= null;
     Recette selectedPlan= null;
+    private boolean isLightMode =true;
 
 
     @FXML
@@ -57,6 +75,7 @@ public class AfficherRecetteFX implements Initializable {
     @FXML
     private Label error_name;
 
+
     @FXML
     private Label error_recette_id;
     @FXML
@@ -83,7 +102,16 @@ public class AfficherRecetteFX implements Initializable {
     @FXML
     private Button refresh_btn;
 
+    @FXML
+    private Button stat;
+// Dark mode
+    @FXML
+    private AnchorPane anchorPane;
+    @FXML
+    private Button modeBTN;
 
+
+    //End Dark Mode
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -133,7 +161,8 @@ public class AfficherRecetteFX implements Initializable {
         stage.show(); // Show the stage
     }
 
-    @FXML void onDelete() {
+    @FXML
+    void onDelete() {
         selectedRecette = recetteTable.getSelectionModel().getSelectedItem();
         if (selectedRecette != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -189,10 +218,17 @@ public class AfficherRecetteFX implements Initializable {
             ServicesPlanNutritionnel sr = new ServicesPlanNutritionnel();
             if (!plan_name.isEmpty() ) {
                 sr.insertOne(r);
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Success");
-                successAlert.setContentText("Recette ajoutée avec succès !");
-                successAlert.show();
+                //---------notif start
+                Notifications notification = Notifications.create()
+                        .title("Recipe")
+                        .text("Your Recipe was  Added  successfully ")
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.BOTTOM_RIGHT)
+                        .graphic(null) // No graphic
+                        .hideCloseButton(); // Hide close button
+                // Apply the CSS styling directly
+                notification.show();
+                //---------notif end
             } else {Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setTitle("Veuillez remplir le formulaire");
                 errorAlert.show();}
@@ -250,6 +286,17 @@ public class AfficherRecetteFX implements Initializable {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 try {
                     pl.deleteOne(selectedPlan); // Assuming pl is your service for PlanNutritionnel
+                    //---------notif start
+                    Notifications notification = Notifications.create()
+                            .title("Recipe")
+                            .text("Your Recipe was  deleted  successfully ")
+                            .hideAfter(Duration.seconds(5))
+                            .position(Pos.BOTTOM_RIGHT)
+                            .graphic(null) // No graphic
+                            .hideCloseButton(); // Hide close button
+                    // Apply the CSS styling directly
+                    notification.show();
+                    //---------notif end
                     loadPlanNutritionnel(); // Reload the plan table after deletion
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -263,6 +310,114 @@ public class AfficherRecetteFX implements Initializable {
         }
     }
 
+    @FXML
+    void showStatsPage(ActionEvent event) {
+        try {
+            // Load the FXML file for the statistics page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/recette/recette_stat.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller associated with the loaded FXML
+            RecetteStat statController = loader.getController();
+
+            // Refresh the pie chart in the statistics page
+            statController.refreshPieChart();
+
+            // Create a new stage for the statistics page
+            Stage statsStage = new Stage();
+            statsStage.setTitle("Recipes Statistics");
+            statsStage.initModality(Modality.APPLICATION_MODAL);
+            statsStage.setScene(new Scene(root));
+
+            // Show the statistics page
+            statsStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setDarkMode() {
+        anchorPane.getStylesheets().remove("css/lightMode.css");
+        anchorPane.getStylesheets().add("css/darkMode.css");
+        // Image image = new Image("images/brightness.png");
+        //tnImage.setImage(image);
+    }
+
+    private void setLightMode() {
+        anchorPane.getStylesheets().remove("css/darkMode.css");
+        anchorPane.getStylesheets().add("css/lightMode.css");
+        //Image image = new Image("images/brightness.png");
+        //tnImage.setImage(image);
+    }
+
+
+    @FXML
+   void modeclicked(MouseEvent event) {
+        isLightMode =!isLightMode;
+        if (isLightMode) {
+            setLightMode();
+        }else
+        {
+            setDarkMode();
+        }
+ }
+    @FXML
+    void mouseClicked(MouseEvent event) {
+
+    }
+    @FXML
+    void handleGeneratePdfButton(ActionEvent event) {
+        try (PdfWriter writer = new PdfWriter("recettes.pdf");
+             PdfDocument pdf = new PdfDocument(writer);
+             Document document = new Document(pdf)) {
+            Paragraph title = new Paragraph("Liste des recettes")
+                    .setTextAlignment(TextAlignment.CENTER)
+                    .setFontSize(18)
+                    .setBold();
+            document.add(title);
+            Paragraph description = new Paragraph("Ce tableau des recettes est une structure organisée qui stocke les détails essentiels de chaque recette. Chaque ligne représente une recette individuelle, avec des colonnes pour le nom, la description, la catégorie et la date. Il facilite la gestion et la recherche des recettes " +
+                    "en fournissant un aperçu rapide de chaque plat disponible dans le système.")
+                    .setTextAlignment(TextAlignment.CENTER)
+                    .setFontSize(10);
+            document.add(description);
+
+
+            Table table = new Table(4);
+            table.addCell("name");
+            table.addCell("description");
+            table.addCell("category");
+            table.addCell("date");
+
+            // Récupération des données des recettes depuis la TableView
+            ObservableList<Recette> recetteObservableList1 = recetteTable.getItems();
+            for (Recette recette : recetteObservableList1) {
+                table.addCell(recette.getName());
+                table.addCell(recette.getDescription());
+                table.addCell(recette.getCategory());
+                table.addCell(String.valueOf(recette.getDate()));
+            }
+
+            document.add(table);
+
+
+            //---------notif start
+            Notifications notification = Notifications.create()
+                    .title("Recipe")
+                    .text("Pdf was downloaded successfully  ")
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .graphic(null) // No graphic
+                    .hideCloseButton(); // Hide close button
+            // Apply the CSS styling directly
+            notification.show();
+            //---------notif end
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
 
 

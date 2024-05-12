@@ -1,0 +1,15 @@
+.primary-color{
+    -fx-background-color:  #FFFFFF;
+}
+
+.secondary-color{
+    -fx-background-color:#E7E7E7;
+}
+.round-border {
+    -fx-background-radius: 100;
+}
+.text {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-fill: #000000;
+}
