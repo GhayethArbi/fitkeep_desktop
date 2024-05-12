@@ -1,0 +1,60 @@
+
+.vbox-card {
+    -fx-background-color: #ffffff; /* Background color */
+    -fx-background-radius: 5px; /* Rounded corners */
+    -fx-padding: 10px; /* Padding inside the VBox */
+    -fx-spacing: 5px; /* Spacing between children */
+    -fx-border-color: #dddddd; /* Border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 5px; /* Rounded corners for the border */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10, 0, 0, 1 ); /* Drop shadow effect */
+}
+/* Style for the Text elements inside the VBox */
+.vbox-card .text {
+    -fx-font-size: 14px; /* Font size */
+    -fx-fill: #333333; /* Text color */
+}
+
+/* Style for the RadioButtons inside the VBox */
+.vbox-card .radio-button {
+    -fx-font-size: 14px; /* Font size */
+    -fx-text-fill: #333333; /* Text color */
+}
+
+/* Apply margin to the first and last VBox elements */
+.vbox-card:first-child {
+    -fx-margin-top: 10px;
+}
+
+.vbox-card:last-child {
+    -fx-margin-bottom: 10px;
+}
+.radio-button {
+    -fx-font-size: 14px;
+    -fx-font-family: Arial, sans-serif;
+    -fx-text-fill: #333333;
+}
+
+.radio-button .radio-button:hover {
+    -fx-background-color: #e0e0e0; /* Hover color */
+}
+
+.radio-button:selected .radio-button {
+    -fx-text-fill: #ffffff; /* Text color when selected */
+}
+
+.submit-button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: Arial, sans-serif;
+    -fx-padding: 10px 20px; /* Padding */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-border-color: #4CAF50; /* Border color */
+    -fx-cursor: pointer; /* Cursor on hover */
+}
+
+.submit-button:hover {
+    -fx-background-color: #45a049; /* Darker green on hover */
+}
+
