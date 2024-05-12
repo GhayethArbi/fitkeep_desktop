@@ -74,7 +74,7 @@ public class AddProduct extends NavigationController {
 
     // Method to initialize the controller
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         super.initialize();
         try {
             List<Category> categories = sc.getAllCategories();

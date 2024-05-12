@@ -2,7 +2,8 @@ package services;
 
 import Database.MyConnections;
 import Entity.Panier;
-import Entity.Product;
+import models.Product;
+import javafx.scene.control.Label;
 import models.User;
 import repository.UserRepository;
 
@@ -29,7 +30,7 @@ public class PanierService {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, panier.getUser().getId());
-            preparedStatement.setInt(2, panier.getProduct().getIdProduct());
+            preparedStatement.setInt(2, panier.getProduct().getId());
             preparedStatement.setInt(3, panier.getQuantite());
             preparedStatement.setDouble(4, panier.getTotalPrice());
             preparedStatement.executeUpdate();
@@ -55,7 +56,7 @@ public class PanierService {
                 panier.setUser(user);
 
                 // Fetch Product details
-                Product product = new ProductService().getProductById(resultSet.getInt("id_product"));
+                Product product = new ServiceProduit().getProductById(resultSet.getInt("id_product"));
                 panier.setProduct(product);
 
                 panier.setQuantite(resultSet.getInt("quantite"));
@@ -74,7 +75,7 @@ public class PanierService {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, panier.getUser().getId());
-            preparedStatement.setInt(2, panier.getProduct().getIdProduct());
+            preparedStatement.setInt(2, panier.getProduct().getId());
             preparedStatement.setInt(3, panier.getQuantite());
             preparedStatement.setDouble(4, panier.getTotalPrice());
             preparedStatement.setInt(5, panier.getIdPanier());
@@ -114,7 +115,7 @@ public class PanierService {
                 panier.setUser(user);
 
                 // Fetch Product details
-                Product product = new ProductService().getProductById(resultSet.getInt("id_product"));
+                Product product = new ServiceProduit().getProductById(resultSet.getInt("id_product"));
                 panier.setProduct(product);
 
                 panier.setQuantite(resultSet.getInt("quantite"));
@@ -145,7 +146,7 @@ public class PanierService {
 
                 // Create a Panier object and add it to the list
 
-                ProductService p = new ProductService();
+                ServiceProduit p = new ServiceProduit();
                 User x=userRepository.findById(userId);
                 Product y = p.getProductById(idProduct);
                 Panier panier = new Panier(idPanier, x, y, quantite, totalPrice);
@@ -162,6 +163,40 @@ public class PanierService {
             totalPrice += panier.getTotalPrice();
         }
         return totalPrice;
+    }
+
+    public Panier getPanierByUserIdandProductID(int idUser, int idProduct) {
+        Panier panier = null;
+
+        // SQL query to retrieve panier entry for the specified user ID and product ID
+        String query = "SELECT * FROM Panier WHERE id_user = ? AND id_product = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, idUser);
+            preparedStatement.setInt(2, idProduct);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // If a result is found, populate the panier object
+            if (resultSet.next()) {
+                panier = new Panier();
+                panier.setIdPanier(resultSet.getInt("id_panier"));
+
+                // Fetch User details
+                User user = userRepository.findById(resultSet.getInt("id_user"));
+                panier.setUser(user);
+
+                // Fetch Product details
+                Product product = new ServiceProduit().getProductById(resultSet.getInt("id_product"));
+                panier.setProduct(product);
+
+                panier.setQuantite(resultSet.getInt("quantite"));
+                panier.setTotalPrice(resultSet.getDouble("total_price"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return panier;
     }
 
 }

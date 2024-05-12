@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="../CSS/market.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.ListProductsinPanierController">
+    <children>
+        <BorderPane layoutY="86.0">
+            <left>
+                <ScrollPane fx:id="scrollPane" fitToWidth="true" styleClass="scroll-pane">
+                    <content>
+                        <GridPane fx:id="leftGridPane" />
+                    </content>
+                    <BorderPane.margin>
+                        <Insets left="35.0" />
+                    </BorderPane.margin>
+                </ScrollPane>
+
+            </left>
+        </BorderPane>
+        <Text layoutX="237.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Market" wrappingWidth="396.53668212890625">
+            <font>
+                <Font name="Berlin Sans FB Demi Bold" size="49.0" />
+            </font>
+        </Text>
+        <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="17.0" prefHeight="45.0" prefWidth="200.0">
+            <children>
+                <FontAwesomeIconView glyphName="ARROW_LEFT" onMouseClicked="#getBack" size="20">
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </FontAwesomeIconView>
+            </children>
+        </HBox>
+      <Button layoutX="656.0" layoutY="502.0" mnemonicParsing="false" onAction="#MakeCommande" text="Commande le panier" />
+    </children>
+</AnchorPane>

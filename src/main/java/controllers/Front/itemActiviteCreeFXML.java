@@ -55,8 +55,7 @@ public class itemActiviteCreeFXML {
 
 
     public void setActivityInfo(ActivitePhysique activitePhysique) {
-      this.IdAct=activitePhysique.getId();
-      Image image = new Image("file:///C:/Users/manso/PIP/public/Uploads/" + activitePhysique.getImageActivite());
+      this.IdAct=activitePhysique.getId();Image image = new Image("file:///C:/Users//PIP/public/Uploads/" + activitePhysique.getImageActivite());
       imgActivite.setImage(image);
       nomActivite.setText(activitePhysique.getNomActivite());
       typeActivite.setText(activitePhysique.getTypeActivite());

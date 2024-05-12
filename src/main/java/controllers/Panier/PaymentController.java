@@ -1,7 +1,14 @@
-package controllers;
+package controllers.Panier;
 
 import Entity.Commande;
-import services.CommandeService;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+import com.stripe.param.ChargeCreateParams;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import controllers.CommandDetails;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,24 +17,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import com.stripe.Stripe;
-import com.stripe.model.Charge;
-import com.stripe.param.ChargeCreateParams;
-import com.stripe.exception.StripeException;
 import javafx.scene.text.Text;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.List;
-
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import services.CommandeService;
+
+import java.io.FileReader;
+import java.io.IOException;
 
 public class PaymentController {
 
@@ -88,7 +87,7 @@ public class PaymentController {
             commandeService.updateCommande(commande);
 
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CommandDetails.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Front/Accueil.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Détails de la commande");
@@ -103,7 +102,7 @@ public class PaymentController {
     }
 
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

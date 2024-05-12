@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="paniercard" prefHeight="338.0" prefWidth="226.0" stylesheets="../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.PanierController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="63.0" prefHeight="338.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fx:id="ProductImg" fitHeight="136.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+            </ImageView>
+                <Label fx:id="priceLabel" prefHeight="49.0" prefWidth="101.0" text="Price">
+                    <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="45.0" />
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="NameProductLabel" prefHeight="50.0" prefWidth="122.0" text="Name">
+                    <font>
+                        <Font name="Cambria" size="24.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="60.0" />
+                    </VBox.margin>
+                </Label>
+            <HBox alignment="CENTER" prefHeight="18.0" prefWidth="167.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="68.0" text="Quantité :" />
+                  <Label fx:id="qty" prefHeight="18.0" prefWidth="55.0" text="222" />
+               </children>
+            </HBox>
+            <Button id="menuBTN" mnemonicParsing="false" onAction="#DeleteItemFromPanier" style="-fx-background-color: red;" text="Supprimer" />
+            </children>
+        </VBox>
+    </children>
+    <styleClass>
+        <String fx:value="fruit-item" />
+        <String fx:value="shadow" />
+    </styleClass>
+</AnchorPane>

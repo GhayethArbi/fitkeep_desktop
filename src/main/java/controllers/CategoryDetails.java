@@ -51,7 +51,11 @@ public class CategoryDetails extends NavigationController implements Initializab
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        super.initialize();
+        try {
+            super.initialize();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         // Initialize TableView columns
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         NameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

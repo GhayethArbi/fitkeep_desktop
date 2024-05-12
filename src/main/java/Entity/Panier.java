@@ -1,7 +1,7 @@
 package Entity;
 
 import models.User;
-
+import models.Product;
 public class Panier {
     private int idPanier;
     private User user;

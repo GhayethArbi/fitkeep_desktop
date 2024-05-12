@@ -5,6 +5,7 @@ import Entity.Commande;
 import Entity.Panier;
 import models.User;
 import repository.UserRepository;
+import services.session.UserSession;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,11 +26,12 @@ public class CommandeService {
 
     // Create Commande
     public void addCommande(Commande commande) {
+        System.out.println(UserSession.CURRENT_USER.getUserLoggedIn().getId());
         String query = "INSERT INTO Commande (id_panier, id_user, mode_de_paiement, date, adresse, statut) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, commande.getPanier().getIdPanier());
-            preparedStatement.setInt(2, commande.getUser().getId());
+            preparedStatement.setInt(2, UserSession.CURRENT_USER.getUserLoggedIn().getId());
             preparedStatement.setString(3, commande.getModeDePaiement());
             preparedStatement.setTimestamp(4, commande.getDate());
             preparedStatement.setString(5, commande.getAdresse());

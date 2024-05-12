@@ -7,6 +7,7 @@ import utils.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ServiceProduit implements CRUD<Product> {
     private final Connection cnx;
@@ -101,4 +102,59 @@ public class ServiceProduit implements CRUD<Product> {
     public List<Product> getAllProducts() throws SQLException {
         return selectAll();
     }
+
+    public List<Product> selectProductByUserIdinPanier(int userId) {
+        List<Product> productList = new ArrayList<>();
+
+        // SQL query to retrieve products in panier for the specified user ID
+        String query = "SELECT p.* FROM product p INNER JOIN panier pa ON p.id = pa.id_product WHERE pa.id_user = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setId(rs.getInt("id"));
+                    product.setCategory(fetchCategoryById(rs.getInt("category_id")));
+                    product.setSlug(rs.getString("slug"));
+                    product.setName(rs.getString("name"));
+                    product.setIllustration(rs.getString("illustration"));
+                    product.setSubtitle(rs.getString("subtitle"));
+                    product.setDescription(rs.getString("description"));
+                    product.setQuantite(rs.getInt("quantite"));
+                    product.setPrice(rs.getInt("price"));
+                    productList.add(product);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return productList;
+    }
+
+    public Product getProductById(int idProduct) {
+        String query = "SELECT * FROM Product WHERE id=?";
+        Product product = new Product();
+
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement(query);
+            preparedStatement.setInt(1, idProduct);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                product.setId(resultSet.getInt("id"));
+                product.setCategory(Objects.requireNonNull(fetchCategoryById(resultSet.getInt("category_id"))));
+                product.setSlug(resultSet.getString("slug"));
+                product.setName(resultSet.getString("name"));
+                product.setIllustration(resultSet.getString("illustration"));
+                product.setSubtitle(resultSet.getString("subtitle"));
+                product.setDescription(resultSet.getString("description"));
+                product.setQuantite(resultSet.getInt("quantite"));
+                product.setPrice(resultSet.getInt("price"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
+    }
+
 }

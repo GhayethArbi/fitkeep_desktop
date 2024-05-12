@@ -195,7 +195,7 @@ public class ListUsersController extends NavigationController {
 
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
 
         super.initialize();
 

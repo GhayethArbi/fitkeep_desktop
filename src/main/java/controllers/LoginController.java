@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Roles;
+import models.User;
 import services.UserDao;
 import services.session.UserSession;
 
@@ -126,6 +128,7 @@ public class LoginController extends NavigationController {
                 alert.setTitle("Login Successful");
                 alert.setContentText("Welcome!" + loggedIn);
                 alert.show();*/
+                    System.out.println(UserSession.CURRENT_USER);
                     if (UserSession.CURRENT_USER.getUserLoggedIn().getRoles().equals(Roles.ROLE_ADMIN)) {
                             Stage stage = (Stage) tfEmail.getScene().getWindow(); // Get reference to the login window's stage
                             stage.setTitle("Dashboard");
@@ -156,9 +159,11 @@ public class LoginController extends NavigationController {
                 alert.setTitle("Database Error");
                 alert.setContentText("An error occurred while accessing the database.");
                 alert.show();
+                System.out.println("An error occurred while accessing the database."+e.getMessage());
+
                 System.out.println("An error occurred while accessing the database."+e);
             }
-            catch (Exception exception){
+            catch (IOException exception){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Navigation Error");
                 alert.setContentText("An error occurred while accessing the nextpage. "+ exception.getMessage());

@@ -7,9 +7,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Entity.Panier;
-import Entity.Product;
+import models.Product;
 import services.PanierService;
-import services.ProductService;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -24,6 +23,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.User;
 import repository.UserRepository;
+import services.ServiceProduit;
 import services.session.UserSession;
 
 public class ProductListController extends NavigationController{
@@ -59,16 +59,16 @@ public class ProductListController extends NavigationController{
     private boolean isCartEmpty = true;
     private User userId;
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         super.initialize();
         // Set cell value factories for table columns
-        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getIdProduct()).asObject());
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         priceColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
         descriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
 
         // Initialize the table with product data from the database
-        ProductService productService = new ProductService();
+        ServiceProduit productService = new ServiceProduit();
         List<Product> productList = productService.getAllProducts();
         productTableView.getItems().addAll(productList);
         UserRepository userRepository = new UserRepository();
@@ -89,7 +89,7 @@ public class ProductListController extends NavigationController{
 
         // Get the user ID of the currently logged-in user (if applicable)
         UserRepository u = new UserRepository();
-       ProductService p = new ProductService();
+        ServiceProduit p = new ServiceProduit();
        try{
         User userId = u.findById(UserSession.CURRENT_USER.getUserLoggedIn().getId()); // Implement this method based on your user authentication logic
         int quantity = 0;
@@ -120,7 +120,7 @@ public class ProductListController extends NavigationController{
             // Create a new Panier object
             Panier panier = this.cart;
             panier.setUser(userId);
-            Product produit=p.getProductById(selectedProduct.getIdProduct());
+            models.Product produit=p.getProductById(selectedProduct.getId());
             panier.setProduct(produit); // Assuming getId() returns the product ID
             panier.setQuantite(Integer.parseInt(quantityTextField.getText())); // Set the quantity to 1 for now, you can adjust this as needed
             panier.setTotalPrice(selectedProduct.getPrice()*Integer.parseInt(quantityTextField.getText())); // Assuming getPrice() returns the product price

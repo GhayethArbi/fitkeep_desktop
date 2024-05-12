@@ -1,5 +1,7 @@
 package controllers;
 
+import Entity.Panier;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,7 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Product;
+import services.PanierService;
 import services.ServiceProduit;
+import services.session.UserSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,7 +25,7 @@ public class MarketController {
 
     @FXML
     private GridPane leftGridPane;
-
+    private PanierService panierService=new PanierService();
     private final ServiceProduit sp = new ServiceProduit();
     private List<Product> products;
 
@@ -58,8 +62,17 @@ public class MarketController {
 
             // Set the grid as content of the left GridPane
             leftGridPane.getChildren().setAll(grid);
+            List<Panier> paniers = panierService.getPanierByUserId(UserSession.CURRENT_USER.getUserLoggedIn().getId());
+            System.out.println(paniers);
+            if (!(paniers.isEmpty())) {
+                for (ItemController controller : ItemController.itemControllers) {
+                    controller.notifyProductAddedToCart();
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -77,5 +90,18 @@ public class MarketController {
         // Create a new scene with the root and set it to the stage
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public void goToAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Panier/ListProductsinpanier.fxml"));
+        Parent root = fxmlLoader.load();
+
+        // Get the current stage
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        // Create a new scene with the root and set it to the stage
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 }

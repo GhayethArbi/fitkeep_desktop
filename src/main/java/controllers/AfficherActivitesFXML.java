@@ -74,7 +74,11 @@ public class AfficherActivitesFXML extends NavigationController implements Initi
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        super.initialize();
+        try {
+            super.initialize();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         // TODO
 
          loadDate();

@@ -96,7 +96,11 @@ public class ProductDetails extends NavigationController implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        super.initialize();
+        try {
+            super.initialize();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         // Initialize TableView columns
         IdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         NameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

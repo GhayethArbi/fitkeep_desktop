@@ -115,7 +115,7 @@ public class ChangePasswordController extends NavigationController {
     }
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         super.initialize();
         assert confirmError != null : "fx:id=\"confirmError\" was not injected: check your FXML file 'ChangePassword.fxml'.";
         assert currError != null : "fx:id=\"currError\" was not injected: check your FXML file 'ChangePassword.fxml'.";

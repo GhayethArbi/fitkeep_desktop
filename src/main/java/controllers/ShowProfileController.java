@@ -1,6 +1,7 @@
 package controllers;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,7 +55,7 @@ public class ShowProfileController extends NavigationController {
 
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         super.initialize();
         assert currentUserName != null : "fx:id=\"currentUserName\" was not injected: check your FXML file 'ListUsers.fxml'.";
 

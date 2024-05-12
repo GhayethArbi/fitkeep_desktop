@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.session.UserSession;
 
+import java.sql.SQLException;
+
 public class NavigationController {
 
     @FXML
@@ -199,7 +201,7 @@ public class NavigationController {
         }
     }
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         currentUserName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
         imgCircle.setStroke(Color.SEAGREEN);
         Image in =new Image("/IMG-20221027-WA0012.jpg", false);

@@ -431,7 +431,7 @@ public class ProfileSettingController extends NavigationController{
         }
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         super.initialize();
         assert addressError != null : "fx:id=\"addressError\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
         assert birthError != null : "fx:id=\"birthError\" was not injected: check your FXML file 'ProfileSetting.fxml'.";
