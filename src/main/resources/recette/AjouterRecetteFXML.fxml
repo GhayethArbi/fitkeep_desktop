@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<DialogPane prefHeight="319.0" prefWidth="518.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.recettes.AjouterRecetteFx">
+    <content>
+        <AnchorPane prefHeight="327.0" prefWidth="537.0">
+            <children>
+                <TextField fx:id="fieldName" layoutX="47.0" layoutY="56.0" onKeyPressed="#namepressed" prefHeight="25.0" prefWidth="271.0" />
+                <TextArea fx:id="fieldDescription" layoutX="42.0" layoutY="129.0" onKeyPressed="#descriptionpressed" prefHeight="123.0" prefWidth="281.0" />
+                <Button fx:id="btnAdd" layoutX="460.0" layoutY="262.0" mnemonicParsing="false" onAction="#ajouterRecette" text="Add" />
+                <Button fx:id="btncancel" layoutX="383.0" layoutY="263.0" mnemonicParsing="false" onAction="#annuler" text="cancel" textFill="#db2f11" />
+                <CheckBox fx:id="checkBoxBreakfast" layoutX="372.0" layoutY="76.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="105.0" text="Breakfast" />
+                <CheckBox fx:id="checkBoxBrunch" layoutX="372.0" layoutY="110.0" mnemonicParsing="false" text="Brunch" />
+                <CheckBox fx:id="checkBoxLunch" layoutX="372.0" layoutY="144.0" mnemonicParsing="false" text="Lunch" />
+                <CheckBox fx:id="checkBoxSnacks" layoutX="372.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Snacks" />
+                <Text layoutX="20.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipe name" />
+                <Text layoutX="25.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+                <Text layoutX="363.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="61.92189407348633" />
+                <CheckBox fx:id="checkBoxDinner" layoutX="372.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Dinner" />
+                <Text layoutX="15.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add  new recipe" />
+                <Label fx:id="counter" layoutX="38.0" layoutY="254.0" text="Counter">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="control" layoutX="45.0" layoutY="87.0" text=".">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </content>
+</DialogPane>
