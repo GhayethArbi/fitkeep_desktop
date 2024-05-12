@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import models.User;
 import services.session.UserSession;
 
 public class ShowOneUserController extends NavigationController{
@@ -52,7 +53,11 @@ public class ShowOneUserController extends NavigationController{
     @FXML
     private Circle imgCircle;
 
+    @FXML
+    void goToOverviewUser(){}
 
+    @FXML
+    void addLoyalityPoints(){}
 
 
 
@@ -70,16 +75,20 @@ public class ShowOneUserController extends NavigationController{
         assert image != null : "fx:id=\"image\" was not injected: check your FXML file 'ShowOneUser.fxml'.";
         assert imgCircle != null : "fx:id=\"imgCircle\" was not injected: check your FXML file 'ShowOneUser.fxml'.";
         currentUserNameUp.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName()+" "+UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
-        ftAddress.setText(UserSession.CURRENT_USER.getUserLoggedIn().getAddress());
-        ftBirth.setText(UserSession.CURRENT_USER.getUserLoggedIn().getBirthDay().toString());
-        ftLast.setText(UserSession.CURRENT_USER.getUserLoggedIn().getLastName());
-        ftEmail.setText(UserSession.CURRENT_USER.getUserLoggedIn().getEmail());
-        ftName.setText(UserSession.CURRENT_USER.getUserLoggedIn().getName());
-        ftGender.setText(UserSession.CURRENT_USER.getUserLoggedIn().getGender());
-        ftPhone.setText(String.valueOf(UserSession.CURRENT_USER.getUserLoggedIn().getPhoneNumber()));
+        User user= ListUsersController.userPass;
+        ftAddress.setText(user.getAddress());
+        ftBirth.setText(user.getBirthDay().toString());
+        ftLast.setText(user.getLastName());
+        ftEmail.setText(user.getEmail());
+        ftName.setText(user.getName());
+        ftGender.setText(user.getGender());
+        ftPhone.setText(String.valueOf(user.getPhoneNumber()));
         image.setStroke(Color.SEAGREEN);
         Image img =new Image("/IMG-20221027-WA0012.jpg", false);
         image.setFill(new ImagePattern(img));
+
+
+
     }
 
 }

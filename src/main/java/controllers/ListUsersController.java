@@ -71,6 +71,8 @@ public class ListUsersController extends NavigationController {
     @FXML
     private ObservableList<User> userList = FXCollections.observableArrayList();
 
+    public static User userPass;
+
     void initializeList(){
         this.userList.clear();
         try {
@@ -128,8 +130,23 @@ public class ListUsersController extends NavigationController {
                     });
 
                     showBtn.setOnAction(event -> {
+                        User user = getTreeTableRow().getItem();
+                        userPass=user;
 
-                        // Implement show action
+                            Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowOneUser.fxml"));
+                                Parent root = loader.load();
+                                Scene scene = new Scene(root);
+                                stage.setTitle("User Profile");
+                                stage.setScene(scene);
+                                stage.show();
+
+                            } catch (Exception e){
+                                System.err.println(e);
+                            }
+
+
                     });
 
                     banBtn.setOnAction(event -> {
