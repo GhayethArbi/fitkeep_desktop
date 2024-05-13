@@ -1,0 +1,101 @@
+.search-box{
+  -fx-background-color:#FFFFFF;
+  -fx-background-radius: 100;
+}
+
+.transparent{
+  -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+  -fx-background-color: #828282;
+  -fx-background-radius: 30;
+}
+
+.right-bar{
+  -fx-background-color: #D3D3D3;
+}
+/* style.css */
+
+.image-with-shadow {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 1);
+}
+
+.shadow{
+  -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+  -fx-background-color: #F16C31;
+  -fx-background-radius: 30;
+}
+
+.comboBox{
+  -fx-background-color: rgba(255,255,255,0.3);
+  -fx-background-radius: 30;
+}
+
+.add-btn{
+  -fx-background-color: #FFFFFF;
+  -fx-background-radius: 100;
+}
+
+.free-delivery-card{
+  -fx-background-color: #D3D3D3;
+  -fx-background-radius: 30;
+}
+
+.shopping-online-card{
+  -fx-background-color: #BAEAC3;
+  -fx-background-radius: 30;
+}
+
+.fruit-item{
+  -fx-background-color: #FFFFFF;
+  -fx-background-radius: 30;
+}
+/* CSS/style.css */
+
+/* Styles for the item card */
+.item-card {
+  -fx-background-color: #ffffff; /* Background color */
+  -fx-background-radius: 10px; /* Rounded corners */
+  -fx-border-color: #dddddd; /* Border color */
+  -fx-border-width: 1px; /* Border width */
+  -fx-padding: 10px; /* Padding */
+  -fx-spacing: 10px; /* Spacing between elements */
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10, 0, 0, 1 ); /* Drop shadow effect */
+}
+
+/* Styles for the product name label */
+#ProductNameLabel {
+  -fx-text-fill: #333333; /* Text color */
+}
+
+/* Styles for the product price label */
+#ProductPriceLabel {
+  -fx-text-fill: #666666; /* Text color */
+}
+
+/* Styles for the quantity label */
+.quantity-label {
+  -fx-text-fill: #666666; /* Text color */
+}
+
+/* Styles for the combo box */
+.comboBox {
+  -fx-background-color: #f2f2f2; /* Background color */
+  -fx-text-fill: #333333; /* Text color */
+  -fx-border-color: #cccccc; /* Border color */
+  -fx-border-width: 1px; /* Border width */
+  -fx-border-radius: 5px; /* Rounded border */
+}
+
+/* Styles for the add button */
+.add-btn {
+  -fx-background-color: #4CAF50; /* Green background color */
+  -fx-text-fill: #ffffff; /* Text color */
+  -fx-background-radius: 5px; /* Rounded corners */
+  -fx-padding: 5px 10px; /* Padding */
+  -fx-border-radius: 5px; /* Rounded border */
+}

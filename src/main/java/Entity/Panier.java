@@ -3,7 +3,7 @@ package Entity;
 import models.User;
 import models.Product;
 public class Panier {
-    private int idPanier;
+    private int id;
     private User user;
     private Product product;
     private int quantite;
@@ -14,7 +14,7 @@ public class Panier {
     }
 
     public Panier(int idPanier, User user, Product product, int quantite, double totalPrice) {
-        this.idPanier = idPanier;
+        this.id = idPanier;
         this.user = user;
         this.product = product;
         this.quantite = quantite;
@@ -23,11 +23,11 @@ public class Panier {
 
     // Getters and Setters
     public int getIdPanier() {
-        return idPanier;
+        return id;
     }
 
     public void setIdPanier(int idPanier) {
-        this.idPanier = idPanier;
+        this.id = idPanier;
     }
 
     public User getUser() {
@@ -66,7 +66,7 @@ public class Panier {
     @Override
     public String toString() {
         return "Panier{" +
-                "idPanier=" + idPanier +
+                "idPanier=" + id +
                 ", user=" + user +
                 ", product=" + product +
                 ", quantite=" + quantite +

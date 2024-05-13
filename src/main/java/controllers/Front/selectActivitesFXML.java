@@ -203,7 +203,7 @@ public class selectActivitesFXML implements Initializable {
         String serieRepNumText = NbRepField.getText().trim();
         String weightText = weigField.getText().trim();
         String fileName = generateUniqueFileName();
-        Path destinationPath = Paths.get("C:/Users/manso/PIP/public/Uploads", fileName);
+        Path destinationPath = Paths.get("D:/pidev/public/Uploads", fileName);
         Image image = imgActv.getImage();
 
         if (image != null) {
@@ -220,7 +220,11 @@ public class selectActivitesFXML implements Initializable {
         Integer serieNum = parseInteger(serieNumText.trim());
         Integer serieRepNum = parseInteger(serieRepNumText.trim());
         Integer weight = parseInteger(weightText.trim());
-
+        ////////////////////////////////
+        if(selectedType==null){
+            selectedType="Cardiovasculaire";
+        }
+        ///////////////////////////////
         // Create an instance of ActivitePhysique with the retrieved data
         ActivitePhysique activitePhysique = new ActivitePhysique();
         activitePhysique.setNomActivite(name);
@@ -238,14 +242,16 @@ public class selectActivitesFXML implements Initializable {
             System.out.println(activitePhysique.getObjectifs());
             activitePhysique.getObjectifs().add(objectif) ;
             System.out.println(activitePhysique.getObjectifs());
-            if(selectedType.equals("Cardiovasculaire")) {
+
+            if(selectedType.equals("musculation")) {
                 objectif.setTotalDuree(objectif.getTotalDuree() + duration);
                 objectif.setTotalCalories(objectif.getTotalCalories() + calories);
                 sapObjectif.updateTotalCaloriesAndDuration(objectif);
             }
             sapActivite.insertOne(activitePhysique);
-         //   System.out.println("ActivitePhysique added successfully!");
+            System.out.println("ActivitePhysique added successfully!");
         } catch (Exception e) {
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
             System.out.println(activitePhysique);
             e.printStackTrace();
         }

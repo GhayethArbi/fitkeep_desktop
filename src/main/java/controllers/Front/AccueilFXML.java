@@ -36,6 +36,19 @@ public class AccueilFXML extends NavigationController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void mouveToNutrition(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/recette/recetteFront.fxml"));
+            Parent root = loader.load();
+
+            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
@@ -72,7 +85,7 @@ public class AccueilFXML extends NavigationController implements Initializable {
 
     public void moveToShop(MouseEvent mouseEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
             Parent root = loader.load();
 
             stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();

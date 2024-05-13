@@ -153,6 +153,7 @@ public class selectActivitesForObjectifFXML implements Initializable {
             }
             displayChart(objectif) ;
         } catch (Exception e) {
+            System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
             e.printStackTrace();
         }
 

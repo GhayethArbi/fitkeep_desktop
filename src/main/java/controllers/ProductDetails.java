@@ -139,7 +139,8 @@ public class ProductDetails extends NavigationController implements Initializabl
                     setGraphic(null);
                 } else {
                     // Load image from file
-                    File file = new File("C:/Users/ghaye/OneDrive/Bureau/pidev/public/Uploads" + filename);
+                    File file = new File("D:/pidev/public/Uploads/" + filename);
+                    System.out.println("D:/pidev/public/Uploads/" + filename);
 
                     if (file.exists()) {
                         System.out.println("exist");

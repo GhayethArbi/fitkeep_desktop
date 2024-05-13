@@ -36,7 +36,51 @@ public class NavigationController {
         }
 
     }
+    @FXML
+    void goToOverviewUser(ActionEvent event){
+        Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            stage.setTitle("Show User Details");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowOneUser.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+        } catch (Exception e){
+            System.err.println(e);
+        }
+    }
 
+    @FXML
+    void addLoyalityPoints(ActionEvent event){
+        Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            stage.setTitle("Show User Details");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddLoyalityPoints.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+        } catch (Exception e){
+            System.err.println(e);
+        }
+    }
+    @FXML
+    void goToRecette(ActionEvent event){
+        try {
+            Stage stage = (Stage) currentUserName.getScene().getWindow(); // Get reference to the login window's stage
+            stage.setTitle("Recettes");
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/recette/AfficherRecette.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle navigation failure
+        }
+    }
     @FXML
     void goToLogin(ActionEvent event) {
         try {

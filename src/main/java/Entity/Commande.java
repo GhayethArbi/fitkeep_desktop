@@ -5,7 +5,7 @@ import models.User;
 import java.sql.Timestamp;
 
 public class Commande {
-    private int idCommande;
+    private int id;
     private Panier panier;
     private User user;
     private String modeDePaiement;
@@ -18,7 +18,7 @@ public class Commande {
     }
 
     public Commande(int idCommande, Panier panier, User user, String modeDePaiement, Timestamp date, String adresse, String statut) {
-        this.idCommande = idCommande;
+        this.id = idCommande;
         this.panier = panier;
         this.user = user;
         this.modeDePaiement = modeDePaiement;
@@ -29,11 +29,11 @@ public class Commande {
 
     // Getters and Setters
     public int getIdCommande() {
-        return idCommande;
+        return id;
     }
 
     public void setIdCommande(int idCommande) {
-        this.idCommande = idCommande;
+        this.id = idCommande;
     }
 
     public Panier getPanier() {
@@ -88,7 +88,7 @@ public class Commande {
     @Override
     public String toString() {
         return "Commande{" +
-                "idCommande=" + idCommande +
+                "idCommande=" + id +
                 ", panier=" + panier +
                 ", user=" + user +
                 ", modeDePaiement='" + modeDePaiement + '\'' +

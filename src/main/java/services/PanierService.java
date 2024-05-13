@@ -26,7 +26,7 @@ public class PanierService {
 
     // Create Panier
     public void addPanier(Panier panier) {
-        String query = "INSERT INTO Panier (id_user, id_product, quantite, total_price) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO Panier (user_id, product_id, quantite, total_price) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, panier.getUser().getId());
@@ -71,7 +71,7 @@ public class PanierService {
 
     // Update Panier
     public void updatePanier(Panier panier) {
-        String query = "UPDATE Panier SET id_user=?, id_product=?, quantite=?, total_price=? WHERE id_panier=?";
+        String query = "UPDATE Panier SET user_id=?, product_id=?, quantite=?, total_price=? WHERE id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, panier.getUser().getId());
@@ -88,7 +88,7 @@ public class PanierService {
 
     // Delete Panier
     public void deletePanier(int idPanier) {
-        String query = "DELETE FROM Panier WHERE id_panier=?";
+        String query = "DELETE FROM Panier WHERE id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idPanier);
@@ -101,7 +101,7 @@ public class PanierService {
     // Get Panier by ID
     public Panier getPanierById(int idPanier) {
         Panier panier = null;
-        String query = "SELECT * FROM Panier WHERE id_panier=?";
+        String query = "SELECT * FROM Panier WHERE id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idPanier);
@@ -131,7 +131,7 @@ public class PanierService {
         List<Panier> paniers = new ArrayList<>();
 
         // SQL query to retrieve panier entries for the specified user ID
-        String query = "SELECT * FROM panier WHERE id_user = ?";
+        String query = "SELECT * FROM panier WHERE id = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, userId);
@@ -169,7 +169,7 @@ public class PanierService {
         Panier panier = null;
 
         // SQL query to retrieve panier entry for the specified user ID and product ID
-        String query = "SELECT * FROM Panier WHERE id_user = ? AND id_product = ?";
+        String query = "SELECT * FROM Panier WHERE user_id = ? AND product_id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idUser);

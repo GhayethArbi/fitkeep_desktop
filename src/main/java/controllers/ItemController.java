@@ -42,7 +42,8 @@ public class ItemController {
         priceLabel.setText(String.valueOf(product.getPrice())); // Assuming priceLabel expects a String
 
         // Load image from file
-        Image image = new Image("file:///C:/Users/Dell/PEIPROJECT/public/Uploads/" + product.getIllustration());
+        Image image = new Image("file:///D:/pidev/public/Uploads/" + product.getIllustration());
+
         ProductImg.setImage(image);
     }
 

@@ -81,6 +81,7 @@ public class UserDao {
             AuthDTO authDTO = new AuthDTO();
             authDTO.setId(rs.getInt(1));
             authDTO.setEmail(email);
+            authDTO.setPhoneNumber(rs.getInt("phone_number"));
             authDTO.setPassword(password);
             authDTO.setRoles(rs.getString("roles").trim().toUpperCase());
             authDTO.setBanned(rs.getBoolean("is_banned"));

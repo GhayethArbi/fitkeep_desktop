@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -48,6 +49,18 @@ public class RecetteFront {
         }
     }
 
+    @FXML
+    void goBack(ActionEvent event)throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Front/Accueil.fxml"));
+        Parent root = fxmlLoader.load();
+
+        // Get the current stage
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Create a new scene with the root and set it to the stage
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
     @FXML
     void addRecipeBtn(ActionEvent event) {

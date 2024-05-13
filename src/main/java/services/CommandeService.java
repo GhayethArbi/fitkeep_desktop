@@ -27,7 +27,7 @@ public class CommandeService {
     // Create Commande
     public void addCommande(Commande commande) {
         System.out.println(UserSession.CURRENT_USER.getUserLoggedIn().getId());
-        String query = "INSERT INTO Commande (id_panier, id_user, mode_de_paiement, date, adresse, statut) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Commande (panier_id, user_id, mode_de_paiement, date, adresse, statut) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, commande.getPanier().getIdPanier());
@@ -97,7 +97,7 @@ public class CommandeService {
 
     // Update Commande
     public void updateCommande(Commande commande) {
-        String query = "UPDATE Commande SET id_panier=?, id_user=?, mode_de_paiement=?, date=?, adresse=?, statut=? WHERE id_commande=?";
+        String query = "UPDATE Commande SET panier_id=?, user_id=?, mode_de_paiement=?, date=?, adresse=?, statut=? WHERE id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, commande.getPanier().getIdPanier());
@@ -116,7 +116,7 @@ public class CommandeService {
 
     // Delete Commande
     public void deleteCommande(int idCommande) {
-        String query = "DELETE FROM Commande WHERE id_commande=?";
+        String query = "DELETE FROM Commande WHERE id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idCommande);
@@ -129,7 +129,7 @@ public class CommandeService {
 
     public Commande getByPanierId(int idPanier) {
         Commande commande = new Commande();
-        String query = "SELECT * FROM Commande WHERE id_panier=?";
+        String query = "SELECT * FROM Commande WHERE panier_id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idPanier);

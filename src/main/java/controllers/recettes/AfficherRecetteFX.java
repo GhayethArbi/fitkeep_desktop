@@ -4,6 +4,7 @@ import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.property.TextAlignment;
+import controllers.NavigationController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -41,7 +42,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.io.image.ImageDataFactory;
 
 
-public class AfficherRecetteFX implements Initializable {
+public class AfficherRecetteFX extends NavigationController implements Initializable {
     ServiceRecette sr = new ServiceRecette();
     ServicesPlanNutritionnel pl = new ServicesPlanNutritionnel();
     Recette selectedRecette= null;

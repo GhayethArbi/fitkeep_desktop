@@ -62,6 +62,7 @@ public class ServiceUser implements CRUD<User>{
         user.setPassword(hashedPassword);
 
         String req = "INSERT INTO `user`(`email`, `roles`, `password`, `name`, `last_name`,`gender`,`birth_day`, `phone_number`,`address`,`is_banned`,`registration_date`,loyality_points) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
         try{
             PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -90,7 +91,8 @@ public class ServiceUser implements CRUD<User>{
 
     @Override
     public void updateOne(User user) throws SQLException {
-
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
         String req = "UPDATE `user` SET `name`=?, `last_name`=?, `email`=?, `gender`=?, `birth_day`=?, `phone_number`=?, `address`=?, `roles`=?, `password`=?, `loyality_points`=?, `profile_image`=?,`is_banned`=? WHERE `id`=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);

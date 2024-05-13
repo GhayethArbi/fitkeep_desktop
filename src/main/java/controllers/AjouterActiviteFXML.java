@@ -176,13 +176,14 @@ public class AjouterActiviteFXML  implements Initializable {
 
         try {
             String fileName = generateUniqueFileName();
-            Path destinationPath = Paths.get("C:/Users/manso/PIP/public/Uploads", fileName);
+            Path destinationPath = Paths.get("D:/pidev/public/Uploads", fileName);
             Image image = activiteImg.getImage();
 
             if (image != null) {
                 System.out.println("------------------------------------------------");
 
                 File selectedFile = new File(image.getUrl().replace("file:/", ""));
+
                 byte[] imageData = Files.readAllBytes(selectedFile.toPath());
                 Files.write(destinationPath, imageData);
             }
@@ -259,7 +260,7 @@ public class AjouterActiviteFXML  implements Initializable {
 
 
     private String generateUniqueFileName() {
-        String extension = "jpg"; // You can modify this to support other image formats
+        String extension = "png"; // You can modify this to support other image formats
         String uniqueId = md5(uniqid());
         return uniqueId + "." + extension;
     }

@@ -237,6 +237,7 @@ public class ProfileSettingController extends NavigationController{
             } else {
                 user.setGender("Female");
             }
+
             user.setPassword(UserSession.CURRENT_USER.getUserLoggedIn().getPassword());
             user.setRoles(UserSession.CURRENT_USER.getUserLoggedIn().getRoles().toString());
             try{

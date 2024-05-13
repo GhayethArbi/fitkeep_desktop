@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="secondary-color" stylesheets="@../css/LightMode.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.recettes.RecetteFront">
+<HBox fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="secondary-color" stylesheets="@../CSS/LightMode.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.recettes.RecetteFront">
     <children>
         <VBox alignment="CENTER" prefHeight="670.0" prefWidth="200.0" styleClass="primary-color">
             <children>
@@ -34,11 +34,11 @@
                                     </image>
                                 </ImageView>
                             </graphic>
-                     <styleClass>
-                        <String fx:value="round-border" />
-                        <String fx:value="secondary-color" />
-                        <String fx:value="text" />
-                     </styleClass>
+                            <styleClass>
+                                <String fx:value="round-border" />
+                                <String fx:value="secondary-color" />
+                                <String fx:value="text" />
+                            </styleClass>
                         </Button>
                         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" text="Nutritional plan">
                             <graphic>
@@ -48,11 +48,11 @@
                                     </image>
                                 </ImageView>
                             </graphic>
-                     <styleClass>
-                        <String fx:value="round-border" />
-                        <String fx:value="secondary-color" />
-                        <String fx:value="text" />
-                     </styleClass>
+                            <styleClass>
+                                <String fx:value="round-border" />
+                                <String fx:value="secondary-color" />
+                                <String fx:value="text" />
+                            </styleClass>
                         </Button>
                     </children>
                 </VBox>
@@ -75,39 +75,16 @@
                         <Font name="System Bold" size="25.0" />
                     </font>
                 </Text>
-            <Button fx:id="modeBTN" mnemonicParsing="false" onMouseClicked="#modeclicked" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets left="764.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fx:id="tnImage" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#mouseClicked" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/brightness-and-contrast.png" />
-                     </image>
-                     <styleClass>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" text="Back">
+                    <styleClass>
                         <String fx:value="round-border" />
-                        <String fx:value="primary-color" />
-                     </styleClass>
-                  </ImageView>
-               </graphic>
-               <styleClass>
-                  <String fx:value="round-border" />
-                  <String fx:value="secondary-color" />
-               </styleClass>
-               <padding>
-                  <Insets left="4.0" />
-               </padding>
-            </Button>
-            <Button fx:id="refreshBtn" mnemonicParsing="false" onMouseClicked="#refresh" text="Refresh">
-               <styleClass>
-                  <String fx:value="round-border" />
-                  <String fx:value="secondary-color" />
-                  <String fx:value="text" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets top="-63.0" />
-               </VBox.margin>
-            </Button>
+                        <String fx:value="secondary-color" />
+                        <String fx:value="text" />
+                    </styleClass>
+                    <padding>
+                        <Insets left="20.0" right="20.0" />
+                    </padding>
+                </Button>
                 <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" VBox.vgrow="ALWAYS">
                     <content>
                         <GridPane fx:id="recipe_grid" styleClass="secondary-color">

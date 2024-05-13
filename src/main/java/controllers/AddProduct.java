@@ -146,7 +146,7 @@ public class AddProduct{
         try {
             String fileName = generateUniqueFileName();
 
-            Path destinationPath = Paths.get("C:/Users/ghaye/OneDrive/Bureau/pidev/public/Uploads", fileName);
+            Path destinationPath = Paths.get("D:/pidev/public/Uploads", fileName);
 
             Image image = IllustrationView.getImage();
             if (image != null) {

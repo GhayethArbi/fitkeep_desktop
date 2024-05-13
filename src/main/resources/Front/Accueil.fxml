@@ -90,7 +90,7 @@
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </VBox.margin>
             </Pane>
-            <HBox maxHeight="-Infinity" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;">
+            <HBox maxHeight="-Infinity" onMouseClicked="#mouveToNutrition" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F6EDD9; -fx-background-radius: 10;">
                <children>
                   <HBox alignment="CENTER" prefHeight="62.0" prefWidth="32.0">
                      <children>

@@ -162,7 +162,7 @@ public class AfficherActivitesFXML extends NavigationController implements Initi
                          setGraphic(null);
                      } else {
                          // Load image from file path
-                         Image image = new Image("file:///C:/Users/manso/PIP/public/Uploads/" + imagePath);
+                         Image image = new Image("file:///D:/pidev/public/Uploads/" + imagePath);
                          imageView.setImage(image);
                          setGraphic(imageView);
                      }

@@ -248,7 +248,7 @@ public class GameController {
     }
     private void redirectToProductDetails() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProductDetails.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
             Parent root = loader.load();
 
 
